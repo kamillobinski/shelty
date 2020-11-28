@@ -1,0 +1,12 @@
+.animal-card-default-description {
+  height: 47px;
+  margin-top: 25px;
+}
+
+.animal-card-default-buttons {
+  margin: 35px 60px 0 60px;
+}
+
+.animal-card-default-buttons div + div {
+  margin: 15px 0 0 0;
+}

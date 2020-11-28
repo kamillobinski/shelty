@@ -1,0 +1,46 @@
+.editAccount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.editAccount-inner {
+  width: 50%;
+  min-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editAccount-inner .primaryButton {
+  margin: 24px 0 10px 0;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.editAccount-inner-avatar {
+  margin-bottom: 48px;
+  border: 1px solid var(--primary-grey-light);
+  padding: 24px;
+  height: 150px;
+}
+
+.editAccount-inner-avatar-image {
+  width: 216px;
+  float: left;
+}
+
+.editAccount-inner-avatar-image-buttons .avatarInput {
+  margin-bottom: 12px;
+}
+
+.editAccount-inner-avatar-image-buttons .primaryButton {
+  margin: 0;
+}
+
+.editAccount-inner-avatar-image-buttons {
+  width: calc(142px);
+  height: 90px !important;
+  float: right;
+  min-height: 100%;
+  max-height: 100%;
+  padding-top: 12px;
+}

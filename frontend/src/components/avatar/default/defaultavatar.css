@@ -1,0 +1,13 @@
+.def-avatar {
+  vertical-align: middle;
+  float: left;
+  clear: left;
+}
+
+.def-avatar img {
+  width: inherit;
+  height: inherit;
+  border-radius: 9px;
+  object-fit: cover;
+  float: left;
+}

@@ -1,0 +1,64 @@
+.selectInput:first-child {
+  padding: 0 0 7px 0;
+}
+
+.selectInput {
+  display: flex;
+  align-items: center;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+
+.selectInput-label {
+  display: inline-block;
+  width: 240px;
+  height: 24px;
+  line-height: 32px;
+}
+
+.selectInput-label span {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--primary-font);
+  color: var(--primary-grey-dark);
+}
+
+.selectInput-input {
+  width: calc(100% - 240px);
+  display: inline-block;
+  border: none;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+}
+
+.selectInput-input select {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding-left: 2px;
+  color: var(--primary-black);
+  font-size: 16px;
+  font-weight: 400;
+  font-family: var(--primary-font);
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.selectInput-input {
+  position: relative;
+}
+
+.selectInput-input:after {
+  content: ">";
+  color: var(--primary-black);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 8px;
+  padding: 0 0 2px;
+  position: absolute;
+  pointer-events: none;
+}

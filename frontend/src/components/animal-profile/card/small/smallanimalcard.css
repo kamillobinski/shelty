@@ -1,0 +1,18 @@
+.animal-card-small-name {
+  color: var(--primary-grey-dark);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+}
+
+.animal-card-small-breed {
+  margin-top: 4px;
+  color: var(--primary-grey-dark);
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--primary-font);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}

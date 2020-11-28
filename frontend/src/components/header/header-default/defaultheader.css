@@ -1,0 +1,115 @@
+.defaultHeader {
+  height: 65px;
+}
+
+.defaultHeader-inner {
+  height: 100%;
+  border-bottom: 1px solid var(--primary-grey-light);
+}
+
+/* logo */
+
+.defaultHeader-inner-logo {
+  width: 61px;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.defaultHeader-inner-logo-inner {
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  cursor: pointer;
+  margin-left: 3px;
+  border-radius: 50%;
+}
+
+.defaultHeader-inner-logo span {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--primary-grey-black);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 61px;
+  text-decoration: none;
+  color: var(--primary-black);
+}
+
+.defaultHeader-inner-logo img {
+  width: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  visibility: hidden;
+}
+
+/* right content */
+.defaultHeader-inner-right-content {
+  width: fit-content;
+  height: 100%;
+  float: right;
+}
+
+/* buttons */
+
+.defaultHeader-inner-right-content-buttons {
+  width: 40px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.defaultHeader-inner-right-content-buttons-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* avatar */
+
+.defaultHeader-inner-right-content-avatar {
+  width: 40px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.defaultHeader-inner-right-content-avatar.click-animation {
+  animation-name: scale-click;
+  animation-duration: 0.3s;
+}
+
+.defaultHeader-inner-right-content-avatar-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes scale-click {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

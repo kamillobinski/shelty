@@ -1,0 +1,39 @@
+.settingsMenu {
+  width: 300px;
+  height: calc(100% - 65px);
+  border-right: 1px solid var(--primary-grey-light);
+  float: left;
+}
+
+.settingsMenu-list {
+  padding: 19px 0 0 0;
+}
+
+.settingsMenu-item {
+  padding: 10px 10px 10px 0;
+  border-bottom: 1px solid var(--primary-grey-light);
+}
+
+.settingsMenu a {
+  text-decoration: none;
+  color: var(--primary-black);
+}
+
+.settingsMenu-item span {
+  color: var(--primary-black);
+  font-size: 16px;
+  font-family: var(--primary-font);
+  font-weight: 500;
+}
+
+.settingsMenu-item-subitem {
+  margin: 0px 0px 0 20px;
+  padding: 10px 0 0px 0;
+}
+
+.settingsMenu-item-subitem span {
+  color: var(--primary-black);
+  font-size: 14px;
+  font-family: var(--primary-font);
+  font-weight: 400;
+}

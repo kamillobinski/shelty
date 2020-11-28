@@ -1,0 +1,66 @@
+.publicHeader {
+  height: 65px;
+}
+
+.publicHeader-inner {
+  height: 100%;
+  border-bottom: 1px solid var(--primary-grey-light);
+}
+
+/* logo */
+
+.publicHeader-inner-logo {
+  width: 61px;
+  height: 100%;
+  float: left;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.publicHeader-inner-logo span {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 20px;
+  width: 61px;
+  text-decoration: none;
+  color: var(--primary-black);
+}
+
+/* right content */
+.publicHeader-inner-right-content {
+  width: fit-content;
+  height: 100%;
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.publicHeader-inner-right-content-link {
+  padding: 0 14px 0 14px;
+  font-family: var(--primary-font);
+  font-size: 14px;
+  color: var(--primary-grey-dark);
+  font-weight: 400;
+}
+
+.publicHeader-inner-right-content-link a {
+  text-decoration: none;
+  color: var(--primary-grey-dark);
+}
+
+.publicHeader-inner-right-content-link:hover {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary-black);
+}
+
+.publicHeader-inner-right-content .primaryButton {
+  margin: 0 0 0 48px;
+}
+
+.publicHeader-inner-right-content a {
+  text-decoration: none;
+}

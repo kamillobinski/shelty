@@ -1,0 +1,18 @@
+.iconButton {
+  border: 1px solid var(--primary-black);
+  border-radius: 9px;
+  position: relative;
+  cursor: pointer;
+}
+
+.iconButton-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.iconButton:hover .iconButton-icon.rotate svg {
+  position: relative;
+  animation: rotate 2s infinite linear;
+}

@@ -1,0 +1,115 @@
+.searchHeader {
+  height: 65px;
+}
+
+.searchHeader-inner {
+  height: 100%;
+  border-bottom: 1px solid var(--primary-grey-light);
+}
+
+/* logo */
+
+.searchHeader-inner-logo {
+  width: 61px;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.searchHeader-inner-logo-inner {
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  cursor: pointer;
+  margin-left: 3px;
+  border-radius: 50%;
+}
+
+.searchHeader-inner-logo span {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--primary-grey-black);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 61px;
+  text-decoration: none;
+  color: var(--primary-black);
+}
+
+.searchHeader-inner-logo img {
+  width: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  visibility: hidden;
+}
+
+/* right content */
+.searchHeader-inner-right-content {
+  width: fit-content;
+  height: 100%;
+  float: right;
+}
+
+/* buttons */
+
+.searchHeader-inner-right-content-buttons {
+  width: 40px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.searchHeader-inner-right-content-buttons-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* avatar */
+
+.searchHeader-inner-right-content-avatar {
+  width: 40px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.searchHeader-inner-right-content-avatar.click-animation {
+  animation-name: scale-click;
+  animation-duration: 0.3s;
+}
+
+.searchHeader-inner-right-content-avatar-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes scale-click {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

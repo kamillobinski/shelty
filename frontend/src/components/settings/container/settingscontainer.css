@@ -1,0 +1,26 @@
+.settingsContainer {
+  width: calc(100% - 300px);
+  min-height: calc(100% - 65px);
+  max-height: calc(100% - 65px);
+  overflow: hidden;
+  overflow-y: scroll;
+  float: left;
+  padding: 24px;
+}
+
+.settingsContainer::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.settingsContainer::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.settingsContainer::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.124);
+}

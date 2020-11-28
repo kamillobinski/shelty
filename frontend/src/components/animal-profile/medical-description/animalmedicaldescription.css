@@ -1,0 +1,26 @@
+.animalMedicalDescription {
+  width: calc(100% - 980px);
+  height: 530px;
+  max-height: 530px;
+  border-right: 1px solid var(--primary-grey-light);
+  border-bottom: 1px solid var(--primary-grey-light);
+  float: left;
+}
+
+.animalMedicalDescription-input {
+  max-height: 430px;
+  margin: 24px 0 24px 24px;
+  padding-right: 24px;
+}
+
+.animalMedicalDescription::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.animalMedicalDescription::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.124);
+}

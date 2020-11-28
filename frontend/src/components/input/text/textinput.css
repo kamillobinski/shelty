@@ -1,0 +1,43 @@
+.textInput:first-child {
+  padding: 0 0 7px 0;
+}
+
+.textInput {
+  display: flex;
+  align-items: center;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+
+.textInput-label {
+  display: inline-block;
+  width: 240px;
+  height: 24px;
+  line-height: 32px;
+}
+
+.textInput-label span {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--primary-font);
+  color: var(--primary-grey-dark);
+}
+
+.textInput-input {
+  width: calc(100% - 240px);
+  display: inline-block;
+  border: none;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+}
+
+.textInput-input input {
+  width: calc(100% - 240px);
+  border: none;
+  outline: none;
+  padding-left: 2px;
+  color: var(--primary-black);
+  font-size: 16px;
+  font-weight: 400;
+  font-family: var(--primary-font);
+  background-color: transparent;
+}

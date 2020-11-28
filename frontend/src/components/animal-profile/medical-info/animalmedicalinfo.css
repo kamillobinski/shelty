@@ -1,0 +1,27 @@
+.animalMedicalInformation {
+  max-height: inherit;
+  max-width: inherit;
+}
+
+.animalMedicalInformation-inputs {
+  max-height: 430px;
+  margin: 24px 24px 24px 24px;
+  padding-right: 24px;
+  overflow-y: scroll;
+}
+
+.animalMedicalInformation-inputs::-webkit-scrollbar {
+  width: 2px;
+}
+
+.animalMedicalInformation-inputs::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.animalMedicalInformation-inputs::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.124);
+}

@@ -1,0 +1,39 @@
+.iconTextButton {
+  cursor: pointer;
+  width: 100%;
+}
+
+.iconTextButton-inner {
+  width: 200px;
+  position: relative;
+  border: 1px solid var(--primary-black);
+  border-radius: 9px;
+  background-color: transparent;
+}
+
+.iconTextButton-inner-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.iconTextButton-inner-icon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.iconTextButton-inner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 75px;
+  width: 100px;
+  color: var(--primary-black);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+}
