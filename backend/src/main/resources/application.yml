@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shelty
+    username: root
+    password:
+    hikari:
+      minimumIdle: 1
+      maximumPoolSize: 8
+    dbcp2:
+      validation-query: 1
+      test-on-borrow: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+jwt:
+  jwtSecret: secretKey # jwtSecret is a symmetric key that is known by both the sender and the receiver.
+  jwtExpirationMs: 86400000 # Declaration of the JWT token expiry time, expressed in milliseconds.
+
+server:
+  port: 8081
