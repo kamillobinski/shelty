@@ -35,7 +35,7 @@
 
 .animalUpdate-container-profile {
   width: 340px;
-  height: 530px;
+  height: 630px;
   border-right: 1px solid var(--primary-grey-light);
   border-bottom: 1px solid var(--primary-grey-light);
   float: left;
@@ -43,8 +43,8 @@
 
 .animalUpdate-container-general-info {
   width: 640px;
-  height: 530px;
-  max-height: 530px;
+  height: 630px;
+  max-height: 630px;
   border-right: 1px solid var(--primary-grey-light);
   border-bottom: 1px solid var(--primary-grey-light);
   float: left;
@@ -61,8 +61,8 @@
 
 .animalUpdate-container-general-desc {
   width: calc(100% - 980px);
-  height: 530px;
-  max-height: 530px;
+  height: 630px;
+  max-height: 630px;
   border-right: 1px solid var(--primary-grey-light);
   border-bottom: 1px solid var(--primary-grey-light);
   float: left;

@@ -1,3 +1,7 @@
+.animal-card-default .animalAvatar {
+  margin-top: 20px;
+}
+
 .animal-card-default-description {
   height: 47px;
   margin-top: 25px;

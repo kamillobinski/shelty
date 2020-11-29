@@ -4,9 +4,14 @@
 }
 
 .animalGeneralDescription-input {
-  max-height: 430px;
+  height: 530px;
+  max-height: 530px;
   margin: 24px 0 24px 24px;
   padding-right: 24px;
+}
+
+.animalGeneralDescription-input .textInputExtended {
+  height: inherit;
 }
 
 .animalGeneralDescription::-webkit-scrollbar-track {
