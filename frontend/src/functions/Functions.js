@@ -50,13 +50,30 @@ export function changePageTitle(title) {
 /*
  * ANIMAL FINDER
  */
-export function filterFinderList(list, age, color, breed, gender, size) {
+export function filterFinderList(
+  list,
+  age,
+  color,
+  species,
+  breed,
+  gender,
+  size
+) {
   var ageResult = filterByAge(list, age);
-  var breedResult = filterByBreed(ageResult, breed);
+  var speciesResult = filterBySpecies(ageResult, species);
+  var breedResult = filterByBreed(speciesResult, breed);
   var genderResult = filterByGender(breedResult, gender);
   var sizeResult = filterBySize(genderResult, size);
 
   return sizeResult;
+}
+
+function filterBySpecies(list, species) {
+  if (species !== "DEFAULT" && species !== "") {
+    return list.filter((x) => x.breed.species.id === parseInt(species));
+  } else {
+    return list;
+  }
 }
 
 function filterBySize(list, size) {

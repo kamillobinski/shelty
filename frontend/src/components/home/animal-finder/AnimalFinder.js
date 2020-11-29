@@ -59,6 +59,7 @@ export default class AnimalFinder extends React.Component {
         this.state.animalList,
         this.state.age,
         this.state.color,
+        this.state.species,
         this.state.breed,
         this.state.gender,
         this.state.size
@@ -68,6 +69,7 @@ export default class AnimalFinder extends React.Component {
 
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+
     if (event.target.name === "species") {
       if (event.target.value === "DEFAULT") {
         getBreedOptions().then((res) => {
@@ -81,8 +83,16 @@ export default class AnimalFinder extends React.Component {
     }
   }
 
-  getResults(list, age, color, breed, gender, size) {
-    var result = filterFinderList(list, age, color, breed, gender, size);
+  getResults(list, age, color, species, breed, gender, size) {
+    var result = filterFinderList(
+      list,
+      age,
+      color,
+      species,
+      breed,
+      gender,
+      size
+    );
     this.setState({ resultList: result });
   }
 
@@ -155,6 +165,7 @@ export default class AnimalFinder extends React.Component {
                   this.state.animalList,
                   this.state.age,
                   this.state.color,
+                  this.state.species,
                   this.state.breed,
                   this.state.gender,
                   this.state.size
