@@ -20,28 +20,12 @@ const AnimalGeneralInfo = (props) => {
           isRequired={true}
         />
         <TextInput
-          label="Identichip:"
-          name="animalIdentichip"
-          value={props.identichip}
-          onChange={props.handleInputChange}
-          width="100%"
-        />
-        <TextInput
           label="Age:"
           name="animalAge"
           value={props.age}
           onChange={props.handleInputChange}
           width="100%"
           isRequired={true}
-        />
-        <TextInput
-          label="Date of birth:"
-          name="animalDateOfBirth"
-          value={props.animalDateOfBirth}
-          onChange={props.handleInputChange}
-          width="100%"
-          height="30px"
-          type="date"
         />
         <SelectInput
           label="Size:"
@@ -52,29 +36,6 @@ const AnimalGeneralInfo = (props) => {
           list={props.sizeList}
           width="100%"
           isRequired={true}
-        />
-        <TextInput
-          label="Color"
-          name="animalColor"
-          value={props.color}
-          onChange={props.handleInputChange}
-          width="100%"
-        />
-        <TextInput
-          label="Date arrived"
-          name="animalDateArrivedInShelter"
-          value={props.dateArrivedInShelter}
-          onChange={props.handleInputChange}
-          width="100%"
-          type="date"
-        />
-        <TextInput
-          label="Date adopted"
-          name="animalDateAdopted"
-          value={props.dateAdopted}
-          onChange={props.handleInputChange}
-          width="100%"
-          type="date"
         />
         <SelectInput
           label="Breed"
@@ -125,6 +86,46 @@ const AnimalGeneralInfo = (props) => {
           onChange={props.handleSelectChange}
           list={props.isReadyOptions}
           isRequired={true}
+        />
+        {/* REQUIRED END */}
+        <TextInput
+          label="Identichip:"
+          name="animalIdentichip"
+          value={props.identichip}
+          onChange={props.handleInputChange}
+          width="100%"
+        />
+        <TextInput
+          label="Color"
+          name="animalColor"
+          value={props.color}
+          onChange={props.handleInputChange}
+          width="100%"
+        />
+        <TextInput
+          label="Date of birth:"
+          name="animalDateOfBirth"
+          value={props.dateOfBirth}
+          onChange={props.handleInputChange}
+          width="100%"
+          height="30px"
+          type="date"
+        />
+        <TextInput
+          label="Date arrived"
+          name="animalDateArrivedInShelter"
+          value={props.dateArrivedInShelter}
+          onChange={props.handleInputChange}
+          width="100%"
+          type="date"
+        />
+        <TextInput
+          label="Date adopted"
+          name="animalDateAdopted"
+          value={props.dateAdopted}
+          onChange={props.handleInputChange}
+          width="100%"
+          type="date"
         />
       </div>
     </div>

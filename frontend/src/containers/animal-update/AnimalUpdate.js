@@ -551,6 +551,7 @@ export default class AnimalUpdate extends React.Component {
               isReady={this.state.animalIsReady}
               dateArrivedInShelter={this.state.animalDateArrivedInShelter}
               dateAdopted={this.state.animalDateAdopted}
+              dateOfBirth={this.state.animalDateOfBirth}
               handleInputChange={this.handleInputChange}
               handleSelectChange={this.handleSelectChange}
               sizeList={this.state.sizeList}
