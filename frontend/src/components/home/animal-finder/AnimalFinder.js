@@ -12,6 +12,7 @@ import { filterFinderList } from "../../../functions/Functions";
 import "./animalfinder.css";
 import PrimaryButton from "../../button/PrimaryButton";
 import AnimalProfileSmall from "../../animal-profile/card/small/SmallAnimalCard";
+import { Link } from "react-router-dom";
 
 const ANIMAL_AVATAR_URL = "http://localhost:8081/images/avatars/";
 
@@ -177,24 +178,26 @@ export default class AnimalFinder extends React.Component {
         <div className="animalFinder-results">
           <div className="animals-list">
             {this.state.resultList.map((animal, i) => (
-              <div className="animals-list-item">
-                <div
-                  className="animals-list-item-image"
-                  style={{
-                    backgroundImage:
-                      "url(" + ANIMAL_AVATAR_URL + animal.avatar + ")",
-                  }}
-                ></div>
-                <AnimalProfileSmall
-                  name={animal.name}
-                  breed={
-                    animal.breed.breedName +
-                    " · " +
-                    animal.breed.species.speciesName
-                  }
-                  margin="0"
-                />
-              </div>
+              <Link to={"/animal/" + animal.id}>
+                <div className="animals-list-item">
+                  <div
+                    className="animals-list-item-image"
+                    style={{
+                      backgroundImage:
+                        "url(" + ANIMAL_AVATAR_URL + animal.avatar + ")",
+                    }}
+                  ></div>
+                  <AnimalProfileSmall
+                    name={animal.name}
+                    breed={
+                      animal.breed.breedName +
+                      " · " +
+                      animal.breed.species.speciesName
+                    }
+                    margin="0"
+                  />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
