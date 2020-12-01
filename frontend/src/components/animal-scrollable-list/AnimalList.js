@@ -15,45 +15,47 @@ const AnimalList = (props) => {
 
   return (
     <div className="animalList">
-      {props.list &&
-        !!props.list &&
-        props.list.map((animal, i) => (
-          <div
-            className={
-              "animalList-item " +
-              (checkIfListItemIsActive(animal.id) ? " active" : "")
-            }
-            key={i}
-            id={animal.id}
-            onClick={() => props.handleClick(animal.id)}
-          >
-            <div className="animalList-item-inner">
-              <DefaultAvatar
-                height="43px"
-                width="43px"
-                image={animal.avatar}
-                type="animal"
-              />
-              <AnimalProfileSmall
-                name={animal.name}
-                breed={
-                  animal.breed.breedName +
-                  " · " +
-                  animal.breed.species.speciesName
-                }
-                margin="55px"
-              />
+      <div className="animalList-inner">
+        {props.list &&
+          !!props.list &&
+          props.list.map((animal, i) => (
+            <div
+              className={
+                "animalList-item " +
+                (checkIfListItemIsActive(animal.id) ? " active" : "")
+              }
+              key={i}
+              id={animal.id}
+              onClick={() => props.handleClick(animal.id)}
+            >
+              <div className="animalList-item-inner">
+                <DefaultAvatar
+                  height="43px"
+                  width="43px"
+                  image={animal.avatar}
+                  type="animal"
+                />
+                <AnimalProfileSmall
+                  name={animal.name}
+                  breed={
+                    animal.breed.breedName +
+                    " · " +
+                    animal.breed.species.speciesName
+                  }
+                  margin="55px"
+                />
+              </div>
             </div>
+          ))}
+        {!!props.list.length ? null : (
+          <div className="animalList-empty">
+            <span>
+              Could not find animals, if it does not change, please check the
+              database connection.
+            </span>
           </div>
-        ))}
-      {!!props.list.length ? null : (
-        <div className="animalList-empty">
-          <span>
-            Could not find animals, if it does not change, please check the
-            database connection.
-          </span>
-        </div>
-      )}
+        )}
+      </div>
       <div className="animalList-add">
         <div className="animalList-add-inner">
           <IconTextButton

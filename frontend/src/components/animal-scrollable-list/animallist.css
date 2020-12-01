@@ -1,13 +1,17 @@
 .animalList {
-  padding-top: 20px;
   padding-bottom: 70px;
   height: calc(100% - 65px);
   max-height: calc(100% - 65px);
-  overflow: auto;
+  overflow: hidden;
   width: 325px;
   border-right: 1px solid var(--primary-grey-light);
   float: left;
   position: relative;
+}
+
+.animalList-inner {
+  height: calc(100% + 10px);
+  overflow: auto;
 }
 
 .animalList-item {
@@ -74,18 +78,18 @@
 
 /* scroll bar */
 
-.animalList::-webkit-scrollbar {
+.animalList-inner::-webkit-scrollbar {
   width: 4px;
   height: 40px;
 }
 
-.animalList::-webkit-scrollbar-track {
+.animalList-inner::-webkit-scrollbar-track {
   background-color: var(--scrollbar-track);
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
 
-.animalList::-webkit-scrollbar-thumb {
+.animalList-inner::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   background: var(--scrollbar-thumb);
