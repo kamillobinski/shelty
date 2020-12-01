@@ -60,12 +60,50 @@ export function filterFinderList(
   size
 ) {
   var ageResult = filterByAge(list, age);
-  var speciesResult = filterBySpecies(ageResult, species);
+  var colorResult = filterByColors(ageResult, color);
+  var speciesResult = filterBySpecies(colorResult, species);
   var breedResult = filterByBreed(speciesResult, breed);
   var genderResult = filterByGender(breedResult, gender);
   var sizeResult = filterBySize(genderResult, size);
 
   return sizeResult;
+}
+
+function filterByColors(list, color) {
+  if (color !== "DEFAULT" && color !== "" && color !== "Any") {
+    // Create array of colors from string
+    // Important: text can contain several
+    // colors at once which are divided by " " or ","
+    var filters = color.match(/(?:(?<=\bstack)\w+|\b(?!stack)\w+)(?=[, ]|$)/g);
+    var resultList = [];
+
+    // Iterate over list of animals
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].color !== null && list[i].color !== "") {
+        // Create array of animal colors from string
+        // Important: text can contain several
+        // colors at once which are divided by " " or ","
+        var animalColors = list[i].color.match(
+          /(?:(?<=\bstack)\w+|\b(?!stack)\w+)(?=[, ]|$)/g
+        );
+
+        // Check which animal has all the colors
+        // specified by the user
+        var result = filters.every(function (value) {
+          return animalColors.indexOf(value) !== -1;
+        });
+
+        // If animal matches input, put it in a separate list,
+        // which will be finally returned
+        if (result) {
+          resultList.push(list[i]);
+        }
+      }
+    }
+    return resultList;
+  } else {
+    return list;
+  }
 }
 
 function filterBySpecies(list, species) {
