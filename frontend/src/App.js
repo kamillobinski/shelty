@@ -14,6 +14,7 @@ import AnimalFinder from "./components/home/animal-finder/AnimalFinder";
 import HttpError from "./components/http-error/HttpError";
 import PrivateRoute from "./auth/PrivateRoute";
 import "./utils/styles/app.css";
+import AnimalPreview from "./components/home/animal-preview/AnimalPreview";
 
 export default class App extends React.Component {
   render() {
@@ -24,6 +25,7 @@ export default class App extends React.Component {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/" component={Home} />
           <Route exact path="/animals" component={Animals} />
+          <Route exact path="/animal/:id" component={AnimalPreview} />
           <Route exact path="/finder" component={AnimalFinder} />
           {/* Admin paths */}
           <PrivateRoute
