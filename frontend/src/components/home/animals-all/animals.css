@@ -16,6 +16,10 @@
   grid-gap: 24px;
 }
 
+.animals-list a {
+  text-decoration: none;
+}
+
 .animals-list::before {
   content: "";
   width: 0;
