@@ -1,2 +1,40 @@
 .animalPreview {
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 0 250px 0 250px;
+  overflow-x: hidden;
+}
+
+.animalPreview-left-container {
+  width: 400px;
+  height: calc(100% - 61px);
+  float: left;
+}
+
+.animalPreview-right-container-info {
+  margin-top: 24px;
+}
+
+.animalPreview-right-container {
+  float: left;
+  font-family: var(--primary-font);
+  width: calc(100% - 400px);
+  height: 100%;
+  border-left: 1px solid var(--primary-grey-light);
+  padding-left: 24px;
+}
+
+.animalPreview-right-container .textInputExtended {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--primary-grey-light);
+  height: 100%;
+}
+
+.animalPreview-right-container .textInputExtended textarea {
+  line-height: 1.5;
 }
