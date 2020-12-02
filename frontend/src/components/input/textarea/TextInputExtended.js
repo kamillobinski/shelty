@@ -12,6 +12,7 @@ const TextInputExtended = (props) => {
           style={{ width: props.width, height: props.height }}
           spellCheck="false"
           autoComplete="off"
+          readOnly={props.readOnly}
         />
       </div>
     </div>
