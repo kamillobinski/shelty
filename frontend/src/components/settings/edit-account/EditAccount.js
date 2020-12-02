@@ -228,6 +228,7 @@ class EditAccount extends React.Component {
             name="passwordOld"
             value={this.state.passwordOld}
             onChange={this.handleInputChange}
+            type="password"
           />
           <TextInput
             label="New password:"
@@ -235,6 +236,7 @@ class EditAccount extends React.Component {
             name="passwordNew"
             value={this.state.passwordNew}
             onChange={this.handleInputChange}
+            type="password"
           />
           <TextInput
             label="Repeat new password:"
@@ -242,6 +244,7 @@ class EditAccount extends React.Component {
             name="passwordNewRepeat"
             value={this.state.passwordNewRepeat}
             onChange={this.handleInputChange}
+            type="password"
           />
           <PrimaryButton
             text="Change"
