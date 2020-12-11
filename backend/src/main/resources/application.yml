@@ -9,12 +9,13 @@ spring:
     dbcp2:
       validation-query: 1
       test-on-borrow: true
+    initialization-mode: always # load database initial data
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 jwt:
   jwtSecret: secretKey # jwtSecret is a symmetric key that is known by both the sender and the receiver.
