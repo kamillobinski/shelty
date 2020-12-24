@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import AnimalUpdate from "./containers/animal-update/AnimalUpdate";
+import Blog from './containers/blog/Blog';
 import SignIn from "./containers/sign-in/SignIn";
 import Settings from "./containers/settings/Settings";
 import Home from "./containers/home/Home";
@@ -32,6 +33,10 @@ export default class App extends React.Component {
             exact
             path="/admin/animal/update"
             component={AnimalUpdate}
+          />
+          <PrivateRoute
+            exact path="/admin/blog"
+            component={Blog}
           />
           <PrivateRoute path="/admin/settings" component={Settings} />
           {/* Error paths */}
