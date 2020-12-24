@@ -1,0 +1,74 @@
+.admin-blog {
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 0 20px 0 20px;
+  overflow-x: hidden;
+}
+
+.admin-blog-table {
+  padding: 24px 24px 0 0;
+  width: 50%;
+  height: calc(100% - 65px);
+  min-height: 485px;
+  max-height: calc(100% - 65px);
+  float: left;
+  border-right: 1px solid var(--primary-grey-light);
+}
+
+.admin-blog-table table {
+  width: 100%;
+  font-family: var(--primary-font);
+}
+
+.admin-blog-preview {
+  padding: 24px 0 24px 24px;
+  width: 50%;
+  min-height: 485px;
+  height: calc(100% - 65px);
+  max-height: calc(100% - 65px);
+  float: left;
+  position: relative;
+}
+
+.admin-blog-preview-title {
+  margin-bottom: 24px;
+}
+
+.admin-blog-preview-title .textInputExtended {
+  height: 42px;
+}
+
+.admin-blog-preview-title textarea[name="previewTitle"] {
+  height: 30px;
+  font-size: 22px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.admin-blog-preview-title span {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.admin-blog-preview-text .textInputExtended {
+  width: 100%;
+  height: 400px;
+}
+
+.admin-blog-preview-text .textInputExtended textarea {
+  font-family: var(--primary-font);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.admin-blog-preview .primaryButton {
+  position: absolute;
+  bottom: 24px;
+  right: 0;
+}
