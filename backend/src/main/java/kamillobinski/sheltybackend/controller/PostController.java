@@ -24,4 +24,10 @@ public class PostController {
     @GetMapping("/add")
     public void addPost(@RequestParam String title, @RequestParam String text) { postService.add(title, text); }
 
+    @GetMapping("/update/{id}")
+    public void updatePost(@PathVariable String id, @RequestParam String title, @RequestParam String text) { postService.update(id, title, text); }
+
+    @GetMapping("/delete/{id}")
+    public void deletePost(@PathVariable String id) { postService.delete(id); }
+
 }

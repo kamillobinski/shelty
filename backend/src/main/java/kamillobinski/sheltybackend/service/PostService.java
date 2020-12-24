@@ -24,4 +24,16 @@ public class PostService {
         postRepository.save(post);
     }
 
+    public void update(String id, String title, String text) {
+        Post post = get(id);
+        post.setTitle(title);
+        post.setText(text);
+        postRepository.save(post);
+    }
+
+    public void delete(String id) {
+        Post post = get(id);
+        postRepository.delete(post);
+    }
+
 }
