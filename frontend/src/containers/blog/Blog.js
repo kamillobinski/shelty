@@ -70,12 +70,11 @@ export default class Blog extends React.Component {
                     <table border="0">
                         {this.state.posts.map((post, i) => (
                             <tr>
-                                <td>{i + 1}</td>
-                                <td>{post.title}</td>
+                                <td>{i + 1}. {post.title}</td>
                                 <td>
                                     <PrimaryButton
                                         text="PREVIEW"
-                                        type="dark"
+                                        type=""
                                         width="100%"
                                         onClick={() => this.showPostPreview(post.id, post.title, post.text)}
                                     />
@@ -90,6 +89,18 @@ export default class Blog extends React.Component {
                                 </td>
                             </tr>
                         ))}
+                        <tr>
+                            <td colSpan="3">
+                                <PrimaryButton
+                                    text="Add new post"
+                                    type="dark"
+                                    width="100%"
+                                    onClick={() => addPost("New empty post", "Place your text here...").then(() => {
+                                        this.getInitialData()
+                                    })}
+                                />
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div className="admin-blog-preview">
