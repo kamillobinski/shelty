@@ -55,7 +55,7 @@ class SignIn extends React.Component {
           var tomorrow = getTomorrowDate();
           setUserCookie(response.data, tomorrow);
           setTokenCookie(response.data.accessToken, tomorrow);
-          redirectUser("/a/update");
+          redirectUser("/admin/animal/update");
         }
       })
       .catch((error) => this.handleSignInError(error.response.status));
@@ -91,8 +91,10 @@ class SignIn extends React.Component {
           }}
         >
           <div className="signin-inner-header noselect">
-            <img src={sheltyLogo} alt="Shelty" className="noselect" />
-            <span>| Sign In</span>
+            <div className="signin-inner-header-logo">
+              <span className="name">Shelty</span>
+              <span className="category">| Sign In</span>
+            </div>
           </div>
           <div className="signin-inner-form">
             <input

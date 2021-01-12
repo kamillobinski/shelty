@@ -33,6 +33,29 @@
   font-family: "Quicksand", sans-serif;
 }
 
+.signin-inner-header-logo {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 20px;
+  width: 140px;
+  text-decoration: none;
+  color: var(--primary-black);
+}
+
+.signin-inner-header-logo .name {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 18px;
+  width: 61px;
+  text-decoration: none;
+  color: var(--primary-black);
+}
+
+.signin-inner-header-logo .category {
+  font-family: var(--primary-font);
+  color: var(--primary-black);
+}
+
 .signin-inner-form {
   width: 250px;
   margin-top: 22px;
@@ -84,7 +107,7 @@
 }
 
 .signin-inner-form button:hover {
-  background-color: var(--primary-blue-medium);
+  background-color: var(--primary-black);
   color: var(--primary-white);
   font-weight: 700;
   transition: all 0.3s ease-in-out;
