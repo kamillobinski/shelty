@@ -41,7 +41,7 @@ class Animals extends React.Component {
                   }}
                 ></div>
                 <AnimalProfileSmall
-                  name="Shilla"
+                  name={animal.name}
                   breed={
                     animal.breed.breedName +
                     " · " +
