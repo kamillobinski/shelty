@@ -212,8 +212,14 @@ export function addNewAnimal(
   });
 }
 
+export function setAnimalAvatarFromGalleryImage(imageId, animalId) {
+  axios.defaults.baseURL = BASE_URL;
+  axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+  return axios.get("/api/images/set/avatar/" + imageId + "/" + animalId);
+}
+
 /*
- * MEDICAL DATE
+ * MEDICAL DATA
  */
 
 // save

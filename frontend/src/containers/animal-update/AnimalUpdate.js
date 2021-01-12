@@ -33,6 +33,7 @@ import {
   deleteMedicalData,
   addNewAnimal,
   getAnimalId,
+  setAnimalAvatarFromGalleryImage
 } from "../../api/AnimalApiFunctions";
 
 // Functions
@@ -109,6 +110,7 @@ export default class AnimalUpdate extends React.Component {
     this.deleteGalleryImage = this.deleteGalleryImage.bind(this);
     this.updateAnimalAvatar = this.updateAnimalAvatar.bind(this);
     this.expandList = this.expandList.bind(this);
+    this.setGalleryImageAsAvatar = this.setGalleryImageAsAvatar.bind(this);
   }
 
   componentDidMount() {
@@ -540,6 +542,23 @@ export default class AnimalUpdate extends React.Component {
     }
   }
 
+  setGalleryImageAsAvatar(props) {
+    var animalId = this.state.animalId;
+    var imageId = props;
+
+    setAnimalAvatarFromGalleryImage(imageId, animalId).then(() => {
+      this.getAnimalDetails(this.state.animalId);
+      // Show success message for 2 seconds
+      // + refresh data
+      this.setState({
+        shouldShowStatusMessage: true,
+        statusMessageType: "success",
+        statusMessage: "Animal avatar has been updated",
+      });
+      this.getAnimalUpdatePageData();
+    });
+  }
+
   render() {
     return (
       <div className="animalUpdate">
@@ -606,6 +625,7 @@ export default class AnimalUpdate extends React.Component {
               handleChange={this.handleInputChange}
               animalGallery={this.state.animalGallery}
               deleteGalleryImage={this.deleteGalleryImage}
+              setGalleryImageAsAvatar={this.setGalleryImageAsAvatar}
             />
           </div>
           <div className="animalUpdate-container-medical-info">

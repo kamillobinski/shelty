@@ -11,13 +11,13 @@ const serverurl = "http://localhost:8081/images/animal/gallery/";
 class AnimalImages extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedImage: "test" }
+    this.state = { selectedImage: "" }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(props) {
     switch (props) {
-      case "set": { break; }
+      case "set": { this.props.setGalleryImageAsAvatar(this.state.selectedImage); break; }
       case "delete": { this.props.deleteGalleryImage(this.state.selectedImage); break; }
     }
   }
@@ -40,12 +40,6 @@ class AnimalImages extends React.Component {
                     backgroundSize: "cover",
                   }}
                 >
-                  <div
-                    className="animalImages-item-delete-button"
-                    onClick={() => this.props.deleteGalleryImage(image.id)}
-                  >
-                    <span>-</span>
-                  </div>
                 </div>
               </div>
             </ContextMenuTrigger>
