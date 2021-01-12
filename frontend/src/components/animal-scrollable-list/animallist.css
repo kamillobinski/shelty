@@ -9,9 +9,46 @@
   position: relative;
 }
 
+.test {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 28px;
+  background: none;
+  outline: 0;
+  -moz-outline: 0;
+  border: 0;
+  border-right: 1px solid var(--primary-grey-light);
+}
+
+.test span {
+  font-family: var(--primary-font);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-grey-medium);
+}
+
+.test:hover {
+  cursor: pointer;
+}
+
 .animalList-inner {
   height: calc(100% + 10px);
+  padding-top: 10px;
+  padding-bottom: 10px;
   overflow: auto;
+}
+
+.animalList .not-ready span {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.animalList .adopted {
+  opacity: 0.35;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 .animalList-item {
@@ -72,7 +109,7 @@
   display: flex;
   align-items: center;
   height: 100%;
-  margin-right: 20px;
+  margin-right: 0;
   background-color: var(--primary-white);
 }
 

@@ -94,6 +94,7 @@ export default class AnimalUpdate extends React.Component {
 
       userAvatar: "user-avatar-default.jpg",
       isUserMenuActive: false,
+      isListExpanded: false,
     };
 
     this.handleListItemClick = this.handleListItemClick.bind(this);
@@ -107,6 +108,7 @@ export default class AnimalUpdate extends React.Component {
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.deleteGalleryImage = this.deleteGalleryImage.bind(this);
     this.updateAnimalAvatar = this.updateAnimalAvatar.bind(this);
+    this.expandList = this.expandList.bind(this);
   }
 
   componentDidMount() {
@@ -510,6 +512,34 @@ export default class AnimalUpdate extends React.Component {
       });
   }
 
+  expandList() {
+    if (this.state.isListExpanded) {
+      this.setState({ isListExpanded: false })
+      document.getElementById('searchBar').setAttribute("style", "display: flex");
+      document.getElementById('animalList').setAttribute("style", "width: 325px; border-right: 1px solid var(--primary-grey-light);");
+      document.getElementById('animalUpdate-container').setAttribute("style", "display: block");
+      var listItems = document.getElementsByClassName('animalList-item');
+      for (var i = 0; i < listItems.length; i++) {
+        listItems[i].setAttribute("style", "width:calc(100% - 10px); margin: 0;");
+      }
+      document.getElementById('animalList-add').setAttribute("style", "width: inherit");
+      document.getElementsByClassName('test')[0].setAttribute("style", "border-right: 1px solid var(--primary-grey-light)");
+      document.getElementsByClassName('animalList-add-inner')[0].setAttribute("style", "display: flex");
+    } else {
+      this.setState({ isListExpanded: true })
+      document.getElementById('searchBar').setAttribute("style", "display: none");
+      document.getElementById('animalList').setAttribute("style", "width: calc(100% - 0px); border: none;");
+      document.getElementById('animalUpdate-container').setAttribute("style", "display: none");
+      var listItems2 = document.getElementsByClassName('animalList-item');
+      for (var j = 0; j < listItems2.length; j++) {
+        listItems2[j].setAttribute("style", "width: calc(25% - 10px); float: left; margin: 0; margin-right: 10px;");
+      }
+      document.getElementById('animalList-add').setAttribute("style", "width: calc(100% - 40px)");
+      document.getElementsByClassName('test')[0].setAttribute("style", "border: none");
+      document.getElementsByClassName('animalList-add-inner')[0].setAttribute("style", "display: none");
+    }
+  }
+
   render() {
     return (
       <div className="animalUpdate">
@@ -525,8 +555,10 @@ export default class AnimalUpdate extends React.Component {
           clickedItem={this.state.activeListItem}
           checkIfActive={this.checkIfListItemIsActive}
           showAnimalAddForm={this.cleanForm}
+          expandList={this.expandList}
+          isListExpanded={this.state.isListExpanded}
         />
-        <div className="animalUpdate-container">
+        <div className="animalUpdate-container" id="animalUpdate-container">
           <div className="animalUpdate-container-profile">
             <DefaultAnimalCard
               name={this.state.animalName}

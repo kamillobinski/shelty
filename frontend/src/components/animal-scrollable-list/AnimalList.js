@@ -13,8 +13,28 @@ const AnimalList = (props) => {
     }
   };
 
+  const checkIfListIsExpanded = () => {
+    if (props.isListExpanded) {
+      return "<"
+    } else {
+      return ">"
+    }
+  }
+
+  const checkIfAnimalReady = (animal) => {
+    if (animal.ready) {
+      return animal.ready;
+    } else if (!animal.ready) {
+      if (animal.dateAdopted !== null) {
+        return " adopted"
+      } else {
+        return " not-ready"
+      }
+    }
+  }
+
   return (
-    <div className="animalList">
+    <div className="animalList" id="animalList">
       <div className="animalList-inner">
         {props.list &&
           !!props.list &&
@@ -28,7 +48,7 @@ const AnimalList = (props) => {
               id={animal.id}
               onClick={() => props.handleClick(animal.id)}
             >
-              <div className="animalList-item-inner">
+              <div className={"animalList-item-inner " + checkIfAnimalReady(animal)}>
                 <DefaultAvatar
                   height="43px"
                   width="43px"
@@ -56,7 +76,7 @@ const AnimalList = (props) => {
           </div>
         )}
       </div>
-      <div className="animalList-add">
+      <div className="animalList-add" id="animalList-add">
         <div className="animalList-add-inner">
           <IconTextButton
             height="25px"
@@ -65,6 +85,7 @@ const AnimalList = (props) => {
             onClick={() => props.showAnimalAddForm()}
           />
         </div>
+        <button className="test" onClick={props.expandList}><span>{checkIfListIsExpanded()}</span></button>
       </div>
     </div>
   );
