@@ -18,7 +18,7 @@ class AnimalImages extends React.Component {
   handleClick(props) {
     switch (props) {
       case "set": { break; }
-      case "delete": { break; }
+      case "delete": { this.props.deleteGalleryImage(this.state.selectedImage); break; }
     }
   }
 
