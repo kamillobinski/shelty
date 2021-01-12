@@ -33,4 +33,7 @@ public class ImagesController {
     @RequestMapping(value="/delete/all/{animalId}", method = RequestMethod.GET)
     public void deleteImages(@PathVariable String animalId) { imagesService.deleteImages(animalId); }
 
+    @RequestMapping(value="/set/avatar/{imageId}/{animalId}", method = RequestMethod.GET)
+    public void setAvatarFromImage(@PathVariable String imageId, @PathVariable String animalId) throws IOException { System.out.println("test"); imagesService.setAvatarFromImage(imageId, animalId); }
+
 }
