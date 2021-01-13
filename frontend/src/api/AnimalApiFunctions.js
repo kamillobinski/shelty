@@ -255,3 +255,43 @@ export function deleteMedicalData(animalId) {
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
   return axios.get("api/medical/data/delete/" + animalId);
 }
+
+/* 
+ * Medical History
+ */
+
+// fetch
+export function getMedicalHistory(animalId) {
+  axios.defaults.baseURL = BASE_URL;
+  axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+  return axios.get("api/medical/history/get/" + animalId);
+}
+
+export function addMedicalHistoryItem(animalId, type, vet, date, isCompleted) {
+  axios.defaults.baseURL = BASE_URL;
+  axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+  return axios.get("api/medical/history/save/" + animalId, {
+    params: {
+      type,
+      vet,
+      date,
+      isCompleted,
+    },
+  });
+}
+
+export function deleteMedicalHistoryItem(medicalHistoryId) {
+  axios.defaults.baseURL = BASE_URL;
+  axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+  return axios.get("api/medical/history/delete/" + medicalHistoryId);
+}
+
+export function updateMedicalHistoryItemStatus(medicalHistoryId, status) {
+  axios.defaults.baseURL = BASE_URL;
+  axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+  return axios.get("api/medical/history/update/" + medicalHistoryId, {
+    params: {
+      status
+    }
+  });
+}

@@ -33,7 +33,8 @@ import {
   deleteMedicalData,
   addNewAnimal,
   getAnimalId,
-  setAnimalAvatarFromGalleryImage
+  setAnimalAvatarFromGalleryImage,
+  getMedicalHistory
 } from "../../api/AnimalApiFunctions";
 
 // Functions
@@ -70,6 +71,7 @@ export default class AnimalUpdate extends React.Component {
       animalIsReady: "",
       animalComments: "",
       animalMedicalDescription: "",
+      animalMedicalHistory: "",
       animalGalleryImage: "",
       animalGallery: [],
 
@@ -316,6 +318,13 @@ export default class AnimalUpdate extends React.Component {
         });
       }
     });
+    getMedicalHistory(id).then((res) => {
+      if (res.data) {
+        this.setState({ animalMedicalHistory: res.data })
+      } else {
+        this.setState({ animalMedicalHistory: "" })
+      }
+    })
   }
 
   hideStatusMessage() {
@@ -644,10 +653,13 @@ export default class AnimalUpdate extends React.Component {
           </div>
           <div className="animalUpdate-container-medical-info">
             <AnimalMedicalInfo
+              animalId={this.state.animalId}
               graftingDate={this.state.animalGraftingDate}
               dewormingDate={this.state.animalDewormingDate}
               sterilizationDate={this.state.animalSterilizationDate}
               handleInputChange={this.handleInputChange}
+              medicalHistory={this.state.animalMedicalHistory}
+              refreshPage={() => this.getAnimalDetails(this.state.animalId)}
             />
           </div>
           <AnimalMedicalDescription
