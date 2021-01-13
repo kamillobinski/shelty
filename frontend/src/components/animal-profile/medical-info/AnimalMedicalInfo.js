@@ -12,6 +12,7 @@ class AnimalMedicalInformation extends React.Component {
     this.state = {
       inputDate: "",
       inputType: "",
+      inputMedicine: "",
       inputVet: "",
       inputIsCompleted: false,
     };
@@ -26,11 +27,12 @@ class AnimalMedicalInformation extends React.Component {
   }
 
   saveMedicalHistoryItem() {
-    addMedicalHistoryItem(this.props.animalId, this.state.inputType, this.state.inputVet, this.state.inputDate, this.state.inputIsCompleted).then(() => {
+    addMedicalHistoryItem(this.props.animalId, this.state.inputType, this.state.inputMedicine, this.state.inputVet, this.state.inputDate, this.state.inputIsCompleted).then(() => {
       this.props.refreshPage();
       this.setState({
         inputDate: "",
         inputType: "",
+        inputMedicine: "",
         inputVet: "",
         inputIsCompleted: false,
       })
@@ -58,7 +60,12 @@ class AnimalMedicalInformation extends React.Component {
   }
 
   render() {
-    const historyList = Object.values(this.props.medicalHistory);
+    var historyList = Object.values(this.props.medicalHistory);
+    historyList.sort(function compare(a, b) {
+      var dateA = new Date(a.date);
+      var dateB = new Date(b.date);
+      return dateA - dateB;
+    });
     return (
       <div className="animalMedicalInformation" >
         <div className="animalMedicalInformation-category">
@@ -95,6 +102,7 @@ class AnimalMedicalInformation extends React.Component {
                 <td><input type="checkbox" checked={history.completed} onChange={(event) => this.updateMedicalHistoryItemStatus(event, history.id)} /></td>
                 <td>{formatDateToDisplay(history.date)}</td>
                 <td>{history.type}</td>
+                <td>{history.medicine}</td>
                 <td>{history.vet}</td>
                 <td><button width="100%" onClick={() => this.deleteMedicalHistoryItem(history.id)}>Delete</button></td>
               </tr>
@@ -103,6 +111,7 @@ class AnimalMedicalInformation extends React.Component {
               <td><input type="checkbox" name="inputIsCompleted" checked={this.state.inputIsCompleted} onChange={this.handleInputChange} ></input></td>
               <td><input style={{ width: "100%" }} type="date" name="inputDate" value={this.state.inputDate} onChange={this.handleInputChange}></input></td>
               <td><input style={{ width: "100%" }} placeholder="type" name="inputType" value={this.state.inputType} onChange={this.handleInputChange}></input></td>
+              <td><input style={{ width: "100%" }} placeholder="medicine" name="inputMedicine" value={this.state.inputMedicine} onChange={this.handleInputChange}></input></td>
               <td><input style={{ width: "100%" }} placeholder="vet" name="inputVet" value={this.state.inputVet} onChange={this.handleInputChange}></input></td>
               <td><button width="100%" onClick={() => this.saveMedicalHistoryItem()}>Save</button></td>
             </tr>

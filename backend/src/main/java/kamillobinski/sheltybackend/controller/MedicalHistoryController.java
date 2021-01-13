@@ -19,9 +19,9 @@ public class MedicalHistoryController {
     public List<MedicalHistory> getMedicalData(@PathVariable String animalId) { return medicalHistoryService.getData(animalId); }
 
     @RequestMapping(value="/save/{animalId}", method = RequestMethod.GET)
-    public void saveMedialData(@PathVariable String animalId, @RequestParam String type,
+    public void saveMedialData(@PathVariable String animalId, @RequestParam String type, @RequestParam String medicine,
                                @RequestParam String vet, @RequestParam String date, @RequestParam String isCompleted) {
-        medicalHistoryService.saveData(animalId, type, vet, date, isCompleted);
+        medicalHistoryService.saveData(animalId, type, medicine, vet, date, isCompleted);
     }
 
     @RequestMapping(value="/delete/{medicalHistoryId}", method = RequestMethod.GET)

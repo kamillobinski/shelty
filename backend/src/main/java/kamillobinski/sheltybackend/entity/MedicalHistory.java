@@ -24,6 +24,9 @@ public class MedicalHistory {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "medicine")
+    private String medicine;
+
     @Column(name = "vet")
     private String vet;
 
@@ -56,6 +59,14 @@ public class MedicalHistory {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(String medicine) {
+        this.medicine = medicine;
     }
 
     public String getVet() {

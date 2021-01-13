@@ -26,7 +26,7 @@ public class MedicalHistoryService {
         return medicalHistoryRepository.findAllByAnimal(animal);
     }
 
-    public void saveData(String animalId, String type, String vet, String date, String isCompleted) {
+    public void saveData(String animalId, String type, String medicine, String vet, String date, String isCompleted) {
         Date date_sql = new Date();
         try {
             date_sql = parseDate(date);
@@ -40,6 +40,7 @@ public class MedicalHistoryService {
         MedicalHistory newMedicalHistory = new MedicalHistory();
         newMedicalHistory.setAnimal(animal);
         newMedicalHistory.setType(type);
+        newMedicalHistory.setMedicine(medicine);
         newMedicalHistory.setDate(date_sql);
         newMedicalHistory.setVet(vet);
         newMedicalHistory.setCompleted(isCompletedBoolean);

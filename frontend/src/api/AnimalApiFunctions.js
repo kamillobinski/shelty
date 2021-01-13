@@ -267,12 +267,13 @@ export function getMedicalHistory(animalId) {
   return axios.get("api/medical/history/get/" + animalId);
 }
 
-export function addMedicalHistoryItem(animalId, type, vet, date, isCompleted) {
+export function addMedicalHistoryItem(animalId, type, medicine, vet, date, isCompleted) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
   return axios.get("api/medical/history/save/" + animalId, {
     params: {
       type,
+      medicine,
       vet,
       date,
       isCompleted,
