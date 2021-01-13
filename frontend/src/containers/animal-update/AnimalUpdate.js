@@ -111,6 +111,7 @@ export default class AnimalUpdate extends React.Component {
     this.updateAnimalAvatar = this.updateAnimalAvatar.bind(this);
     this.expandList = this.expandList.bind(this);
     this.setGalleryImageAsAvatar = this.setGalleryImageAsAvatar.bind(this);
+    this.setAnimalStatus = this.setAnimalStatus.bind(this);
   }
 
   componentDidMount() {
@@ -559,7 +560,20 @@ export default class AnimalUpdate extends React.Component {
     });
   }
 
+  setAnimalStatus() {
+    if (this.state.animalIsReady) {
+      return "Status: ✔️"
+    } else if (this.state.animalDateAdopted !== "") {
+      return "Status: 👪"
+    } else if (!this.state.animalIsReady) {
+      return "Status: ❌"
+    } else {
+      return "Status: unknown"
+    }
+  }
+
   render() {
+    var description = this.setAnimalStatus();
     return (
       <div className="animalUpdate">
         <SearchHeader
@@ -581,7 +595,7 @@ export default class AnimalUpdate extends React.Component {
           <div className="animalUpdate-container-profile">
             <DefaultAnimalCard
               name={this.state.animalName}
-              description={this.state.animalSpecies}
+              description={description}
               avatar={this.state.animalAvatar}
               deleteAnimal={this.deleteAnimal}
               updateAnimal={this.updateAnimal}
