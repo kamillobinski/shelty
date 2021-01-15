@@ -2,8 +2,14 @@
   padding-top: 40px;
 }
 
+.blogHeader-logo a {
+  text-decoration: none;
+  color: black;
+}
+
 .blogHeader-logo span {
   font-size: 35px;
   font-family: var(--primary-font);
   font-weight: 700;
+  text-decoration: none;
 }

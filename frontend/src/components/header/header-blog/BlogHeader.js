@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './blogheader.css';
 
 const title = "Shelty";
 
 const BlogHeader = () => {
     return (
-        <div>
-            <div className="blogHeader-logo">
+        <div className="blogHeader-logo">
+            <Link to="/">
                 <span>{title}</span>
-            </div>
+            </Link>
         </div>
     )
 }
