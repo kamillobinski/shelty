@@ -23,7 +23,7 @@
 
 .blogTextCard-category span {
   font-size: 14px;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
   font-weight: 700;
   color: #a0a6ad;
 }
@@ -35,7 +35,7 @@
 
 .blogTextCard-title span {
   font-size: 28px;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
   font-weight: 500;
 }
 
@@ -48,8 +48,8 @@
 
 .blogTextCard-description span {
   font-size: 16px;
-  font-family: var(--primary-font);
-  font-weight: 500;
+  font-family: var(--secondary-font);
+  font-weight: 400;
   color: #a0a6ad;
 }
 
@@ -60,8 +60,8 @@
 
 .blogTextCard-author span {
   font-size: 14px;
-  font-family: var(--primary-font);
-  font-weight: 700;
+  font-family: var(--secondary-font);
+  font-weight: 400;
   color: #a0a6ad;
   margin-left: 12px;
 }

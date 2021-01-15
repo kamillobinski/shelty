@@ -26,7 +26,7 @@
 
 .blogPostContent-back button span {
   font-size: 26px;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
   font-weight: 500;
 }
 
@@ -39,7 +39,7 @@
 
 .blogPostContent-title span {
   font-size: 40px;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
   font-weight: 600;
 }
 
@@ -53,8 +53,8 @@
 .blogPostContent-author span {
   margin-right: 12px;
   font-size: 16px;
-  font-family: var(--primary-font);
-  font-weight: 700;
+  font-family: var(--secondary-font);
+  font-weight: 600;
   color: var(--primary-orange);
 }
 
@@ -67,8 +67,8 @@
   resize: none;
   border: none;
   font-size: 18px;
-  font-family: var(--primary-font);
-  font-weight: 500;
+  font-family: var(--secondary-font);
+  font-weight: 400;
   color: #858585;
   line-height: 1.5;
   overflow-y: hidden;
