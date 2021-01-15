@@ -45,6 +45,16 @@ export function sortAnimalsAlphabetically(animals) {
   return animals.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+export function sortPostsByDate(list) {
+  list.sort(function compare(a, b) {
+    var dateA = new Date(a.date);
+    var dateB = new Date(b.date);
+    return dateB - dateA;
+  });
+
+  return list;
+}
+
 export function searchListForAnimal(animal, animalList) {
   return animalList.filter(
     (x) =>
@@ -185,3 +195,5 @@ function filterByAge(list, age) {
     }
   }
 }
+
+

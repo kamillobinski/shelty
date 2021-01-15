@@ -3,6 +3,7 @@ import BlogHeader from '../../header/header-blog/BlogHeader';
 import BlogHeaderContent from './BlogHeaderContent';
 import BlogGrid from './BlogGrid';
 import { getBlogPosts } from '../../../api/PublicApiFunctions';
+import { sortPostsByDate } from '../../../functions/Functions';
 import './blog.css';
 
 export default class Blog extends React.Component {
@@ -13,7 +14,7 @@ export default class Blog extends React.Component {
 
     componentDidMount() {
         getBlogPosts().then((res) => {
-            this.setState({ posts: res.data })
+            this.setState({ posts: sortPostsByDate(res.data) })
         })
     }
 
