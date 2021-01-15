@@ -19,7 +19,9 @@ const PublicHeader = () => {
           <span className="publicHeader-inner-right-content-link">
             <Link to="/finder">Pet finder</Link>
           </span>
-          <span className="publicHeader-inner-right-content-link">Blog</span>
+          <span className="publicHeader-inner-right-content-link">
+            <Link to="/blog">Blog</Link>
+          </span>
           <span className="publicHeader-inner-right-content-link">About</span>
           <span className="publicHeader-inner-right-content-link">Contact</span>
           <Link to="/signin">

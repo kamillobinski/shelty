@@ -1,0 +1,19 @@
+.blogGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-row-gap: 24px;
+  grid-column-gap: 24px;
+}
+
+.blogGrid a {
+  text-decoration: none;
+  color: black;
+}
+
+.blogGrid-item {
+  height: 570px;
+}
+
+.blogGrid-item:first-child {
+  grid-column: 1 / -1;
+}

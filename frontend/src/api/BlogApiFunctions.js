@@ -30,13 +30,15 @@ export function deletePost(id) {
     return axios.get("/api/post/delete/" + id);
 }
 
-export function addPost(title, text) {
+export function addPost(title, text, date, authorId) {
     axios.defaults.baseURL = BASE_URL;
     axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
     return axios.get("/api/post/add/", {
         params: {
             title,
             text,
+            date,
+            authorId
         },
     });
 }

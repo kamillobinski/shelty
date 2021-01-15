@@ -2,6 +2,7 @@ import React from 'react';
 import DefaultHeader from '../../components/header/header-default/DefaultHeader';
 import TextInputExtended from '../../components/input/textarea/TextInputExtended';
 import PrimaryButton from '../../components/button/PrimaryButton';
+import { formatDate } from '../../functions/Functions';
 import { getUserIdFromCookie, getUserAvatar } from "../../api/UserApiFunctions";
 import { getPosts, updatePost, deletePost, addPost } from '../../api/BlogApiFunctions';
 import './blog.css';
@@ -11,11 +12,13 @@ export default class Blog extends React.Component {
         super();
         this.state = {
             userAvatar: "user-avatar-default.jpg",
+            userId: "",
             posts: [],
             previewId: "",
             previewTitle: "Title",
             previewText: "Text content",
-            shouldShowUpdateButton: false
+            shouldShowUpdateButton: false,
+            currentDate: ""
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -26,9 +29,14 @@ export default class Blog extends React.Component {
 
     getInitialData() {
         var cookieUserId = getUserIdFromCookie();
+        this.setState({ userId: cookieUserId });
         getUserAvatar(cookieUserId).then((res) => {
             this.setState({ userAvatar: res.data });
         });
+
+        var currentDate = new Date();
+        var formattedDate = formatDate(currentDate);
+        this.setState({ currentDate: formattedDate });
 
         getPosts().then((res) => {
             this.setState({ posts: res.data })
@@ -53,8 +61,8 @@ export default class Blog extends React.Component {
         })
     }
 
-    addPost(title, text) {
-        addPost(title, text).then(() => {
+    addPost(title, text, date, authorId) {
+        addPost(title, text, date, authorId).then(() => {
             this.getInitialData();
         })
     }
@@ -95,7 +103,7 @@ export default class Blog extends React.Component {
                                     text="Add new post"
                                     type="dark"
                                     width="100%"
-                                    onClick={() => addPost("New empty post", "Place your text here...").then(() => {
+                                    onClick={() => addPost("New empty post", "Place your text here...", this.state.currentDate, this.state.userId).then(() => {
                                         this.getInitialData()
                                     })}
                                 />

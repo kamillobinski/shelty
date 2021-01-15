@@ -41,3 +41,8 @@ export function getMatchingAnimals(age, color, breed, gender, size) {
     },
   });
 }
+
+export function getBlogPosts() {
+  axios.defaults.baseURL = BASE_URL;
+  return axios.get("/api/public/get/blog/posts");
+}

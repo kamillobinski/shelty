@@ -16,6 +16,8 @@ import HttpError from "./components/http-error/HttpError";
 import PrivateRoute from "./auth/PrivateRoute";
 import "./utils/styles/app.css";
 import AnimalPreview from "./components/home/animal-preview/AnimalPreview";
+import PublicBlog from './components/home/blog/Blog';
+import PublicBlogPost from './components/home/blog/PublicBlogPost';
 
 export default class App extends React.Component {
   render() {
@@ -28,6 +30,8 @@ export default class App extends React.Component {
           <Route exact path="/animals" component={Animals} />
           <Route exact path="/animal/:id" component={AnimalPreview} />
           <Route exact path="/finder" component={AnimalFinder} />
+          <Route exact path="/blog" component={PublicBlog} />
+          <Route exact path="/blog/post/:id" component={PublicBlogPost} />
           {/* Admin paths */}
           <PrivateRoute
             exact

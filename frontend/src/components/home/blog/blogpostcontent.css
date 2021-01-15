@@ -1,0 +1,80 @@
+.blogPostContent {
+  margin-top: 150px;
+  padding: 0 48px 0 48px;
+}
+
+.blogPostContent-header {
+  min-height: 140px;
+  max-height: 140px;
+}
+
+.blogPostContent-back {
+  width: 100px;
+  height: 140px;
+  float: left;
+}
+
+.blogPostContent-back button {
+  margin-top: 6px;
+  background-color: transparent;
+  border: none;
+}
+
+.blogPostContent-back button:hover {
+  cursor: pointer;
+}
+
+.blogPostContent-back button span {
+  font-size: 26px;
+  font-family: var(--primary-font);
+  font-weight: 500;
+}
+
+.blogPostContent-title {
+  width: calc(100% - 100px);
+  max-height: 102px;
+  float: left;
+  overflow: hidden;
+}
+
+.blogPostContent-title span {
+  font-size: 40px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+}
+
+.blogPostContent-author {
+  width: calc(100% - 100px);
+  height: 38px;
+  float: left;
+  padding-top: 4px;
+}
+
+.blogPostContent-author span {
+  font-size: 20px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  color: var(--primary-blue-dark);
+}
+
+.blogPostContent-text {
+  margin-top: 24px;
+  padding-bottom: 100px;
+}
+
+.blogPostContent-text textarea {
+  width: 100%;
+  resize: none;
+  border: none;
+  font-size: 18px;
+  font-family: var(--primary-font);
+  font-weight: 500;
+  color: #a0a6ad;
+  line-height: 1.5;
+  overflow-y: hidden;
+}
+
+.blogPostContent textarea:focus {
+  outline: none !important;
+  border: none;
+}

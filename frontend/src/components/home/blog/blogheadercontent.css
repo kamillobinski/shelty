@@ -1,0 +1,31 @@
+.blogHeaderContent {
+  height: 500px;
+  border: 1px solid transparent;
+}
+
+.blogHeaderContent-title {
+  margin-top: 200px;
+  width: 100%;
+  text-align: center;
+}
+
+.blogHeaderContent-title span {
+  font-size: 70px;
+  font-family: var(--primary-font);
+  font-weight: 700;
+}
+
+.blogHeaderContent-description {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.blogHeaderContent-description span {
+  font-size: 16px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  color: #a0a6ad;
+}
