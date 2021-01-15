@@ -13,8 +13,10 @@ class PublicBlogPost extends React.Component {
         if (this.props.location.state !== undefined) {
             return (
                 <div className="publicBlogPost">
-                    <BlogHeader />
-                    <BlogPostContent post={this.props.location.state.post} />
+                    <div className="publicBlogPost-inner">
+                        <BlogHeader />
+                        <BlogPostContent post={this.props.location.state.post} />
+                    </div>
                 </div>
             )
         } else {

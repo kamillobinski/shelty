@@ -1,4 +1,5 @@
 .blogHeaderContent {
+  max-width: 1280px;
   height: 500px;
   border: 1px solid transparent;
 }

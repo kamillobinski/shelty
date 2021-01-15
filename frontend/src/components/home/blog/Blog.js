@@ -21,9 +21,11 @@ export default class Blog extends React.Component {
     render() {
         return (
             <div className="publicBlog">
-                <BlogHeader />
-                <BlogHeaderContent />
-                <BlogGrid posts={this.state.posts} />
+                <div className="publicBlog-inner">
+                    <BlogHeader />
+                    <BlogHeaderContent />
+                    <BlogGrid posts={this.state.posts} />
+                </div>
             </div>
         )
     }
