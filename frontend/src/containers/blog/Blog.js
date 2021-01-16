@@ -1,11 +1,11 @@
 import React from 'react';
 import DefaultHeader from '../../components/header/header-default/DefaultHeader';
-import TextInputExtended from '../../components/input/textarea/TextInputExtended';
 import PrimaryButton from '../../components/button/PrimaryButton';
-import { formatDate } from '../../functions/Functions';
+import { formatDate, formatDateToDisplay, sortPostsByDate } from '../../functions/Functions';
 import { getUserIdFromCookie, getUserAvatar } from "../../api/UserApiFunctions";
 import { getPosts, updatePost, deletePost, addPost } from '../../api/BlogApiFunctions';
 import './blog.css';
+import TextareaAutosize from 'react-textarea-autosize';
 
 export default class Blog extends React.Component {
     constructor() {
@@ -15,12 +15,14 @@ export default class Blog extends React.Component {
             userId: "",
             posts: [],
             previewId: "",
-            previewTitle: "Title",
-            previewText: "Text content",
+            previewTitle: "",
+            previewText: "",
             shouldShowUpdateButton: false,
             currentDate: ""
         };
         this.handleChange = this.handleChange.bind(this);
+        this.getInitialData = this.getInitialData.bind(this);
+        this.addPost = this.addPost.bind(this);
     }
 
     componentDidMount() {
@@ -39,7 +41,7 @@ export default class Blog extends React.Component {
         this.setState({ currentDate: formattedDate });
 
         getPosts().then((res) => {
-            this.setState({ posts: res.data })
+            this.setState({ posts: sortPostsByDate(res.data) })
         })
     }
 
@@ -67,79 +69,49 @@ export default class Blog extends React.Component {
         })
     }
 
+    clearPost() {
+        this.setState({ previewId: "", previewTitle: "", previewText: "" })
+    }
+
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value, shouldShowUpdateButton: true });
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     render() {
+        /*bg grey #f5f5f5 */
+        /* map function
+        {this.state.posts.map((post) => (
+            */
         return (
-            <div className="admin-blog"><DefaultHeader userAvatar={this.state.userAvatar} />
-                <div className="admin-blog-table">
-                    <table border="0">
-                        {this.state.posts.map((post, i) => (
-                            <tr>
-                                <td>{i + 1}. {post.title}</td>
-                                <td>
-                                    <PrimaryButton
-                                        text="PREVIEW"
-                                        type=""
-                                        width="100%"
-                                        onClick={() => this.showPostPreview(post.id, post.title, post.text)}
-                                    />
-                                </td>
-                                <td>
-                                    <PrimaryButton
-                                        text="DELETE"
-                                        type="red"
-                                        width="100%"
-                                        onClick={() => this.deletePost(post.id)}
-                                    />
-                                </td>
-                            </tr>
+            <div className="admin-blog">
+                <DefaultHeader userAvatar={this.state.userAvatar} />
+                <div className="admin-blog-sidebar">
+                    <div className="admin-blog-sidebar-title">
+                        <span>ALL POSTS</span>
+                        <span style={{ color: "black", marginLeft: "calc(100% - 124px)", cursor: "pointer" }} onClick={() => this.clearPost()}> NEW POST</span>
+                    </div>
+                    <div className="admin-blog-sidebar-list scroll">
+                        {this.state.posts.map((post) => (
+                            <div className="admin-blog-sidebar-list-item" key={post.id} onClick={() => this.showPostPreview(post.id, post.title, post.text)} onContextMenu={() => this.deletePost(post.id)}>
+                                <span>{post.title}</span>
+                            </div>
                         ))}
-                        <tr>
-                            <td colSpan="3">
-                                <PrimaryButton
-                                    text="Add new post"
-                                    type="dark"
-                                    width="100%"
-                                    onClick={() => addPost("New empty post", "Place your text here...", this.state.currentDate, this.state.userId).then(() => {
-                                        this.getInitialData()
-                                    })}
-                                />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div className="admin-blog-preview">
-                    <div className="admin-blog-preview-title">
-                        <TextInputExtended
-                            name="previewTitle"
-                            value={this.state.previewTitle}
-                            onChange={this.handleChange}
-                            width="100%"
-                            height="100%"
-                        />
                     </div>
-                    <div className="admin-blog-preview-text">
-                        <TextInputExtended
-                            name="previewText"
-                            value={this.state.previewText}
-                            onChange={this.handleChange}
-                            width="100%"
-                            height="100%"
-                        />
-                    </div>
-                    {this.state.shouldShowUpdateButton && this.state.previewId !== "" ? (
-                        <PrimaryButton
-                            text="Update"
-                            type="dark"
-                            width="100px"
-                            onClick={() => this.updatePost(this.state.previewId, this.state.previewTitle, this.state.previewText)}
-                        />
-                    ) : (null)}
                 </div>
-            </div>
+                <div className="admin-blog-workspace scroll">
+                    <div className="admin-blog-workspace-publish-btn">
+                        <PrimaryButton text="Publish" type="orange" onClick={() => this.addPost(this.state.previewTitle, this.state.previewText, this.state.currentDate, this.state.userId)} />
+                    </div>
+                    <div className="admin-blog-workspace-limiter">
+                        <div className="admin-blog-workspace-post-title">
+                            <input placeholder="Post title" type="text" name="previewTitle" value={this.state.previewTitle} onChange={(event) => this.handleChange(event)} />
+                        </div>
+                        <div className="admin-blog-workspace-post-text">
+                            <TextareaAutosize spellCheck={false} placeholder="Post text" name="previewText" value={this.state.previewText} onChange={(event) => this.handleChange(event)} />
+                        </div>
+                    </div>
+                </div>
+            </div >
         )
     }
 }

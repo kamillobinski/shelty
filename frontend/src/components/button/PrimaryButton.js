@@ -12,6 +12,10 @@ const PrimaryButton = (props) => {
       }
       case "red": {
         return "#ED5E68";
+      } case "orange": {
+        return "var(--primary-orange)";
+      } default: {
+        return "var(--primary-white)";
       }
     }
   }
@@ -26,6 +30,12 @@ const PrimaryButton = (props) => {
       }
       case "red": {
         return "var(--primary-white";
+      }
+      case "orange": {
+        return "var(--primary-white)";
+      }
+      default: {
+        return "var(--primary-black)";
       }
     }
   }
