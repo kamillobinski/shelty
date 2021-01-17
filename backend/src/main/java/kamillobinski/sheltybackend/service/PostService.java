@@ -24,7 +24,7 @@ public class PostService {
 
     public List<Post> getAll() { return postRepository.findAll(); }
 
-    public void add(String title, String text, String date, String authorId) {
+    public Integer add(String title, String text, String date, String authorId) {
         User author = userService.getUserById(authorId);
 
         Date date_sql = new Date();
@@ -40,6 +40,13 @@ public class PostService {
         post.setDate(date_sql);
         post.setAuthor(author);
         postRepository.save(post);
+
+        Integer newPostId = getId(title, text);
+        return newPostId;
+    }
+
+    public int getId(String title, String text) {
+        return postRepository.findIdByTiTleAndText(title, text);
     }
 
     public void update(String id, String title, String text) {

@@ -22,7 +22,7 @@ public class PostController {
     public List<Post> getPosts() { return postService.getAll(); }
 
     @GetMapping("/add")
-    public void addPost(@RequestParam String title, @RequestParam String text, @RequestParam String authorId, @RequestParam String date) { postService.add(title, text, date, authorId); }
+    public Integer addPost(@RequestParam String title, @RequestParam String text, @RequestParam String authorId, @RequestParam String date) { return postService.add(title, text, date, authorId); }
 
     @GetMapping("/update/{id}")
     public void updatePost(@PathVariable String id, @RequestParam String title, @RequestParam String text) { postService.update(id, title, text); }
