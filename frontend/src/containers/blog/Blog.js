@@ -7,6 +7,7 @@ import { getPosts, updatePost, deletePost, addPost, getAllPostCategories } from 
 import './blog.css';
 import TextareaAutosize from 'react-textarea-autosize';
 import { AddIcon, DeleteIcon, SaveIcon, TickIcon } from '../../utils/icons/Icons';
+import StatusMessageHandler from '../../components/status-message/StatusMessageHandler';
 
 export default class Blog extends React.Component {
     constructor() {
@@ -22,6 +23,10 @@ export default class Blog extends React.Component {
             previewCategory: "",
             shouldShowUpdateButton: false,
             currentDate: "",
+
+            shouldShowStatusMessage: false,
+            statusMessage: "",
+            statusMessageType: "",
         };
         this.handleChange = this.handleChange.bind(this);
         this.getInitialData = this.getInitialData.bind(this);
@@ -29,6 +34,7 @@ export default class Blog extends React.Component {
         this.updatePost = this.updatePost.bind(this);
         this.markSelected = this.markSelected.bind(this);
         this.renderSaveButton = this.renderSaveButton.bind(this);
+        this.hideStatusMessage = this.hideStatusMessage.bind(this);
     }
 
     componentDidMount() {
@@ -65,23 +71,58 @@ export default class Blog extends React.Component {
 
     updatePost(id, title, text, categoryId) {
         updatePost(id, title, text, categoryId).then(() => {
-            this.setState({ shouldShowUpdateButton: false })
+            this.setState({
+                shouldShowUpdateButton: false,
+                shouldShowStatusMessage: true,
+                statusMessageType: "success",
+                statusMessage: "Post has been updated",
+            })
             this.getInitialData();
+        }).catch(() => {
+            this.setState({
+                shouldShowStatusMessage: true,
+                statusMessageType: "error",
+                statusMessage: "An error occurred while updating post",
+            });
         });
     }
 
     deletePost(id) {
         deletePost(id).then(() => {
             this.getInitialData();
-            this.setState({ previewId: "", previewTitle: "", previewText: "" })
-        })
+            this.setState({
+                previewId: "",
+                previewTitle: "",
+                previewText: "",
+                shouldShowStatusMessage: true,
+                statusMessageType: "success",
+                statusMessage: "Post has been deleted",
+            })
+        }).catch(() => {
+            this.setState({
+                shouldShowStatusMessage: true,
+                statusMessageType: "error",
+                statusMessage: "An error occurred while deleting post",
+            });
+        });
     }
 
     addPost(title, text, date, authorId) {
         addPost(title, text, date, authorId).then((res) => {
-            this.setState({ previewId: res.data })
+            this.setState({
+                previewId: res.data,
+                shouldShowStatusMessage: true,
+                statusMessageType: "success",
+                statusMessage: "Post has been added",
+            })
             this.getInitialData();
-        })
+        }).catch(() => {
+            this.setState({
+                shouldShowStatusMessage: true,
+                statusMessageType: "error",
+                statusMessage: "An error occurred while adding post",
+            });
+        });
     }
 
     clearPost() {
@@ -96,6 +137,10 @@ export default class Blog extends React.Component {
         if (id === this.state.previewId) {
             return { fontWeight: "600", color: "black" };
         }
+    }
+
+    hideStatusMessage() {
+        this.setState({ shouldShowStatusMessage: false });
     }
 
     renderSaveButton() {
@@ -120,6 +165,7 @@ export default class Blog extends React.Component {
                         name="previewCategory"
                         onChange={this.handleChange}
                         value={this.state.previewCategory}
+                        title="Choose post category"
                     >
                         <option value="DEFAULT" label="NO CATEGORY ASSIGNED" style={{ color: "grey" }} />
                         {this.state.postCategories.map((category, i) => (
@@ -169,6 +215,12 @@ export default class Blog extends React.Component {
                         </div>
                     </div>
                 </div>
+                <StatusMessageHandler
+                    shouldShowStatusMessage={this.state.shouldShowStatusMessage}
+                    statusMessageType={this.state.statusMessageType}
+                    statusMessage={this.state.statusMessage}
+                    updateStateOnClose={this.hideStatusMessage}
+                />
             </div >
         )
     }
