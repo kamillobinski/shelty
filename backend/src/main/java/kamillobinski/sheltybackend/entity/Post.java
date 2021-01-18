@@ -24,6 +24,10 @@ public class Post {
     @JoinColumn(name = "author")
     private User author;
 
+    @ManyToOne
+    @JoinColumn(name = "category")
+    private PostCategory category;
+
     public int getId() {
         return id;
     }
@@ -62,5 +66,13 @@ public class Post {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public PostCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(PostCategory category) {
+        this.category = category;
     }
 }
