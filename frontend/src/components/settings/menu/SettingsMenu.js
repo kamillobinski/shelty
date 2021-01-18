@@ -15,7 +15,7 @@ const SettingsMenu = (props) => {
           </NavLink>
         </div>
         <div className="settingsMenu-item">
-          <span>Users</span>
+          <span>User</span>
           <NavLink to="/admin/settings/users/register" activeClassName='active'>
             <div className="settingsMenu-item-subitem">
               <span>• Register new account</span>
@@ -37,6 +37,14 @@ const SettingsMenu = (props) => {
           <NavLink to="/admin/settings/species/edit" activeClassName='active'>
             <div className="settingsMenu-item-subitem">
               <span>• Manage species</span>
+            </div>
+          </NavLink>
+        </div>
+        <div className="settingsMenu-item">
+          <span>Blog</span>
+          <NavLink to="/admin/settings/blog/category/edit" activeClassName='active'>
+            <div className="settingsMenu-item-subitem">
+              <span>• Manage categories</span>
             </div>
           </NavLink>
         </div>
