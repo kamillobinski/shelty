@@ -1,6 +1,7 @@
 package kamillobinski.sheltybackend.service;
 
 import kamillobinski.sheltybackend.entity.Post;
+import kamillobinski.sheltybackend.entity.PostCategory;
 import kamillobinski.sheltybackend.entity.User;
 import kamillobinski.sheltybackend.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class PostService {
 
     @Autowired
     public UserService userService;
+
+    @Autowired
+    public PostCategoryService postCategoryService;
 
     public Post get(String id) { return postRepository.findById(Integer.parseInt(id)); }
 
@@ -49,10 +53,18 @@ public class PostService {
         return postRepository.findIdByTiTleAndText(title, text);
     }
 
-    public void update(String id, String title, String text) {
+    public void update(String id, String title, String text, String categoryId) {
+        PostCategory category = new PostCategory();
+        if(!categoryId.equals("DEFAULT") && !categoryId.equals("") ) {
+            category = postCategoryService.getCategoryById(Integer.parseInt(categoryId));
+        } else {
+            category = null;
+        }
+
         Post post = get(id);
         post.setTitle(title);
         post.setText(text);
+        post.setCategory(category);
         postRepository.save(post);
     }
 
