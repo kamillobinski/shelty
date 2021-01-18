@@ -3,7 +3,7 @@ import DefaultHeader from '../../components/header/header-default/DefaultHeader'
 import PrimaryButton from '../../components/button/PrimaryButton';
 import { formatDate, formatDateToDisplay, sortPostsByDate } from '../../functions/Functions';
 import { getUserIdFromCookie, getUserAvatar } from "../../api/UserApiFunctions";
-import { getPosts, updatePost, deletePost, addPost } from '../../api/BlogApiFunctions';
+import { getPosts, updatePost, deletePost, addPost, getAllPostCategories } from '../../api/BlogApiFunctions';
 import './blog.css';
 import TextareaAutosize from 'react-textarea-autosize';
 import { AddIcon, DeleteIcon, SaveIcon, TickIcon } from '../../utils/icons/Icons';
@@ -15,11 +15,13 @@ export default class Blog extends React.Component {
             userAvatar: "user-avatar-default.jpg",
             userId: "",
             posts: [],
+            postCategories: [],
             previewId: "",
             previewTitle: "",
             previewText: "",
+            previewCategory: "",
             shouldShowUpdateButton: false,
-            currentDate: ""
+            currentDate: "",
         };
         this.handleChange = this.handleChange.bind(this);
         this.getInitialData = this.getInitialData.bind(this);
@@ -47,14 +49,22 @@ export default class Blog extends React.Component {
         getPosts().then((res) => {
             this.setState({ posts: sortPostsByDate(res.data) })
         })
+
+        getAllPostCategories().then((res) => {
+            this.setState({ postCategories: res.data })
+        })
     }
 
-    showPostPreview(id, title, text) {
-        this.setState({ previewId: id, previewTitle: title, previewText: text, shouldShowUpdateButton: false });
+    showPostPreview(id, title, text, category) {
+        if (category !== null) {
+            this.setState({ previewId: id, previewTitle: title, previewText: text, previewCategory: category.id, shouldShowUpdateButton: false });
+        } else {
+            this.setState({ previewId: id, previewTitle: title, previewText: text, previewCategory: "", shouldShowUpdateButton: false });
+        }
     }
 
-    updatePost(id, title, text) {
-        updatePost(id, title, text).then(() => {
+    updatePost(id, title, text, categoryId) {
+        updatePost(id, title, text, categoryId).then(() => {
             this.setState({ shouldShowUpdateButton: false })
             this.getInitialData();
         });
@@ -91,19 +101,35 @@ export default class Blog extends React.Component {
     renderSaveButton() {
         if (this.state.previewId === "" && this.state.previewTitle !== "") {
             return (
-                <button onClick={() => this.addPost(this.state.previewTitle, this.state.previewText, this.state.currentDate, this.state.userId)} title="Save post" >
-                    <SaveIcon fill="#808080" height="10px" />
-                </button>
+                <div style={{ display: "inline-block" }}>
+                    <button onClick={() => this.addPost(this.state.previewTitle, this.state.previewText, this.state.currentDate, this.state.userId)} title="Save post" >
+                        <SaveIcon fill="#808080" height="10px" />
+                    </button>
+                </div>
             )
         } else if (this.state.previewId !== "") {
             return (
                 <div style={{ display: "inline-block" }}>
-                    <button onClick={() => this.updatePost(this.state.previewId, this.state.previewTitle, this.state.previewText)} title="Update post" >
+                    <button onClick={() => this.updatePost(this.state.previewId, this.state.previewTitle, this.state.previewText, this.state.previewCategory)} title="Update post" >
                         <TickIcon height="10px" fill="#808080" />
                     </button>
                     <button onClick={() => this.deletePost(this.state.previewId)} title="Delete post" >
                         <DeleteIcon height="10px" fill="#808080" />
                     </button>
+                    <select
+                        name="previewCategory"
+                        onChange={this.handleChange}
+                        value={this.state.previewCategory}
+                    >
+                        <option value="DEFAULT" label="NO CATEGORY ASSIGNED" style={{ color: "grey" }} />
+                        {this.state.postCategories.map((category, i) => (
+                            <option
+                                value={category.id}
+                                label={category.category.toUpperCase()}
+                                key={i}
+                            />
+                        ))};
+                    </select>
                 </div>
             )
         }
@@ -119,7 +145,7 @@ export default class Blog extends React.Component {
                     </div>
                     <div className="admin-blog-sidebar-list scroll">
                         {this.state.posts.map((post) => (
-                            <div className="admin-blog-sidebar-list-item" key={post.id} onClick={() => this.showPostPreview(post.id, post.title, post.text)}>
+                            <div className="admin-blog-sidebar-list-item" key={post.id} onClick={() => this.showPostPreview(post.id, post.title, post.text, post.category)}>
                                 <span style={this.markSelected(post.id)}>{post.title}</span>
                             </div>
                         ))}
