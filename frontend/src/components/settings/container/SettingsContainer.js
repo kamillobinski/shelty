@@ -6,6 +6,7 @@ import RegisterUser from "../register-user/RegisterUser";
 import ManageAccounts from '../manage-accounts/ManageAccounts';
 import { Route } from "react-router-dom";
 import "./settingscontainer.css";
+import EditPostCategories from "../edit-post-categories/EditPostCategories";
 
 class SettingsContainer extends React.Component {
   render() {
@@ -31,6 +32,11 @@ class SettingsContainer extends React.Component {
           exact
           path="/admin/settings/users/manage"
           component={ManageAccounts}
+        />
+        <Route
+          exact
+          path="/admin/settings/blog/category/edit"
+          component={EditPostCategories}
         />
       </div>
     );

@@ -42,3 +42,21 @@ export function addPost(title, text, date, authorId) {
         },
     });
 }
+
+export function addPostcategory(category) {
+    axios.defaults.baseURL = BASE_URL;
+    axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+    return axios.post("/api/post/category/add/" + category);
+}
+
+export function getAllPostCategories() {
+    axios.defaults.baseURL = BASE_URL;
+    axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+    return axios.get("/api/post/category/get/all");
+}
+
+export function deletePostCategory(id) {
+    axios.defaults.baseURL = BASE_URL;
+    axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+    return axios.delete("/api/post/category/delete/" + id);
+}
