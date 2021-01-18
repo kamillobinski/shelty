@@ -60,19 +60,45 @@
   width: calc(100% - 325px);
   height: calc(100% - 65px);
   max-height: calc(100% - 65px);
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
 }
 
-.admin-blog-workspace-publish-btn {
-  width: 70px;
-  position: fixed;
-  margin-top: 12px;
-  margin-left: calc(100% - 460px);
+.admin-blog-workspace-topbar {
+  border-bottom: 1px solid var(--primary-grey-light);
+}
+
+.admin-blog-workspace-topbar button {
+  font-family: var(--secondary-font);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--primary-black);
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  border-right: 1px solid var(--primary-grey-light) !important;
+  padding: 11px;
+  height: 42px;
+  background: none;
+}
+
+.admin-blog-workspace-topbar button:hover {
+  background-color: var(--primary-grey-light);
+  cursor: pointer;
+}
+
+.admin-blog-workspace-topbar button:focus {
+  outline: none !important;
+  border: none;
 }
 
 .admin-blog-workspace-limiter {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: calc(100% - 42px);
+}
+
+.admin-blog-workspace-limiter-inner {
   width: 1000px;
   max-width: 1000px;
   margin-left: auto;
