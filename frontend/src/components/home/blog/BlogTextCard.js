@@ -3,10 +3,19 @@ import DefaultAvatar from '../../avatar/default/DefaultAvatar';
 import './blogtextcard.css';
 
 const BlogTextCard = (props) => {
+
+    function checkIfPostCategoryIsAssigned(category) {
+        if (category !== null) {
+            return category.category.toUpperCase();
+        } else {
+            return "";
+        }
+    }
+
     return (
         <div className="blogTextCard">
             <div className="blogTextCard-category">
-                <span>{props.post.category || "NEWS"}</span>
+                <span>{checkIfPostCategoryIsAssigned(props.post.category)}</span>
             </div>
             <div className="blogTextCard-title">
                 <span>{props.post.title}</span>
