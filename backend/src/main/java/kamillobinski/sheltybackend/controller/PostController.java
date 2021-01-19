@@ -4,6 +4,7 @@ import kamillobinski.sheltybackend.entity.Post;
 import kamillobinski.sheltybackend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -26,6 +27,11 @@ public class PostController {
 
     @GetMapping("/update/{id}")
     public void updatePost(@PathVariable String id, @RequestParam String title, @RequestParam String text, @RequestParam String categoryId) { postService.update(id, title, text, categoryId); }
+
+    @RequestMapping(value="/{id}/add/thumbnail" , headers = "content-type=multipart/*", method = RequestMethod.POST)
+    public String addPostThumbnail(@PathVariable String id, @RequestParam(value = "image") MultipartFile image ) {
+        return postService.addThumbnail(id, image);
+    }
 
     @GetMapping("/delete/{id}")
     public void deletePost(@PathVariable String id) { postService.delete(id); }

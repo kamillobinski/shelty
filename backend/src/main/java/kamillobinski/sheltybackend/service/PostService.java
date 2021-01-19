@@ -6,11 +6,18 @@ import kamillobinski.sheltybackend.entity.User;
 import kamillobinski.sheltybackend.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PostService {
@@ -66,6 +73,42 @@ public class PostService {
         post.setText(text);
         post.setCategory(category);
         postRepository.save(post);
+    }
+
+    public String addThumbnail(String id, MultipartFile image) {
+        Post post = get(id);
+        String previousThumbnail = post.getThumbnail();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");
+        Date date = new Date();
+        String fileName = post.getCategory().getId() + formatter.format(date) + "-avatar";
+        String extension = "." + Objects.requireNonNull(image.getOriginalFilename()).substring(image.getOriginalFilename().lastIndexOf(".") + 1);
+
+        Boolean isThumbnailUploaded = false;
+
+        try {
+            byte[] bytes = image.getBytes();
+            Path path = Paths.get(new File("src/main/webapp/WEB-INF/images/post/thumbnail/" + fileName + extension).getAbsolutePath());
+            Files.write(path, bytes);
+
+            post.setThumbnail(fileName + extension);
+            postRepository.save(post);
+
+            isThumbnailUploaded = true;
+
+            if(previousThumbnail != null) {
+                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/avatars/" + previousThumbnail).getAbsolutePath());
+                Files.delete(previousPath);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if(isThumbnailUploaded)
+            return fileName + extension;
+        else {
+            return "error";
+        }
     }
 
     public void delete(String id) {

@@ -20,6 +20,9 @@ public class Post {
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    @Column(name = "thumbnail")
+    private String thumbnail;
+
     @ManyToOne
     @JoinColumn(name = "author")
     private User author;
@@ -58,6 +61,14 @@ public class Post {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public User getAuthor() {
