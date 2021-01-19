@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = "http://localhost:8081";
+import { BASE_URL } from './Api';
 
 export function getLatestAnimals() {
   axios.defaults.baseURL = BASE_URL;

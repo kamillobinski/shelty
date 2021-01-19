@@ -1,4 +1,5 @@
 import React from "react";
+import { ANIMAL_AVATAR_ROUTE } from '../../../api/Api';
 import "./animalavatar.css";
 
 const AnimalAvatar = (props) => {
@@ -11,7 +12,7 @@ const AnimalAvatar = (props) => {
         <div className="animalAvatar-inner">
           <img
             className="noselect"
-            src={"http://localhost:8081/images/avatars/" + props.image}
+            src={ANIMAL_AVATAR_ROUTE + props.image}
             alt="animal"
           />
         </div>

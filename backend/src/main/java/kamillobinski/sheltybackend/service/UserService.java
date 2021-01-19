@@ -88,7 +88,7 @@ public class UserService {
 
         try {
             byte[] bytes = image.getBytes();
-            Path path = Paths.get(new File("src/main/webapp/WEB-INF/images/user/avatars/" + fileName + extension).getAbsolutePath());
+            Path path = Paths.get(new File("src/main/webapp/WEB-INF/images/user/avatar/" + fileName + extension).getAbsolutePath());
             Files.write(path, bytes);
             // Attach image to animal
             user.setAvatar(fileName + extension);
@@ -96,7 +96,7 @@ public class UserService {
 
             // Lastly delete previous avatar
             if (!previousAvatarName.equals("user-avatar-default.jpg")) {
-                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/user/avatars/" + previousAvatarName).getAbsolutePath());
+                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/user/avatar/" + previousAvatarName).getAbsolutePath());
                 Files.delete(previousPath);
             }
         } catch (IOException exception) {
@@ -110,7 +110,7 @@ public class UserService {
 
         // Delete avatar
         if (!curretUserAvatar.equals("user-avatar-default.jpg")) {
-            Path avatarPath = Paths.get(new File("src/main/webapp/WEB-INF/images/user/avatars/" + curretUserAvatar).getAbsolutePath());
+            Path avatarPath = Paths.get(new File("src/main/webapp/WEB-INF/images/user/avatar/" + curretUserAvatar).getAbsolutePath());
             try {
                 Files.delete(avatarPath);
             } catch (IOException exception) {

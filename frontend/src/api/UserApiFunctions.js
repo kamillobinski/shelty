@@ -1,13 +1,11 @@
 import axios from "axios";
 import Api from "./Api";
 import Cookies from "universal-cookie";
+import { BASE_URL, TOKEN_TYPE } from './Api';
 
 var cookies = new Cookies();
 var user = cookies.get("user");
 var authToken = cookies.get("token");
-
-const BASE_URL = "http://localhost:8081";
-const TOKEN_TYPE = "Bearer ";
 
 export function getUsernameFromCookie() {
   return user.username;

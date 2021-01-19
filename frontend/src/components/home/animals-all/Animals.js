@@ -5,8 +5,7 @@ import { getLatestAnimals } from "../../../api/PublicApiFunctions";
 import "./animals.css";
 import PrimaryButton from "../../button/PrimaryButton";
 import { Link } from "react-router-dom";
-
-const ANIMAL_AVATAR_URL = "http://localhost:8081/images/avatars/";
+import { ANIMAL_AVATAR_ROUTE } from '../../../api/Api';
 
 class Animals extends React.Component {
   constructor() {
@@ -37,7 +36,7 @@ class Animals extends React.Component {
                   className="animals-list-item-image"
                   style={{
                     backgroundImage:
-                      "url(" + ANIMAL_AVATAR_URL + animal.avatar + ")",
+                      "url(" + ANIMAL_AVATAR_ROUTE + animal.avatar + ")",
                   }}
                 ></div>
                 <AnimalProfileSmall

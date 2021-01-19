@@ -100,14 +100,14 @@ public class ImagesService {
         Date date = new Date();
         String fileName = animal.getName() + formatter.format(date) + "-avatar";
 
-        Path destPath = Paths.get(new File("src/main/webapp/WEB-INF/images/avatars/" + fileName + "." + sourceExtension).getAbsolutePath());
+        Path destPath = Paths.get(new File("src/main/webapp/WEB-INF/images/animal/avatar/" + fileName + "." + sourceExtension).getAbsolutePath());
 
         Files.write(destPath, sourceBytes);
         animal.setAvatar(fileName + "." + sourceExtension);
         animalRepository.save(animal);
 
         if (!previousAvatarName.equals("animal-avatar-default.jpg")) {
-            Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/avatars/" + previousAvatarName).getAbsolutePath());
+            Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/animal/avatar/" + previousAvatarName).getAbsolutePath());
             Files.delete(previousPath);
         }
     }

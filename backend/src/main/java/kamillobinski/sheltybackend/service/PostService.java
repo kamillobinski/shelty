@@ -81,10 +81,10 @@ public class PostService {
 
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");
         Date date = new Date();
-        String fileName = post.getId() + formatter.format(date) + "-avatar";
+        String fileName = post.getId() + formatter.format(date) + "-thumbnail";
         String extension = "." + Objects.requireNonNull(image.getOriginalFilename()).substring(image.getOriginalFilename().lastIndexOf(".") + 1);
 
-        Boolean isThumbnailUploaded = false;
+        boolean isThumbnailUploaded = false;
 
         try {
             byte[] bytes = image.getBytes();

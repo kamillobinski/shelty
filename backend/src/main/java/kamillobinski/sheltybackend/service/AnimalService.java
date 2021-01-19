@@ -141,7 +141,7 @@ public class AnimalService {
         String avatar = animal.getAvatar();
         try {
             if(!avatar.equals("animal-avatar-default.jpg")) {
-                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/avatars/" + avatar).getAbsolutePath());
+                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/animal/avatar/" + avatar).getAbsolutePath());
                 Files.delete(previousPath);
             }
         } catch (IOException exception) {
@@ -162,7 +162,7 @@ public class AnimalService {
 
         try {
             byte[] bytes = image.getBytes();
-            Path path = Paths.get(new File("src/main/webapp/WEB-INF/images/avatars/" + fileName + extension).getAbsolutePath());
+            Path path = Paths.get(new File("src/main/webapp/WEB-INF/images/animal/avatar/" + fileName + extension).getAbsolutePath());
             Files.write(path, bytes);
             // Attach image to animal
             animal.setAvatar(fileName + extension);
@@ -170,7 +170,7 @@ public class AnimalService {
 
             // Lastly delete previous avatar
             if (!previousAvatarName.equals("animal-avatar-default.jpg")) {
-                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/avatars/" + previousAvatarName).getAbsolutePath());
+                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/animal/avatar/" + previousAvatarName).getAbsolutePath());
                 Files.delete(previousPath);
             }
         } catch (IOException exception) {

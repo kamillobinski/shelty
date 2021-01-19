@@ -3,10 +3,9 @@ import CategoryTitle from "../../block/CategoryTitle";
 import ImageInput from "../../input/image/gallery/ImageInput";
 import { ContextMenuTrigger } from "react-contextmenu";
 import { AdminGalleryContextMenu } from '../../context-menu/ContextMenus'
+import { ANIMAL_GALLERY_ROUTE } from '../../../api/Api';
 import '../../context-menu/contextmenu.css';
 import "./animalimages.css";
-
-const serverurl = "http://localhost:8081/images/animal/gallery/";
 
 class AnimalImages extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class AnimalImages extends React.Component {
                 <div
                   className="animalImages-item"
                   style={{
-                    backgroundImage: "url(" + serverurl + image.url + ")",
+                    backgroundImage: "url(" + ANIMAL_GALLERY_ROUTE + image.url + ")",
                     backgroundSize: "cover",
                   }}
                 >

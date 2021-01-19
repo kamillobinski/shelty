@@ -1,4 +1,5 @@
 import React from "react";
+import { ANIMAL_AVATAR_ROUTE, USER_AVATAR_ROUTE } from '../../../api/Api';
 import "./defaultavatar.css";
 
 const DefaultAvatar = (props) => {
@@ -8,7 +9,7 @@ const DefaultAvatar = (props) => {
         <img
           id={id}
           className="noselect"
-          src={"http://localhost:8081/images/avatars/" + image}
+          src={ANIMAL_AVATAR_ROUTE + image}
           alt="animal"
         />
       );
@@ -17,7 +18,7 @@ const DefaultAvatar = (props) => {
         <img
           id={id}
           className="noselect"
-          src={"http://localhost:8081/images/user/avatars/" + image}
+          src={USER_AVATAR_ROUTE + image}
           alt="user"
         />
       );

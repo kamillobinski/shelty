@@ -1,11 +1,9 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { BASE_URL, TOKEN_TYPE } from './Api';
 
 var cookies = new Cookies();
 var authToken = cookies.get("token");
-
-const BASE_URL = "http://localhost:8081";
-const TOKEN_TYPE = "Bearer ";
 
 export function getAnimal(id) {
   axios.defaults.baseURL = BASE_URL;

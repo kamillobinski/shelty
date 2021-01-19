@@ -12,9 +12,8 @@ import { filterFinderList } from "../../../functions/Functions";
 import "./animalfinder.css";
 import PrimaryButton from "../../button/PrimaryButton";
 import AnimalProfileSmall from "../../animal-profile/card/small/SmallAnimalCard";
+import { ANIMAL_AVATAR_ROUTE } from '../../../api/Api';
 import { Link } from "react-router-dom";
-
-const ANIMAL_AVATAR_URL = "http://localhost:8081/images/avatars/";
 
 export default class AnimalFinder extends React.Component {
   constructor() {
@@ -184,7 +183,7 @@ export default class AnimalFinder extends React.Component {
                     className="animals-list-item-image"
                     style={{
                       backgroundImage:
-                        "url(" + ANIMAL_AVATAR_URL + animal.avatar + ")",
+                        "url(" + ANIMAL_AVATAR_ROUTE + animal.avatar + ")",
                     }}
                   ></div>
                   <AnimalProfileSmall
