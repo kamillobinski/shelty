@@ -2,16 +2,34 @@ import React from 'react';
 import BlogTextCard from './BlogTextCard';
 import './bloggrid.css';
 import { Link } from 'react-router-dom';
+import BlogImageCard from './BlogImageCard';
 
 const BlogGrid = (props) => {
-    return (
-        <div className="blogGrid">
-            {props.posts.map((post) => (
+
+    function renderCard(post, index) {
+        if (post.thumbnail !== null && post.thumbnail !== "" && index > 0) {
+            return (
+                <div className="blogGrid-item" key={post.id}>
+                    <Link to={{ pathname: "/blog/post/" + post.id, state: { post: post } }}>
+                        <BlogImageCard post={post} />
+                    </Link>
+                </div>
+            )
+        } else {
+            return (
                 <div className="blogGrid-item" key={post.id}>
                     <Link to={{ pathname: "/blog/post/" + post.id, state: { post: post } }}>
                         <BlogTextCard post={post} />
                     </Link>
                 </div>
+            )
+        }
+    }
+
+    return (
+        <div className="blogGrid">
+            {props.posts.map((post, i) => (
+                renderCard(post, i)
             ))}
         </div>
     )
