@@ -111,6 +111,20 @@ public class PostService {
         }
     }
 
+    public void deleteThumbnail(String id) {
+        Post post = get(id);
+        if(post.getThumbnail() != null) {
+            Path pathToThumbnail = Paths.get(new File("src/main/webapp/WEB-INF/images/post/thumbnail/" + post.getThumbnail()).getAbsolutePath());
+            try {
+                Files.delete(pathToThumbnail);
+                post.setThumbnail(null);
+                postRepository.save(post);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void delete(String id) {
         Post post = get(id);
         postRepository.delete(post);

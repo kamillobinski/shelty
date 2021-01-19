@@ -33,6 +33,11 @@ public class PostController {
         return postService.addThumbnail(id, image);
     }
 
+    @RequestMapping(value="/{id}/delete/thumbnail", method = RequestMethod.DELETE)
+    public void deletePostThumbnail(@PathVariable String id) {
+        postService.deleteThumbnail(id);
+    }
+
     @GetMapping("/delete/{id}")
     public void deletePost(@PathVariable String id) { postService.delete(id); }
 

@@ -3,7 +3,7 @@ import DefaultHeader from '../../components/header/header-default/DefaultHeader'
 import PrimaryButton from '../../components/button/PrimaryButton';
 import { formatDate, formatDateToDisplay, sortPostsByDate } from '../../functions/Functions';
 import { getUserIdFromCookie, getUserAvatar } from "../../api/UserApiFunctions";
-import { getPosts, updatePost, deletePost, addPost, getAllPostCategories, addPostThumbnail } from '../../api/BlogApiFunctions';
+import { getPosts, updatePost, deletePost, addPost, getAllPostCategories, addPostThumbnail, deleteThumbnail } from '../../api/BlogApiFunctions';
 import './blog.css';
 import TextareaAutosize from 'react-textarea-autosize';
 import { AddIcon, DeleteIcon, SaveIcon, TickIcon } from '../../utils/icons/Icons';
@@ -166,6 +166,26 @@ export default class Blog extends React.Component {
         document.getElementById("hiddenThumbnailInput").click();
     }
 
+    handleThumbnailDelete(id) {
+        if (id !== "") {
+            deleteThumbnail(id).then(() => {
+                this.setState({
+                    shouldShowStatusMessage: true,
+                    statusMessageType: "success",
+                    statusMessage: "Thumbnail has been removed",
+                    previewThumbnail: null
+                });
+                this.getInitialData();
+            }).catch(() => {
+                this.setState({
+                    shouldShowStatusMessage: true,
+                    statusMessageType: "error",
+                    statusMessage: "An error occurred while removing thumbnail",
+                });
+            });
+        }
+    }
+
     renderThumbnailImage(thumbnail) {
         if (thumbnail !== null && thumbnail !== "") {
             return { backgroundImage: "url(" + POST_THUMBNAIL_ROUTE + this.state.previewThumbnail + ")" };
@@ -178,7 +198,7 @@ export default class Blog extends React.Component {
         if (thumbnail !== null && thumbnail !== "") {
             return (<>
                 <button onClick={() => this.handleUpload()}>Upload new thumbnail</button>
-                <button>Delete current</button>
+                <button onClick={() => this.handleThumbnailDelete(this.state.previewId)}>Delete current</button>
             </>);
         } else {
             return <button onClick={() => this.handleUpload()}>Upload new thumbnail</button>;

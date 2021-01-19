@@ -69,3 +69,9 @@ export function addPostThumbnail(id, formData) {
         headers: { "content-type": "multipart/form-data" },
     });
 }
+
+export function deleteThumbnail(id) {
+    axios.defaults.baseURL = BASE_URL;
+    axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+    return axios.delete("/api/post/" + id + "/delete/thumbnail");
+}
