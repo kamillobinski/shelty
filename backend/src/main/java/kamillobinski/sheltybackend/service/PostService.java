@@ -81,7 +81,7 @@ public class PostService {
 
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");
         Date date = new Date();
-        String fileName = post.getCategory().getId() + formatter.format(date) + "-avatar";
+        String fileName = post.getId() + formatter.format(date) + "-avatar";
         String extension = "." + Objects.requireNonNull(image.getOriginalFilename()).substring(image.getOriginalFilename().lastIndexOf(".") + 1);
 
         Boolean isThumbnailUploaded = false;
@@ -127,6 +127,7 @@ public class PostService {
 
     public void delete(String id) {
         Post post = get(id);
+        deleteThumbnail(id);
         postRepository.delete(post);
     }
 
