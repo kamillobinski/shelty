@@ -61,3 +61,11 @@ export function deletePostCategory(id) {
     axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
     return axios.delete("/api/post/category/delete/" + id);
 }
+
+export function addPostThumbnail(id, formData) {
+    axios.defaults.baseURL = BASE_URL;
+    axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
+    return axios.post("/api/post/" + id + "/add/thumbnail", formData, {
+        headers: { "content-type": "multipart/form-data" },
+    });
+}

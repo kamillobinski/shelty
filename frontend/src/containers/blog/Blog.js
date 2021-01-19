@@ -3,11 +3,12 @@ import DefaultHeader from '../../components/header/header-default/DefaultHeader'
 import PrimaryButton from '../../components/button/PrimaryButton';
 import { formatDate, formatDateToDisplay, sortPostsByDate } from '../../functions/Functions';
 import { getUserIdFromCookie, getUserAvatar } from "../../api/UserApiFunctions";
-import { getPosts, updatePost, deletePost, addPost, getAllPostCategories } from '../../api/BlogApiFunctions';
+import { getPosts, updatePost, deletePost, addPost, getAllPostCategories, addPostThumbnail } from '../../api/BlogApiFunctions';
 import './blog.css';
 import TextareaAutosize from 'react-textarea-autosize';
 import { AddIcon, DeleteIcon, SaveIcon, TickIcon } from '../../utils/icons/Icons';
 import StatusMessageHandler from '../../components/status-message/StatusMessageHandler';
+import { POST_THUMBNAIL_ROUTE } from '../../api/Api';
 
 export default class Blog extends React.Component {
     constructor() {
@@ -21,6 +22,7 @@ export default class Blog extends React.Component {
             previewTitle: "",
             previewText: "",
             previewCategory: "",
+            previewThumbnail: "",
             shouldShowUpdateButton: false,
             currentDate: "",
 
@@ -35,6 +37,9 @@ export default class Blog extends React.Component {
         this.markSelected = this.markSelected.bind(this);
         this.renderSaveButton = this.renderSaveButton.bind(this);
         this.hideStatusMessage = this.hideStatusMessage.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
+        this.renderThumbnailImage = this.renderThumbnailImage.bind(this);
+        this.renderThumbnailOptions = this.renderThumbnailOptions.bind(this);
     }
 
     componentDidMount() {
@@ -61,11 +66,11 @@ export default class Blog extends React.Component {
         })
     }
 
-    showPostPreview(id, title, text, category) {
+    showPostPreview(id, title, text, category, thumbnail) {
         if (category !== null) {
-            this.setState({ previewId: id, previewTitle: title, previewText: text, previewCategory: category.id, shouldShowUpdateButton: false });
+            this.setState({ previewId: id, previewTitle: title, previewText: text, previewCategory: category.id, previewThumbnail: thumbnail, shouldShowUpdateButton: false });
         } else {
-            this.setState({ previewId: id, previewTitle: title, previewText: text, previewCategory: "", shouldShowUpdateButton: false });
+            this.setState({ previewId: id, previewTitle: title, previewText: text, previewCategory: "", previewThumbnail: thumbnail, shouldShowUpdateButton: false });
         }
     }
 
@@ -130,7 +135,54 @@ export default class Blog extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        if (event.target.name === "previewThumbnail") {
+            var file = event.target;
+            const formData = new FormData();
+            formData.append("image", file.files[0]);
+            addPostThumbnail(this.state.previewId, formData).then((res) => {
+                if (res.data !== "") {
+                    this.setState({
+                        shouldShowStatusMessage: true,
+                        statusMessageType: "success",
+                        statusMessage: "Thumbnail has been changed",
+                        previewThumbnail: res.data
+                    })
+                    this.getInitialData();
+                } else {
+                    this.setState({
+                        shouldShowStatusMessage: true,
+                        statusMessageType: "error",
+                        statusMessage: "An error occurred while uploading thumbnail",
+                        previewThumbnail: res.data
+                    })
+                }
+            })
+        } else {
+            this.setState({ [event.target.name]: event.target.value });
+        }
+    }
+
+    handleUpload() {
+        document.getElementById("hiddenThumbnailInput").click();
+    }
+
+    renderThumbnailImage(thumbnail) {
+        if (thumbnail !== null && thumbnail !== "") {
+            return { backgroundImage: "url(" + POST_THUMBNAIL_ROUTE + this.state.previewThumbnail + ")" };
+        } else {
+            return { height: "72px" };
+        }
+    }
+
+    renderThumbnailOptions(thumbnail) {
+        if (thumbnail !== null && thumbnail !== "") {
+            return (<>
+                <button onClick={() => this.handleUpload()}>Upload new thumbnail</button>
+                <button>Delete current</button>
+            </>);
+        } else {
+            return <button onClick={() => this.handleUpload()}>Upload new thumbnail</button>;
+        }
     }
 
     markSelected(id) {
@@ -191,7 +243,7 @@ export default class Blog extends React.Component {
                     </div>
                     <div className="admin-blog-sidebar-list scroll">
                         {this.state.posts.map((post) => (
-                            <div className="admin-blog-sidebar-list-item" key={post.id} onClick={() => this.showPostPreview(post.id, post.title, post.text, post.category)}>
+                            <div className="admin-blog-sidebar-list-item" key={post.id} onClick={() => this.showPostPreview(post.id, post.title, post.text, post.category, post.thumbnail)}>
                                 <span style={this.markSelected(post.id)}>{post.title}</span>
                             </div>
                         ))}
@@ -206,6 +258,17 @@ export default class Blog extends React.Component {
                     </div>
                     <div className="admin-blog-workspace-limiter scroll">
                         <div className="admin-blog-workspace-limiter-inner">
+                            <div className="admin-blog-workspace-limiter-inner-image" style={this.renderThumbnailImage(this.state.previewThumbnail)}>
+                                <div className="admin-blog-workspace-limiter-inner-image-menu">
+                                    {this.renderThumbnailOptions(this.state.previewThumbnail)}
+                                </div>
+                                <input type="file"
+                                    style={{ display: "none" }}
+                                    id="hiddenThumbnailInput"
+                                    name="previewThumbnail"
+                                    onChange={this.handleChange}
+                                />
+                            </div>
                             <div className="admin-blog-workspace-post-title">
                                 <input placeholder="Post title" type="text" name="previewTitle" value={this.state.previewTitle} onChange={(event) => this.handleChange(event)} />
                             </div>
