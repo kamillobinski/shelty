@@ -25,7 +25,14 @@
   .publicBlog-inner {
     padding: 0 24px 0 24px;
   }
+
+  .publicBlog-inner .blogGrid {
+    grid-template-columns: auto;
+    grid-row-gap: 24px;
+    grid-column-gap: 24px;
+  }
 }
+
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .publicBlog-inner {
     padding: 0 24px 0 24px;
@@ -45,5 +52,13 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-  /* CSS */
+  .publicBlog-inner {
+    padding: 0 12px 0 12px;
+  }
+
+  .publicBlog-inner .blogGrid {
+    grid-template-columns: auto;
+    grid-row-gap: 24px;
+    grid-column-gap: 24px;
+  }
 }
