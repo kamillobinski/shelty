@@ -97,7 +97,7 @@ public class PostService {
             isThumbnailUploaded = true;
 
             if(previousThumbnail != null) {
-                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/avatars/" + previousThumbnail).getAbsolutePath());
+                Path previousPath = Paths.get(new File("src/main/webapp/WEB-INF/images/post/thumbnail/" + previousThumbnail).getAbsolutePath());
                 Files.delete(previousPath);
             }
         } catch (IOException e) {
