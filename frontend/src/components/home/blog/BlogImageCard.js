@@ -15,9 +15,7 @@ const BlogImageCard = (props) => {
 
     return (
         <div className="blogImageCard">
-            <div className="blogImageCard-thumbnail" style={{ backgroundImage: "url(" + POST_THUMBNAIL_ROUTE + props.post.thumbnail + ")" }}>
-                {console.log(props.post.thumbnail)}
-            </div>
+            <div className="blogImageCard-thumbnail" style={{ backgroundImage: "url(" + POST_THUMBNAIL_ROUTE + props.post.thumbnail + ")" }}></div>
             <div className="blogImageCard-category">
                 <span>{checkIfPostCategoryIsAssigned(props.post.category)}</span>
             </div>

@@ -3,7 +3,6 @@ import PublicHeader from "../../header/header-public/PublicHeader";
 import AnimalProfileSmall from "../../animal-profile/card/small/SmallAnimalCard";
 import { getLatestAnimals } from "../../../api/PublicApiFunctions";
 import "./animals.css";
-import PrimaryButton from "../../button/PrimaryButton";
 import { Link } from "react-router-dom";
 import { ANIMAL_AVATAR_ROUTE } from '../../../api/Api';
 

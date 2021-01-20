@@ -18,6 +18,7 @@ class AnimalImages extends React.Component {
     switch (props) {
       case "set": { this.props.setGalleryImageAsAvatar(this.state.selectedImage); break; }
       case "delete": { this.props.deleteGalleryImage(this.state.selectedImage); break; }
+      default: { break; }
     }
   }
 

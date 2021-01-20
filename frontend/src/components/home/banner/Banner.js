@@ -19,7 +19,7 @@ const Banner = () => {
       </div>
       <div className="banner-image">
         <div className="banner-image-outline">
-          <img src={animal_walk} />
+          <img src={animal_walk} alt="banner" />
         </div>
       </div>
     </div>

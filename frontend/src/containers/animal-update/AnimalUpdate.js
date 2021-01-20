@@ -30,7 +30,6 @@ import {
   getCoatLengthOptions,
   saveMedicalData,
   getMedicalData,
-  deleteMedicalData,
   addNewAnimal,
   getAnimalId,
   setAnimalAvatarFromGalleryImage,
@@ -42,7 +41,6 @@ import {
   sortAnimalsAlphabetically,
   searchListForAnimal,
   formatDate,
-  changePageTitle,
 } from "../../functions/Functions";
 
 // Styles & utils
@@ -207,7 +205,6 @@ export default class AnimalUpdate extends React.Component {
   }
 
   async updateAnimalAvatar(event) {
-    console.log("Start");
     if (this.state.animalId !== "") {
       var file = event.target;
       const formData = new FormData();
@@ -337,7 +334,6 @@ export default class AnimalUpdate extends React.Component {
 
   handleInputChange(event) {
     if (event.target.name === "animalAvatar") {
-      console.log("detected change");
       this.updateAnimalAvatar(event);
     } else if (event.target.name === "animalGalleryImage") {
       this.addAnimalGalleryImage(event);

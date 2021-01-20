@@ -4,7 +4,6 @@ import {
   addSpeciesOption,
   deleteSpeciesOption,
 } from "../../../api/AnimalApiFunctions";
-import IconButton from "../../button/IconButton";
 import PrimaryButton from "../../button/PrimaryButton";
 import TextInput from "../../input/text/TextInput";
 import StatusMessageHandler from "../../status-message/StatusMessageHandler";

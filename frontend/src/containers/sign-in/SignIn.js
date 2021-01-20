@@ -5,7 +5,6 @@ import {
   setTokenCookie,
 } from "../../api/UserApiFunctions";
 import { getTomorrowDate, redirectUser } from "../../functions/Functions";
-import sheltyLogo from "../../utils/images/shelty-logo.png";
 import "./signin.css";
 
 const GREY_SHADOW = "0px 0px 48px -21px rgba(0, 0, 0, 0.3)";

@@ -14,7 +14,6 @@ import {
 } from "../../../api/UserApiFunctions";
 import PrimaryButton from "../../button/PrimaryButton";
 import "./editaccount.css";
-import ImageInput from "../../input/image/gallery/ImageInput";
 import UserAvatar from "../../avatar/user/UserAvatar";
 import AvatarInput from "../../input/image/avatar/AvatarInput";
 import StatusMessageHandler from "../../status-message/StatusMessageHandler";
@@ -82,7 +81,7 @@ class EditAccount extends React.Component {
       .then(() => {
         this.getUserAccountDetails();
       })
-      .catch(() => {});
+      .catch(() => { });
   }
 
   updateUserAccount() {

@@ -5,10 +5,6 @@ import BlogPostContent from './BlogPostContent';
 import './publicblogpost.css';
 
 class PublicBlogPost extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     verifyState() {
         if (this.props.location.state !== undefined) {
             return (

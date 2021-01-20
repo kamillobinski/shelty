@@ -9,7 +9,6 @@ import {
 } from "../../../api/AnimalApiFunctions";
 import "./editbreed.css";
 import PrimaryButton from "../../button/PrimaryButton";
-import IconButton from "../../button/IconButton";
 import StatusMessageHandler from "../../status-message/StatusMessageHandler";
 
 class EditBreed extends React.Component {
@@ -115,7 +114,6 @@ class EditBreed extends React.Component {
             list={this.state.speciesList}
             value={this.state.species}
             onChange={this.handleInputChange}
-            width="100%"
           />
           <PrimaryButton
             text="Add"

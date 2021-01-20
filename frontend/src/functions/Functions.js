@@ -115,6 +115,7 @@ function filterByColors(list, color) {
 
         // Check which animal has all the colors
         // specified by the user
+        // eslint-disable-next-line
         var result = filters.every(function (value) {
           return animalColors.indexOf(value) !== -1;
         });
