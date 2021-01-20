@@ -24,11 +24,7 @@ export function getEmailFromCookie() {
 }
 
 export function getRoleFromCookie() {
-  if (user.roles[0] === "ROLE_ADMIN") {
-    return "admin";
-  } else {
-    return "unknown";
-  }
+  return user.roles[0];
 }
 
 export function getUsers() {
