@@ -107,14 +107,14 @@ export function getUserAvatar(id) {
   return axios.get("/api/user/" + id + "/avatar");
 }
 
-export function createUser(username, firstName, lastName, email, password) {
+export function createUser(username, firstName, lastName, email, password, desired_role) {
   validateTokenBeforeAxios();
   const data = {};
   data["username"] = username;
   data["firstName"] = firstName;
   data["lastName"] = lastName;
   data["email"] = email;
-  var role = ["admin"];
+  var role = [desired_role]; // ['admin'] or ['user'] / other
   data["role"] = role;
   data["password"] = password;
   axios.defaults.baseURL = BASE_URL;
