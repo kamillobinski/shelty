@@ -1,0 +1,36 @@
+.manageAccounts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manageAccounts-inner {
+  width: 50%;
+  min-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.manageAccounts-inner .primaryButton {
+  margin: 24px 0 10px 0;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.manageAccounts-inner-list {
+  position: relative;
+}
+
+.manageAccounts-inner-list-item {
+  position: relative;
+}
+
+.manageAccounts-inner-list-item-delete-btn {
+  position: absolute;
+  top: 0px;
+  right: 0;
+}
+
+.manageAccounts-inner-list-item-delete-btn .primaryButton {
+  margin-top: -4.5px;
+}
