@@ -1,3 +1,5 @@
+import { getRoleFromCookie } from '../api/UserApiFunctions';
+
 export function getTomorrowDate() {
   var today = new Date();
   var tomorrow = new Date();
@@ -7,6 +9,14 @@ export function getTomorrowDate() {
 
 export function redirectUser(link) {
   return window.location.replace(link);
+}
+
+export function checkIfAdmin() {
+  var role = getRoleFromCookie();
+  if (role === "ROLE_USER") {
+    window.history.go(-1);
+    alert('Admin restricted content')
+  }
 }
 
 export function formatDate(date) {
