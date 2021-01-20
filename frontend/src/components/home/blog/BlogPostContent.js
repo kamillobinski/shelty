@@ -3,9 +3,19 @@ import { Link } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 import DefaultAvatar from '../../avatar/default/DefaultAvatar';
 import { formatDateToDisplay } from '../../../functions/Functions';
+import { POST_THUMBNAIL_ROUTE } from '../../../api/Api';
 import './blogpostcontent.css';
 
 const BlogPostContent = (props) => {
+
+    function renderThumbnail(thumbnail) {
+        if (thumbnail !== "" && thumbnail !== null) {
+            return { borderRadius: "7px", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", width: "100%", height: "450px", marginBottom: "48px", backgroundImage: "url(" + POST_THUMBNAIL_ROUTE + thumbnail + ")" };
+        } else {
+            return null;
+        }
+    }
+
     return (
         <div className="blogPostContent">
             <div className="blogPostContent-header">
@@ -25,7 +35,8 @@ const BlogPostContent = (props) => {
                 </div>
             </div>
             <div className="blogPostContent-text">
-                <TextareaAutosize spellCheck="false" value={props.post.text} readOnly="true" />
+                <div className="blogPostContent-thumbnail" style={renderThumbnail(props.post.thumbnail)}></div>
+                <TextareaAutosize spellCheck={false} value={props.post.text} readOnly={true} />
             </div>
         </div>
     )
