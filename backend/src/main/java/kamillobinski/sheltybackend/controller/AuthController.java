@@ -104,7 +104,7 @@ public class AuthController {
                             roleRepository.findRoleById(1);
                     roles.add(adminRole);
                 } else {
-                    Role userRole = roleRepository.findRoleById(1);;
+                    Role userRole = roleRepository.findRoleById(2);;
                     roles.add(userRole);
                 }
             });
