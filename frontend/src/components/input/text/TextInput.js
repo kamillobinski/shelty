@@ -26,6 +26,7 @@ const TextInput = (props) => {
           spellCheck="false"
           autoComplete="off"
           readOnly={props.readOnly}
+          placeholder={props.placeholder}
         />
       </div>
     </div>
