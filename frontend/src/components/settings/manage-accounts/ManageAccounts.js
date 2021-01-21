@@ -1,20 +1,31 @@
 import React from "react";
-import { getUsers } from '../../../api/UserApiFunctions';
-import { getUserIdFromCookie } from '../../../api/UserApiFunctions';
+import { getUsers, getUserIdFromCookie, deleteUser } from '../../../api/UserApiFunctions';
 import { checkIfAdmin } from '../../../functions/Functions';
 import PrimaryButton from "../../button/PrimaryButton";
 import TextInput from "../../input/text/TextInput";
 import "./manageaccounts.css";
 
+const initialState = {
+  users: [], loggedUserId: ""
+};
+
 export default class ManageAccounts extends React.Component {
   constructor() {
     super();
-    this.state = { users: [], loggedUserId: getUserIdFromCookie() };
+    this.state = initialState;
     this.renderUser = this.renderUser.bind(this);
+    this.removeUser = this.removeUser.bind(this);
+    this.resetState = this.resetState.bind(this);
+    this.getAccounts = this.getAccounts.bind(this);
   }
 
   componentDidMount() {
     checkIfAdmin();
+    this.setState({ loggedUserId: getUserIdFromCookie() })
+    this.getAccounts();
+  }
+
+  getAccounts() {
     getUsers().then((res) => {
       this.setState({ users: res.data });
     })
@@ -27,7 +38,7 @@ export default class ManageAccounts extends React.Component {
           <TextInput
             key={user.id}
             type="text"
-            label={"User #" + i}
+            label={user.roles[0].name.substring(5) + " #" + i}
             name="user"
             value={user.username}
             width="100%"
@@ -40,13 +51,40 @@ export default class ManageAccounts extends React.Component {
               text="Remove"
               width="100px"
               type="red"
+              onClick={() => this.removeUser(user.id)}
             />
           </div>
         </div>
       )
     } else {
-      return null;
+      return (
+        <div className="manageAccounts-inner-list-item" key={i}>
+          <TextInput
+            key={user.id}
+            type="text"
+            label={user.roles[0].name.substring(5) + " #" + i}
+            name="user"
+            value={user.username}
+            width="100%"
+            height="30px"
+            margin="0 120px 0 0"
+            readOnly={true}
+          />
+        </div>
+      )
     }
+  }
+
+  removeUser(id) {
+    deleteUser(id).then(() => {
+      alert('user removed');
+      this.resetState();
+    })
+  }
+
+  resetState() {
+    this.setState(initialState);
+    this.getAccounts();
   }
 
   render() {
