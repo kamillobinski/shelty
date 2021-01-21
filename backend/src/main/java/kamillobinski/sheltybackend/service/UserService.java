@@ -107,6 +107,7 @@ public class UserService {
     public void deleteUser(String id) {
         User user = getUserById(id);
         String curretUserAvatar = user.getAvatar();
+        user.setRoles(null);
 
         // Delete avatar
         if (!curretUserAvatar.equals("user-avatar-default.jpg")) {
