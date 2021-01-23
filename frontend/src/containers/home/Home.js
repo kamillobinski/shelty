@@ -1,6 +1,5 @@
 import React from "react";
 import PublicHeader from "../../components/header/header-public/PublicHeader";
-import Banner from "../../components/home/banner/Banner";
 import "./home.css";
 
 export default class Home extends React.Component {
@@ -12,8 +11,9 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <PublicHeader />
-        <Banner />
+        <div className="home-inner">
+          <PublicHeader />
+        </div>
       </div>
     );
   }

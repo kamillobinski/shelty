@@ -5,5 +5,12 @@
   min-height: 100vh;
   max-width: 100vw;
   max-height: 100vh;
-  padding: 0 250px 0 250px;
+  overflow-x: hidden;
+  padding-bottom: 30px;
+}
+
+.home-inner {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
