@@ -38,6 +38,10 @@
   width: 150px;
 }
 
+.publicHeader-button:hover {
+  animation: shake 0.4s;
+}
+
 /* menu */
 
 .publicHeader-menu {
@@ -71,6 +75,10 @@
 
 .publicHeader-menu-item:hover span {
   color: black;
+}
+
+.publicHeader-menu-item:hover {
+  animation: shake 0.4s;
 }
 
 .publicHeader-menu-item span {

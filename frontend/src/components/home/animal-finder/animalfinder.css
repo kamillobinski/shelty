@@ -1,3 +1,5 @@
+/* test */
+
 .animalFinder {
   width: 100vw;
   height: 100vh;
@@ -5,39 +7,25 @@
   min-height: 100vh;
   max-width: 100vw;
   max-height: 100vh;
-  padding: 0 250px 0 250px;
+  overflow-x: hidden;
+  padding-bottom: 30px;
 }
 
-.animalFinder-form-title {
-  margin-bottom: 24px;
-}
-
-.animalFinder-form-title span {
-  font-family: var(--primary-font);
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--primary-black);
+.animalFinder-inner {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .animalFinder-form {
-  min-height: 500px;
-  width: 500px;
-  float: left;
-  border-right: 1px solid var(--primary-grey-light);
-  min-height: calc(100% - 65px);
-  padding: 24px 24px 24px 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.animalFinder-results {
-  float: left;
-  width: calc(100% - 500px);
-}
-
-.animalFinder-form-button {
-  margin-top: 24px;
-  float: left;
-}
-
-.animalFinder-results .animals-list {
-  margin: 24px 0 24px 24px;
+.animalFinder-form-submit {
+  margin: 100px 0;
+  margin-left: auto;
+  margin-right: 0;
+  width: fit-content;
 }

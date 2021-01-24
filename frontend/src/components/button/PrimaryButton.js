@@ -45,7 +45,7 @@ const PrimaryButton = (props) => {
       className="primaryButton"
       style={{
         backgroundColor: defineButtonBackground(props.type),
-        width: props.width,
+        width: props.width, height: props.height
       }}
       onClick={props.onClick}
     >

@@ -1,5 +1,5 @@
 import React from "react";
-import PublicHeader from "../../components/header/header-public/PublicHeader";
+import HomepageContent from '../../components/home/homepage/HomepageContent';
 import "./home.css";
 
 export default class Home extends React.Component {
@@ -12,7 +12,7 @@ export default class Home extends React.Component {
     return (
       <div className="home">
         <div className="home-inner">
-          <PublicHeader />
+          <HomepageContent />
         </div>
       </div>
     );

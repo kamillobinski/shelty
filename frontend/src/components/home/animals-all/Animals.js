@@ -1,10 +1,9 @@
 import React from "react";
 import PublicHeader from "../../header/header-public/PublicHeader";
-import AnimalProfileSmall from "../../animal-profile/card/small/SmallAnimalCard";
 import { getLatestAnimals } from "../../../api/PublicApiFunctions";
+import AnimalGrid from '../../animal-grid/AnimalGrid';
+import TitleHeader from '../../header/header-title/TitleHeader';
 import "./animals.css";
-import { Link } from "react-router-dom";
-import { ANIMAL_AVATAR_ROUTE } from '../../../api/Api';
 
 class Animals extends React.Component {
   constructor() {
@@ -26,32 +25,12 @@ class Animals extends React.Component {
   render() {
     return (
       <div className="animals">
-        <PublicHeader />
-        <div className="animals-list">
-          {this.state.animals.map((animal, i) => (
-            <Link to={"/animal/" + animal.id}>
-              <div className="animals-list-item">
-                <div
-                  className="animals-list-item-image"
-                  style={{
-                    backgroundImage:
-                      "url(" + ANIMAL_AVATAR_ROUTE + animal.avatar + ")",
-                  }}
-                ></div>
-                <AnimalProfileSmall
-                  name={animal.name}
-                  breed={
-                    animal.breed.breedName +
-                    " · " +
-                    animal.breed.species.speciesName
-                  }
-                  margin="0"
-                />
-              </div>
-            </Link>
-          ))}
+        <div className="animals-inner">
+          <PublicHeader />
+          <TitleHeader title="All animals" description="These pets are waiting for a new loving family" />
+          <AnimalGrid animalList={this.state.animals} />
         </div>
-      </div>
+      </div >
     );
   }
 }

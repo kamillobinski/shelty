@@ -1,0 +1,31 @@
+.titleHeader {
+  max-width: 1280px;
+  border: 1px solid transparent;
+  margin: 100px 0;
+}
+
+.titleHeader-title {
+  width: 100%;
+  text-align: center;
+}
+
+.titleHeader-title span {
+  font-size: 70px;
+  font-family: var(--secondary-font);
+  font-weight: 600;
+}
+
+.titleHeader-description {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.titleHeader-description span {
+  font-size: 16px;
+  font-family: var(--secondary-font);
+  font-weight: 600;
+  color: #a0a6ad;
+}

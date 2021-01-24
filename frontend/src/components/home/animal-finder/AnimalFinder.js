@@ -11,9 +11,8 @@ import {
 import { filterFinderList } from "../../../functions/Functions";
 import "./animalfinder.css";
 import PrimaryButton from "../../button/PrimaryButton";
-import AnimalProfileSmall from "../../animal-profile/card/small/SmallAnimalCard";
-import { ANIMAL_AVATAR_ROUTE } from '../../../api/Api';
-import { Link } from "react-router-dom";
+import TitleHeader from '../../header/header-title/TitleHeader';
+import AnimalGrid from "../../animal-grid/AnimalGrid";
 
 export default class AnimalFinder extends React.Component {
   constructor() {
@@ -99,105 +98,84 @@ export default class AnimalFinder extends React.Component {
   render() {
     return (
       <div className="animalFinder">
-        <PublicHeader />
-        <div className="animalFinder-form">
-          <div className="animalFinder-form-title">
-            <span>Find the right animal for you!</span>
-          </div>
-          <SelectInput
-            label="Age:"
-            type="default"
-            name="age"
-            onChange={this.handleInputChange}
-            list={this.state.ageList}
-            width="100%"
-            default="Any"
-          />
-          <TextInput
-            label="Color:"
-            name="color"
-            value={this.state.color}
-            onChange={this.handleInputChange}
-            width="100%"
-          />
-          <SelectInput
-            label="Species:"
-            type="species"
-            name="species"
-            onChange={this.handleInputChange}
-            list={this.state.speciesList}
-            width="100%"
-            default="Any"
-          />
-          <SelectInput
-            label="Breed:"
-            type="breed"
-            name="breed"
-            onChange={this.handleInputChange}
-            list={this.state.breedList}
-            width="100%"
-            default="Any"
-          />
-          <SelectInput
-            label="Gender:"
-            type="default"
-            name="gender"
-            onChange={this.handleInputChange}
-            list={this.state.genderList}
-            width="100%"
-            default="Any"
-          />
-          <SelectInput
-            label="Size:"
-            type="default"
-            name="size"
-            onChange={this.handleInputChange}
-            list={this.state.sizeList}
-            width="100%"
-            default="Any"
-          />
-          <div className="animalFinder-form-button">
-            <PrimaryButton
-              text="Search"
-              width="80px"
-              onClick={() =>
-                this.getResults(
-                  this.state.animalList,
-                  this.state.age,
-                  this.state.color,
-                  this.state.species,
-                  this.state.breed,
-                  this.state.gender,
-                  this.state.size
-                )
-              }
+        <div className="animalFinder-inner">
+          <PublicHeader />
+          <TitleHeader title="Animal finder" description="Find a perfect pet" />
+          <div className="animalFinder-form">
+            <SelectInput
+              label="Age:"
+              type="default"
+              name="age"
+              onChange={this.handleInputChange}
+              list={this.state.ageList}
+              width="100%"
+              default="Any"
             />
+            <TextInput
+              label="Color:"
+              name="color"
+              value={this.state.color}
+              onChange={this.handleInputChange}
+              width="100%"
+            />
+            <SelectInput
+              label="Species:"
+              type="species"
+              name="species"
+              onChange={this.handleInputChange}
+              list={this.state.speciesList}
+              width="100%"
+              default="Any"
+            />
+            <SelectInput
+              label="Breed:"
+              type="breed"
+              name="breed"
+              onChange={this.handleInputChange}
+              list={this.state.breedList}
+              width="100%"
+              default="Any"
+            />
+            <SelectInput
+              label="Gender:"
+              type="default"
+              name="gender"
+              onChange={this.handleInputChange}
+              list={this.state.genderList}
+              width="100%"
+              default="Any"
+            />
+            <SelectInput
+              label="Size:"
+              type="default"
+              name="size"
+              onChange={this.handleInputChange}
+              list={this.state.sizeList}
+              width="100%"
+              default="Any"
+            />
+            <div className="animalFinder-form-submit">
+              <PrimaryButton
+                text="Search"
+                width="110px"
+                height="55px"
+                type="dark"
+                onClick={() =>
+                  this.getResults(
+                    this.state.animalList,
+                    this.state.age,
+                    this.state.color,
+                    this.state.species,
+                    this.state.breed,
+                    this.state.gender,
+                    this.state.size
+                  )
+                }
+              />
+            </div>
           </div>
-        </div>
-        <div className="animalFinder-results">
-          <div className="animals-list">
-            {this.state.resultList.map((animal, i) => (
-              <Link to={"/animal/" + animal.id}>
-                <div className="animals-list-item">
-                  <div
-                    className="animals-list-item-image"
-                    style={{
-                      backgroundImage:
-                        "url(" + ANIMAL_AVATAR_ROUTE + animal.avatar + ")",
-                    }}
-                  ></div>
-                  <AnimalProfileSmall
-                    name={animal.name}
-                    breed={
-                      animal.breed.breedName +
-                      " · " +
-                      animal.breed.species.speciesName
-                    }
-                    margin="0"
-                  />
-                </div>
-              </Link>
-            ))}
+          <div id="result">
+            <AnimalGrid animalList={this.state.resultList} />
           </div>
         </div>
       </div>
