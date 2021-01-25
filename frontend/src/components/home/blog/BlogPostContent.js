@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TextareaAutosize from 'react-textarea-autosize';
 import DefaultAvatar from '../../avatar/default/DefaultAvatar';
 import { formatDateToDisplay } from '../../../functions/Functions';
 import { POST_THUMBNAIL_ROUTE } from '../../../api/Api';
+import ReactHtmlParser from "react-html-parser";
 import './blogpostcontent.css';
 
 const BlogPostContent = (props) => {
@@ -36,7 +36,7 @@ const BlogPostContent = (props) => {
             </div>
             <div className="blogPostContent-text">
                 <div className="blogPostContent-thumbnail" style={renderThumbnail(props.post.thumbnail)}></div>
-                <TextareaAutosize spellCheck={false} value={props.post.text} readOnly={true} />
+                {ReactHtmlParser(props.post.text)}
             </div>
         </div>
     )

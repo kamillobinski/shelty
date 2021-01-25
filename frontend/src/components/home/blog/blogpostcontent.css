@@ -59,22 +59,18 @@
 }
 
 .blogPostContent-text {
-  padding: 24px 0 100px 100px;
-}
-
-.blogPostContent-text textarea {
-  width: 100%;
-  resize: none;
-  border: none;
-  font-size: 18px;
-  font-family: var(--secondary-font);
-  font-weight: 400;
-  color: #858585;
+  padding: 0 100px 100px 100px;
   line-height: 1.5;
-  overflow-y: hidden;
+  font-family: var(--secondary-font);
+  color: #000000;
+  overflow: hidden;
 }
 
-.blogPostContent textarea:focus {
-  outline: none !important;
-  border: none;
+.blogPostContent-text img {
+  max-width: 100%;
+  height: auto;
+}
+
+.blogPostContent-text a {
+  color: var(--primary-orange);
 }

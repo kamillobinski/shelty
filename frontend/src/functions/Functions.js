@@ -1,5 +1,14 @@
 import { getRoleFromCookie } from '../api/UserApiFunctions';
 
+export function extractTextFromHtml(html) {
+  var parsedString = new DOMParser().parseFromString(html, "text/html").documentElement.textContent;
+  return removeBlankSpacesFromString(parsedString);
+}
+
+export function removeBlankSpacesFromString(string) {
+  return string.replace(/\s+/g, ' ').trim();
+}
+
 export function getTomorrowDate() {
   var today = new Date();
   var tomorrow = new Date();

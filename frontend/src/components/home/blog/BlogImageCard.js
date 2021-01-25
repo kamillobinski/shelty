@@ -1,6 +1,7 @@
 import React from 'react';
 import DefaultAvatar from '../../avatar/default/DefaultAvatar';
 import { POST_THUMBNAIL_ROUTE } from '../../../api/Api';
+import { extractTextFromHtml } from '../../../functions/Functions';
 import './blogimagecard.css';
 
 const BlogImageCard = (props) => {
@@ -23,7 +24,7 @@ const BlogImageCard = (props) => {
                 <span>{props.post.title}</span>
             </div>
             <div className="blogImageCard-description">
-                <span>{props.post.text}</span>
+                <span>{extractTextFromHtml(props.post.text)}</span>
             </div>
             <div className="blogImageCard-author">
                 <DefaultAvatar type="user" width="17px" height="17px" image={props.post.author.avatar} />

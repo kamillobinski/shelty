@@ -1,5 +1,6 @@
 import React from 'react';
 import DefaultAvatar from '../../avatar/default/DefaultAvatar';
+import { extractTextFromHtml } from '../../../functions/Functions';
 import './blogtextcard.css';
 
 const BlogTextCard = (props) => {
@@ -21,7 +22,7 @@ const BlogTextCard = (props) => {
                 <span>{props.post.title}</span>
             </div>
             <div className="blogTextCard-description">
-                <span>{props.post.text}</span>
+                <span>{extractTextFromHtml(props.post.text)}</span>
             </div>
             <div className="blogTextCard-author">
                 <DefaultAvatar type="user" width="17px" height="17px" image={props.post.author.avatar} />
