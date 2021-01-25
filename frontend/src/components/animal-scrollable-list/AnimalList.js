@@ -85,7 +85,7 @@ const AnimalList = (props) => {
             onClick={() => props.showAnimalAddForm()}
           />
         </div>
-        <button className="test" onClick={props.expandList}><span>{checkIfListIsExpanded()}</span></button>
+        <button className="test" onClick={props.expandList} title="Expand list"><span>{checkIfListIsExpanded()}</span></button>
       </div>
     </div>
   );
