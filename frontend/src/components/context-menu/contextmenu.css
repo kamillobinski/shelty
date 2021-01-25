@@ -33,7 +33,7 @@
   text-align: inherit;
   white-space: nowrap;
   font-size: 13px;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
 }
 
 .react-contextmenu-item.react-contextmenu-item--active,

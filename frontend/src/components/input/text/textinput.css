@@ -19,7 +19,7 @@
 .textInput-label span {
   font-size: 14px;
   font-weight: 400;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
   color: var(--primary-grey-dark);
 }
 
@@ -38,6 +38,6 @@
   color: var(--primary-black);
   font-size: 16px;
   font-weight: 400;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
   background-color: transparent;
 }
