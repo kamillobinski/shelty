@@ -272,56 +272,58 @@ export default class AnimalUpdate extends React.Component {
   }
 
   getAnimalDetails(id) {
-    getAnimal(id).then((response) => {
-      this.setState({
-        animalId: response.data.id,
-        animalName: response.data.name,
-        animalAvatar: response.data.avatar,
-        animalDateOfBirth: formatDate(response.data.dateOfBirth),
-        animalAge: response.data.age,
-        animalSize: response.data.size.id,
-        animalBreed: response.data.breed.id,
-        animalSpecies: response.data.breed.species.speciesName,
-        animalGender: response.data.gender.id,
-        animalColor: response.data.color || "",
-        animalCoatLength: response.data.coatLength.id,
-        animalDateArrivedInShelter: formatDate(
-          response.data.dateArrivedInShelter
-        ),
-        animalDateAdopted: formatDate(response.data.dateAdopted),
-        animalIdentichip: response.data.identichip || "",
-        animalHouseTrained: response.data.houseTrained.id,
-        animalIsReady: response.data.ready,
-        animalComments: response.data.comments || "",
+    if (id !== undefined) {
+      getAnimal(id).then((response) => {
+        this.setState({
+          animalId: response.data.id,
+          animalName: response.data.name,
+          animalAvatar: response.data.avatar,
+          animalDateOfBirth: formatDate(response.data.dateOfBirth),
+          animalAge: response.data.age,
+          animalSize: response.data.size.id,
+          animalBreed: response.data.breed.id,
+          animalSpecies: response.data.breed.species.speciesName,
+          animalGender: response.data.gender.id,
+          animalColor: response.data.color || "",
+          animalCoatLength: response.data.coatLength.id,
+          animalDateArrivedInShelter: formatDate(
+            response.data.dateArrivedInShelter
+          ),
+          animalDateAdopted: formatDate(response.data.dateAdopted),
+          animalIdentichip: response.data.identichip || "",
+          animalHouseTrained: response.data.houseTrained.id,
+          animalIsReady: response.data.ready,
+          animalComments: response.data.comments || "",
+        });
       });
-    });
-    getAnimalGalleryImages(id).then((res) => {
-      this.setState({ animalGallery: res.data });
-    });
-    getMedicalData(id).then((res) => {
-      if (res.data) {
-        this.setState({
-          animalGraftingDate: formatDate(res.data.graftingDate),
-          animalDewormingDate: formatDate(res.data.dewormingDate),
-          animalSterilizationDate: formatDate(res.data.sterilizationDate),
-          animalMedicalDescription: res.data.description || "",
-        });
-      } else {
-        this.setState({
-          animalGraftingDate: "",
-          animalDewormingDate: "",
-          animalSterilizationDate: "",
-          animalMedicalDescription: "",
-        });
-      }
-    });
-    getMedicalHistory(id).then((res) => {
-      if (res.data) {
-        this.setState({ animalMedicalHistory: res.data })
-      } else {
-        this.setState({ animalMedicalHistory: "" })
-      }
-    })
+      getAnimalGalleryImages(id).then((res) => {
+        this.setState({ animalGallery: res.data });
+      });
+      getMedicalData(id).then((res) => {
+        if (res.data) {
+          this.setState({
+            animalGraftingDate: formatDate(res.data.graftingDate),
+            animalDewormingDate: formatDate(res.data.dewormingDate),
+            animalSterilizationDate: formatDate(res.data.sterilizationDate),
+            animalMedicalDescription: res.data.description || "",
+          });
+        } else {
+          this.setState({
+            animalGraftingDate: "",
+            animalDewormingDate: "",
+            animalSterilizationDate: "",
+            animalMedicalDescription: "",
+          });
+        }
+      });
+      getMedicalHistory(id).then((res) => {
+        if (res.data) {
+          this.setState({ animalMedicalHistory: res.data })
+        } else {
+          this.setState({ animalMedicalHistory: "" })
+        }
+      })
+    }
   }
 
   hideStatusMessage() {
