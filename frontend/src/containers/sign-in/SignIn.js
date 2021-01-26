@@ -5,6 +5,8 @@ import {
   setTokenCookie,
 } from "../../api/UserApiFunctions";
 import { getTomorrowDate, redirectUser } from "../../functions/Functions";
+import { InfoIcon } from "../../utils/icons/Icons";
+import StatusMessageHandler from '../../components/status-message/StatusMessageHandler';
 import "./signin.css";
 
 const GREY_SHADOW = "0px 0px 48px -21px rgba(0, 0, 0, 0.3)";
@@ -113,6 +115,15 @@ class SignIn extends React.Component {
             <button type="submit" onClick={() => this.signInUser()}>
               Submit
             </button>
+          </div>
+        </div>
+        {/* info */}
+        <div className="signin-info">
+          <div className="signin-info-icon">
+            <InfoIcon height="20px" />
+          </div>
+          <div className="signin-info-text">
+            <span>Admin panel is not mobile friendly</span>
           </div>
         </div>
       </div>

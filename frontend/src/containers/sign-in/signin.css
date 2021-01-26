@@ -27,7 +27,6 @@
 }
 
 .signin-inner-header span {
-  margin-left: 10px;
   font-weight: 400;
   font-size: 13px;
   font-family: "Quicksand", sans-serif;
@@ -54,6 +53,7 @@
 .signin-inner-header-logo .category {
   font-family: var(--primary-font);
   color: var(--primary-black);
+  margin-left: 4px;
 }
 
 .signin-inner-form {
@@ -120,4 +120,37 @@
 
 #disabledShake {
   animation: none;
+}
+
+/* info */
+
+.signin-info {
+  margin: 10px auto;
+  width: 295px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-info-icon {
+  height: 30px;
+  width: 24px;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-info-text {
+  height: 30px;
+  float: left;
+  display: flex;
+  align-items: center;
+}
+
+.signin-info-text span {
+  font-family: var(--secondary-font);
+  font-size: 12px;
+  padding-left: 4px;
+  color: black;
 }
