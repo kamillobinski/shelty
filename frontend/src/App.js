@@ -18,6 +18,7 @@ import "./utils/styles/app.css";
 import AnimalPreview from "./components/home/animal-preview/AnimalPreview";
 import PublicBlog from './components/home/blog/Blog';
 import PublicBlogPost from './components/home/blog/PublicBlogPost';
+import Contact from "./components/home/contact/Contact";
 
 export default class App extends React.Component {
   render() {
@@ -32,6 +33,7 @@ export default class App extends React.Component {
           <Route exact path="/finder" component={AnimalFinder} />
           <Route exact path="/blog" component={PublicBlog} />
           <Route exact path="/blog/post/:id" component={PublicBlogPost} />
+          <Route exact path="/contact" component={Contact} />
           {/* Admin paths */}
           <PrivateRoute
             exact
