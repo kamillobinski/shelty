@@ -67,7 +67,7 @@ export default class AnimalPreview extends React.Component {
                   <div className="animalPreview-inner-top-gallery-inner">
                     {/* ITEM */}
                     {this.state.animalGallery.map((image) => (
-                      <div className="animalPreview-inner-top-gallery-inner-item" onClick={() => this.showImageGallery(image.url, true)}>
+                      <div className="animalPreview-inner-top-gallery-inner-item" onClick={() => this.showImageGallery(image.url, true)} key={image.id}>
                         <div className="animalPreview-inner-top-gallery-inner-item-avatar">
                           <div className="animalPreview-inner-top-gallery-inner-item-avatar-image" style={{ backgroundImage: "url(" + ANIMAL_GALLERY_ROUTE + image.url + ")" }}>
                           </div>

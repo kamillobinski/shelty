@@ -8,7 +8,7 @@ const AnimalGrid = (props) => {
     function renderGrid(list) {
         if (list.length > 0) {
             return list.map((animal) => (
-                <Link to={"/animal/" + animal.id}>
+                <Link to={"/animal/" + animal.id} key={animal.id}>
                     <div className="animalGrid-item" style={{ backgroundImage: "url(" + ANIMAL_AVATAR_ROUTE + animal.avatar + ")" }}>
                         <img src={ANIMAL_AVATAR_ROUTE + animal.avatar} />
                         <div className="animalGrid-item-name">

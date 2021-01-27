@@ -18,6 +18,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(25px);
+  -webkit-filter: blur(25px);
+  -moz-filter: blur(25px);
+  -o-filter: blur(25px);
+  -ms-filter: blur(25px);
+  backdrop-filter: blur(25px);
 }
 
 .imageGallery-background-overlay {
@@ -68,6 +73,10 @@
   position: absolute;
   top: calc(50% - 40px);
   right: 10px;
+}
+
+.imageGallery-layout button:active {
+  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
 }
 
 .imageGallery-layout button:hover {
@@ -133,6 +142,27 @@
   cursor: pointer;
 }
 
+.imageGallery-bottom-limiter-inner-item.active:hover {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  cursor: default;
+}
+
+.imageGallery-bottom-limiter-inner-item.active:active {
+  transform: none;
+}
+
+.imageGallery-bottom-limiter-inner-item:hover {
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.08),
+    0 0.5rem 0.75rem rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.08),
+    0 0.5rem 0.75rem rgba(0, 0, 0, 0.14);
+}
+
+.imageGallery-bottom-limiter-inner-item:active {
+  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+}
+
 .imageGallery-bottom-limiter-inner-item-avatar {
   width: 100%;
   height: 100%;
@@ -160,9 +190,7 @@
   border-radius: 7px;
 }
 
-.imageGallery-bottom-limiter-inner-item-avatar-image-overlay.active {
+.imageGallery-bottom-limiter-inner-item.active
+  .imageGallery-bottom-limiter-inner-item-avatar-image-overlay {
   opacity: 0;
-}
-
-.imageGallery-bottom-limiter-inner-item-avatar-image-overlay:hover {
 }
