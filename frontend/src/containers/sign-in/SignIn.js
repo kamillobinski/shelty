@@ -6,7 +6,6 @@ import {
 } from "../../api/UserApiFunctions";
 import { getTomorrowDate, redirectUser } from "../../functions/Functions";
 import { InfoIcon } from "../../utils/icons/Icons";
-import StatusMessageHandler from '../../components/status-message/StatusMessageHandler';
 import "./signin.css";
 
 const GREY_SHADOW = "0px 0px 48px -21px rgba(0, 0, 0, 0.3)";
