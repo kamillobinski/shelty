@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PrimaryButton from '../../button/PrimaryButton';
 import { MenuIcon } from '../../../utils/icons/Icons';
 import "./publicheader.css";
 
 const TITLE = "Shelty";
-const MENU = [["/", "Homepage"], ["/animals", "Animals for adoption"], ["/finder", "Find a perfect pet"], ["/blog", "Blog"], ["/signin", "Sign-In"]]
+const MENU = [["/", "Homepage"], ["/animals", "Animals for adoption"], ["/finder", "Find a perfect pet"], ["/blog", "Blog"], ["/contact", "Contact"], ["/signin", "Sign-In"]]
 
 class PublicHeader extends React.Component {
   constructor() {
@@ -59,10 +58,15 @@ class PublicHeader extends React.Component {
               <span>{MENU[3][1]}</span>
             </div>
           </Link>
-          <div className="publicHeader-menu-separator"></div>
           <Link to={MENU[4][0]}>
             <div className="publicHeader-menu-item">
               <span>{MENU[4][1]}</span>
+            </div>
+          </Link>
+          <div className="publicHeader-menu-separator"></div>
+          <Link to={MENU[5][0]}>
+            <div className="publicHeader-menu-item">
+              <span>{MENU[5][1]}</span>
             </div>
           </Link>
         </div>
