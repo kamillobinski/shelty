@@ -1,0 +1,168 @@
+.imageGallery {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+/* BACKGROUND */
+
+.imageGallery-background {
+  height: calc(100% + 100px);
+  width: calc(100% + 100px);
+  margin: -50px 0 0 -50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(25px);
+}
+
+.imageGallery-background-overlay {
+  height: calc(100% + 100px);
+  width: calc(100% + 100px);
+  margin: -50px 0 0 -50px;
+  background-color: black;
+  opacity: 0.65;
+}
+
+.imageGallery-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* EXIT BUTTON */
+
+.imageGallery-layout button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background-color: black;
+  z-index: 2;
+  opacity: 0.2;
+  transition: opacity 0.4s;
+}
+
+.imageGallery-exit-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.imageGallery-left-button {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: 10px;
+}
+
+.imageGallery-right-button {
+  position: absolute;
+  top: calc(50% - 40px);
+  right: 10px;
+}
+
+.imageGallery-layout button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.imageGallery-layout button:focus {
+  outline: none !important;
+  border: none;
+}
+
+/* SELECTED IMAGE */
+
+.imageGallery-top-limiter {
+  height: calc(100% - 62px);
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageGallery-top-limiter-image {
+  height: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  padding: 20px 10px 10px 10px;
+}
+
+.imageGallery-top-limiter-image img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 7px;
+}
+
+/* GALLERY PREVIEW */
+
+.imageGallery-bottom-limiter {
+  height: 62px;
+  min-height: 62px;
+  max-height: 62px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageGallery-bottom-limiter-inner {
+  max-width: fit-content;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.imageGallery-bottom-limiter-inner-item {
+  display: inline-block;
+  margin: 10px;
+  height: 100%;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  cursor: pointer;
+}
+
+.imageGallery-bottom-limiter-inner-item-avatar {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.imageGallery-bottom-limiter-inner-item-avatar-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 7px;
+  position: relative;
+  box-shadow: 0 0 1px rgba(39, 44, 49, 0.1), 0 3px 16px rgba(39, 44, 49, 0.07);
+  -webkit-box-shadow: 0 0 1px rgba(39, 44, 49, 0.1),
+    0 3px 16px rgba(39, 44, 49, 0.07);
+}
+
+.imageGallery-bottom-limiter-inner-item-avatar-image-overlay {
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+}
+
+.imageGallery-bottom-limiter-inner-item-avatar-image-overlay.active {
+  opacity: 0;
+}
+
+.imageGallery-bottom-limiter-inner-item-avatar-image-overlay:hover {
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import PublicHeader from "../../header/header-public/PublicHeader";
 import TitleHeader from '../../header/header-title/TitleHeader';
+import ImageGallery from '../../image-gallery/ImageGallery';
 import TextareaAutosize from 'react-textarea-autosize';
 import { formatDateToDisplay } from '../../../functions/Functions';
 import { ANIMAL_AVATAR_ROUTE, ANIMAL_GALLERY_ROUTE } from '../../../api/Api';
@@ -17,7 +18,11 @@ export default class AnimalPreview extends React.Component {
       animalGallery: [],
       animal: "",
       isReady: false,
+      selectedImage: "",
+      shouldShowImageGallery: false,
     };
+    this.showImageGallery = this.showImageGallery.bind(this);
+    this.updateGalleryFromChild = this.updateGalleryFromChild.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +32,18 @@ export default class AnimalPreview extends React.Component {
     getGalleryImages(this.state.animalId).then((res) => {
       this.setState({ animalGallery: res.data })
     });
+  }
+
+  showImageGallery(selectedImage, shouldShow) {
+    this.setState({ selectedImage: selectedImage, shouldShowImageGallery: shouldShow });
+  }
+
+  updateGalleryFromChild(type, value) {
+    switch (type) {
+      case "close": { this.setState({ shouldShowImageGallery: false }); break; }
+      case "select": { this.setState({ selectedImage: value }); break; }
+      default: { break; }
+    }
   }
 
   render() {
@@ -49,8 +66,8 @@ export default class AnimalPreview extends React.Component {
                 <div className="animalPreview-inner-top-gallery">
                   <div className="animalPreview-inner-top-gallery-inner">
                     {/* ITEM */}
-                    {this.state.animalGallery.map((image, i) => (
-                      <div className="animalPreview-inner-top-gallery-inner-item">
+                    {this.state.animalGallery.map((image) => (
+                      <div className="animalPreview-inner-top-gallery-inner-item" onClick={() => this.showImageGallery(image.url, true)}>
                         <div className="animalPreview-inner-top-gallery-inner-item-avatar">
                           <div className="animalPreview-inner-top-gallery-inner-item-avatar-image" style={{ backgroundImage: "url(" + ANIMAL_GALLERY_ROUTE + image.url + ")" }}>
                           </div>
@@ -90,10 +107,11 @@ export default class AnimalPreview extends React.Component {
               </div>
               <div className="animalPreview-inner-separator"></div>
               {/* TEXT */}
-              <TextareaAutosize value={this.state.animal.comments} autoCorrect={false} readOnly={true} />
+              <TextareaAutosize value={this.state.animal.comments} autoCorrect="false" readOnly={true} />
             </>
           ) : null}
         </div>
+        <ImageGallery gallery={this.state.animalGallery} selected={this.state.selectedImage} show={this.state.shouldShowImageGallery} updateGalleryFromChild={this.updateGalleryFromChild} />
       </div>
     );
   }
