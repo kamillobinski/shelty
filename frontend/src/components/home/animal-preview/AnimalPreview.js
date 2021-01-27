@@ -1,19 +1,20 @@
 import React from "react";
 import PublicHeader from "../../header/header-public/PublicHeader";
-import AnimalAvatar from "../../avatar/animal/AnimalAvatar";
-import { getAnimalDetails } from "../../../api/PublicApiFunctions";
-import { formatDate } from "../../../functions/Functions";
+import TitleHeader from '../../header/header-title/TitleHeader';
+import TextareaAutosize from 'react-textarea-autosize';
+import { formatDateToDisplay } from '../../../functions/Functions';
+import { ANIMAL_AVATAR_ROUTE, ANIMAL_GALLERY_ROUTE } from '../../../api/Api';
+import { getAnimalDetails, getGalleryImages } from "../../../api/PublicApiFunctions";
 import "./animalpreview.css";
-import TextInput from "../../input/text/TextInput";
-import TextInputExtended from "../../input/textarea/TextInputExtended";
 
-const animalAvatarSize = { width: "230px", height: "230px" };
+const EMPTY_ITEM = "unknown";
 
 export default class AnimalPreview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       animalId: props.match.params.id,
+      animalGallery: [],
       animal: "",
       isReady: false,
     };
@@ -23,94 +24,75 @@ export default class AnimalPreview extends React.Component {
     getAnimalDetails(this.state.animalId).then((res) => {
       this.setState({ animal: res.data, isReady: true });
     });
+    getGalleryImages(this.state.animalId).then((res) => {
+      this.setState({ animalGallery: res.data })
+    });
   }
 
   render() {
     return (
       <div className="animalPreview">
-        <PublicHeader />
-        <div className="animalPreview-left-container">
-          <AnimalAvatar
-            image={this.state.animal.avatar}
-            width={animalAvatarSize.width}
-            height={animalAvatarSize.height}
-            name="animalAvatar"
-          />
-        </div>
-        <div className="animalPreview-right-container">
+        <div className="animalPreview-inner">
+          <PublicHeader />
           {this.state.isReady ? (
-            <div className="animalPreview-right-container-info">
-              <TextInput
-                label="Name:"
-                value={this.state.animal.name}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Age:"
-                value={this.state.animal.age}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Size:"
-                value={this.state.animal.size.type}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Breed:"
-                value={this.state.animal.breed.breedName}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Gender:"
-                value={this.state.animal.gender.type}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Coat:"
-                value={this.state.animal.coatLength.type}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="House trained:"
-                value={this.state.animal.houseTrained.type}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Identichip:"
-                value={this.state.animal.identichip}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Color:"
-                value={this.state.animal.color}
-                readOnly={true}
-                width="100%"
-              />
-              <TextInput
-                label="Arrived:"
-                value={formatDate(this.state.animal.dateArrivedInShelter)}
-                readOnly={true}
-                width="100%"
-              />
-            </div>
-          ) : (
-            <div></div>
-          )}
-          <TextInputExtended
-            label="comment"
-            value={this.state.animal.comments}
-            width="100%"
-            height="100%"
-            readOnly={true}
-          />
+            <>
+              <div className="animalPreview-inner-top">
+                {/* AVATAR */}
+                <div className="animalPreview-inner-top-avatar">
+                  <div className="animalPreview-inner-top-avatar-image" style={{ backgroundImage: "url(" + ANIMAL_AVATAR_ROUTE + this.state.animal.avatar + ")" }}>
+                  </div>
+                </div>
+                {/* TITLE */}
+                <div className="animalPreview-inner-top-title">
+                  <TitleHeader title={this.state.animal.name} description={this.state.animal.breed.breedName + " - " + this.state.animal.breed.species.speciesName} />
+                </div>
+                <div className="animalPreview-inner-top-gallery">
+                  <div className="animalPreview-inner-top-gallery-inner">
+                    {/* ITEM */}
+                    {this.state.animalGallery.map((image, i) => (
+                      <div className="animalPreview-inner-top-gallery-inner-item">
+                        <div className="animalPreview-inner-top-gallery-inner-item-avatar">
+                          <div className="animalPreview-inner-top-gallery-inner-item-avatar-image" style={{ backgroundImage: "url(" + ANIMAL_GALLERY_ROUTE + image.url + ")" }}>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="animalPreview-inner-separator"></div>
+              {/* Categorized info */}
+              <div className="animalPreview-inner-info">
+                <div className="animalPreview-inner-info-category">
+                  AGE: <span>{this.state.animal.age || EMPTY_ITEM}</span>
+                </div>
+                <div className="animalPreview-inner-info-category">
+                  SIZE: <span>{this.state.animal.size.type || EMPTY_ITEM}</span>
+                </div>
+                <div className="animalPreview-inner-info-category">
+                  BREED: <span>{this.state.animal.breed.breedName || EMPTY_ITEM}</span>
+                </div>
+                <div className="animalPreview-inner-info-category">
+                  GENDER: <span>{this.state.animal.gender.type || EMPTY_ITEM}</span>
+                </div>
+                <div className="animalPreview-inner-info-category">
+                  COAT LENGTH: <span>{this.state.animal.coatLength.type || EMPTY_ITEM}</span>
+                </div>
+                <div className="animalPreview-inner-info-category">
+                  HOUSE-TRAINED: <span>{this.state.animal.houseTrained.type || EMPTY_ITEM}</span>
+                </div>
+                <div className="animalPreview-inner-info-category">
+                  COLOR: <span>{this.state.animal.color || EMPTY_ITEM}</span>
+                </div>
+                <div className="animalPreview-inner-info-category">
+                  DATE ARRIVED: <span>{formatDateToDisplay(this.state.animal.dateArrivedInShelter) || EMPTY_ITEM}</span>
+                </div>
+              </div>
+              <div className="animalPreview-inner-separator"></div>
+              {/* TEXT */}
+              <TextareaAutosize value={this.state.animal.comments} autoCorrect={false} readOnly={true} />
+            </>
+          ) : null}
         </div>
       </div>
     );
