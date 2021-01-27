@@ -45,3 +45,8 @@ export function getBlogPosts() {
   axios.defaults.baseURL = BASE_URL;
   return axios.get("/api/public/get/blog/posts");
 }
+
+export function getGalleryImages(id) {
+  axios.defaults.baseURL = BASE_URL;
+  return axios.get("/api/public/get/animal/" + id + "/gallery");
+}

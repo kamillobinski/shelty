@@ -1,13 +1,7 @@
 package kamillobinski.sheltybackend.controller;
 
-import kamillobinski.sheltybackend.entity.Animal;
-import kamillobinski.sheltybackend.entity.Breed;
-import kamillobinski.sheltybackend.entity.Post;
-import kamillobinski.sheltybackend.entity.Species;
-import kamillobinski.sheltybackend.service.AnimalService;
-import kamillobinski.sheltybackend.service.BreedService;
-import kamillobinski.sheltybackend.service.PostService;
-import kamillobinski.sheltybackend.service.SpeciesService;
+import kamillobinski.sheltybackend.entity.*;
+import kamillobinski.sheltybackend.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +21,9 @@ public class PublicController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private ImagesService imagesService;
 
     @GetMapping("/animals/latest")
     public List<Animal> listAllAnimals() { return animalService.getAllReadyForAdoptionAnimals(); }
@@ -52,5 +49,8 @@ public class PublicController {
 
     @GetMapping("/get/blog/posts")
     public List<Post> listAllPosts() { return postService.getAll(); }
+
+    @GetMapping("/get/animal/{id}/gallery")
+    public List<Images> listAllGalleryImages(@PathVariable String id) { return imagesService.getImages(id); }
 
 }
