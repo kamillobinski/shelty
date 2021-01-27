@@ -10,9 +10,11 @@
 }
 
 .publicBlog-inner {
-  width: fit-content;
+  width: 100%;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  box-sizing: border-box;
 }
 
 @media (min-width: 1025px) and (max-width: 1320px) {

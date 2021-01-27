@@ -62,13 +62,14 @@
   padding: 0 100px 100px 100px;
   line-height: 1.5;
   font-family: var(--secondary-font);
-  color: #000000;
+  color: #8b959e;
   overflow: hidden;
 }
 
 .blogPostContent-text img {
   max-width: 100%;
   height: auto;
+  border-radius: 7px;
 }
 
 .blogPostContent-text a {
