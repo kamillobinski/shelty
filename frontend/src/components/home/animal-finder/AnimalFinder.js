@@ -100,7 +100,7 @@ export default class AnimalFinder extends React.Component {
       <div className="animalFinder">
         <div className="animalFinder-inner">
           <PublicHeader />
-          <TitleHeader title="Animal finder" description="Find a perfect pet" />
+          <TitleHeader title="Animal finder" description="Find the most suitable pet" />
           <div className="animalFinder-form">
             <SelectInput
               label="Age:"

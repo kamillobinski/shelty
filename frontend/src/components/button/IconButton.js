@@ -1,5 +1,5 @@
 import React from "react";
-import { SettingsIcon, DeleteIcon } from "../../utils/icons/Icons";
+import { SettingsIcon, DeleteIcon, BlogIcon } from "../../utils/icons/Icons";
 import "./iconbutton.css";
 
 const ICON_HEIGHT = "16px";
@@ -19,6 +19,14 @@ const IconButton = (props) => {
     } else if (type === "delete-user") {
       return (
         <DeleteIcon height={ICON_HEIGHT} width={ICON_WIDTH} fill={ICON_FILL} />
+      );
+    } else if (type === "blog") {
+      return (
+        <BlogIcon
+          height={ICON_HEIGHT}
+          width={ICON_WIDTH}
+          fill={ICON_FILL}
+        />
       );
     }
   };

@@ -17,12 +17,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   filter: blur(25px);
   -webkit-filter: blur(25px);
   -moz-filter: blur(25px);
   -o-filter: blur(25px);
   -ms-filter: blur(25px);
   backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 
 .imageGallery-background-overlay {

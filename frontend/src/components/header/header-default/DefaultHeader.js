@@ -28,6 +28,18 @@ const DefaultHeader = (props) => {
               </Link>
             </div>
           </div>
+          <div className="searchHeader-inner-right-content-buttons">
+            <div className="searchHeader-inner-right-content-buttons-centered">
+              <Link to="/admin/blog">
+                <IconButton
+                  width="30px"
+                  height="30px"
+                  type="blog"
+                  rotate={true}
+                />
+              </Link>
+            </div>
+          </div>
           <div
             className={
               "defaultHeader-inner-right-content-avatar" +
