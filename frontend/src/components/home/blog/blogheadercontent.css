@@ -30,3 +30,41 @@
   font-weight: 600;
   color: #a0a6ad;
 }
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .blogHeaderContent {
+    padding: 75px 0;
+    height: auto;
+  }
+
+  .blogHeaderContent-title {
+    margin: 0;
+  }
+
+  .blogHeaderContent-title span {
+    font-size: 30px !important;
+  }
+
+  .blogHeaderContent-description {
+    width: 75%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .blogHeaderContent {
+    padding: 75px 0;
+    height: auto;
+  }
+
+  .blogHeaderContent-title {
+    margin: 0;
+  }
+
+  .blogHeaderContent-title span {
+    font-size: 24px !important;
+  }
+
+  .blogHeaderContent-description {
+    width: 75%;
+  }
+}

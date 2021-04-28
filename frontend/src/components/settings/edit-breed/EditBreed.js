@@ -8,6 +8,7 @@ import {
   deleteBreedOption,
 } from "../../../api/AnimalApiFunctions";
 import "./editbreed.css";
+import { sortBreedsAlphabetically } from '../../../functions/Functions';
 import PrimaryButton from "../../button/PrimaryButton";
 import StatusMessageHandler from "../../status-message/StatusMessageHandler";
 
@@ -37,7 +38,7 @@ class EditBreed extends React.Component {
 
   getInitialData() {
     getBreedOptions().then((res) => {
-      this.setState({ breedList: res.data });
+      this.setState({ breedList: sortBreedsAlphabetically(res.data) });
     });
     getSpeciesOptions().then((res) => {
       this.setState({ speciesList: res.data });
@@ -82,7 +83,7 @@ class EditBreed extends React.Component {
         this.setState({
           shouldShowStatusMessage: true,
           statusMessageType: "success",
-          statusMessage: "Breed has been deleted",
+          statusMessage: "Breed has been removed",
         });
         this.getInitialData();
       })
@@ -100,14 +101,14 @@ class EditBreed extends React.Component {
       <div className="editBreed">
         <div className="editBreed-inner">
           <TextInput
-            label="Breed name:"
+            label="Breed:"
             width="100%"
             name="breed"
             value={this.state.breed}
             onChange={this.handleInputChange}
           />
           <SelectInput
-            label="Species name:"
+            label="Type:"
             width="100%"
             name="species"
             type="species"
@@ -122,29 +123,86 @@ class EditBreed extends React.Component {
             onClick={() => this.addBreed(this.state.breed, this.state.species)}
           />
           <div className="editBreed-inner-list">
-            {this.state.breedList.map((breed, i) => (
-              <div className="editBreed-inner-list-item" key={i}>
-                <TextInput
-                  key={breed.id}
-                  type="text"
-                  label={"Breed #" + i}
-                  name="breed"
-                  value={breed.breedName + " - " + breed.species.speciesName}
-                  width="100%"
-                  height="30px"
-                  margin="0 120px 0 0"
-                  readOnly={true}
-                />
-                <div className="editBreed-inner-list-item-delete-btn">
-                  <PrimaryButton
-                    text="Remove"
-                    width="100px"
-                    type="red"
-                    onClick={() => this.deleteExistingBreed(breed.id)}
-                  />
-                </div>
-              </div>
-            ))}
+            {this.state.breedList.map((breed, i, array) => {
+              if (i + 1 < array.length) {
+                if (breed.species.speciesName === array[i + 1].species.speciesName) {
+                  return (
+                    <div className="editBreed-inner-list-item" key={i}>
+                      <TextInput
+                        key={breed.id}
+                        type="text"
+                        label={breed.species.speciesName.toUpperCase()}
+                        name="breed"
+                        value={breed.breedName}
+                        width="100%"
+                        height="30px"
+                        margin="0 120px 0 0"
+                        readOnly={true}
+                      />
+                      <div className="editBreed-inner-list-item-delete-btn">
+                        <PrimaryButton
+                          text="Remove"
+                          width="100px"
+                          type="red"
+                          onClick={() => this.deleteExistingBreed(breed.id)}
+                        />
+                      </div>
+                    </div>
+                  )
+                } else if (breed.species.speciesName !== array[i + 1].species.speciesName) {
+                  return (
+                    <>
+                      <div className="editBreed-inner-list-item" key={i}>
+                        <TextInput
+                          key={breed.id}
+                          type="text"
+                          label={breed.species.speciesName.toUpperCase()}
+                          name="breed"
+                          value={breed.breedName}
+                          width="100%"
+                          height="30px"
+                          margin="0 120px 0 0"
+                          readOnly={true}
+                        />
+                        <div className="editBreed-inner-list-item-delete-btn">
+                          <PrimaryButton
+                            text="Remove"
+                            width="100px"
+                            type="red"
+                            onClick={() => this.deleteExistingBreed(breed.id)}
+                          />
+                        </div>
+                      </div>
+                      <br />
+                    </>
+                  )
+                }
+              } else {
+                return (
+                  <div className="editBreed-inner-list-item" key={i}>
+                    <TextInput
+                      key={breed.id}
+                      type="text"
+                      label={breed.species.speciesName.toUpperCase()}
+                      name="breed"
+                      value={breed.breedName}
+                      width="100%"
+                      height="30px"
+                      margin="0 120px 0 0"
+                      readOnly={true}
+                    />
+                    <div className="editBreed-inner-list-item-delete-btn">
+                      <PrimaryButton
+                        text="Usuń"
+                        width="100px"
+                        type="red"
+                        onClick={() => this.deleteExistingBreed(breed.id)}
+                      />
+                    </div>
+                  </div>
+                )
+              }
+            })}
           </div>
         </div>
         <StatusMessageHandler
@@ -153,7 +211,7 @@ class EditBreed extends React.Component {
           statusMessage={this.state.statusMessage}
           updateStateOnClose={this.hideStatusMessage}
         />
-      </div>
+      </div >
     );
   }
 }

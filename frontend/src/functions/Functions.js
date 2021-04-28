@@ -216,4 +216,6 @@ function filterByAge(list, age) {
   }
 }
 
-
+export function sortBreedsAlphabetically(items) {
+  return items.sort((a, b) => a.species.speciesName.localeCompare(b.species.speciesName));
+}

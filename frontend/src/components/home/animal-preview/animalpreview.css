@@ -192,3 +192,129 @@
   outline: none !important;
   border: none;
 }
+
+/* mobile */
+
+@media (min-width: 1025px) and (max-width: 1320px) {
+  .animalPreview-inner {
+    padding: 0 24px 0 24px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .animalPreview-inner {
+    padding: 0 24px 0 24px;
+  }
+
+  .animalPreview-inner-top-gallery {
+    position: block;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .animalPreview-inner-top-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .animalPreview-inner-info {
+    grid-template-columns: auto;
+    grid-row-gap: 0;
+    grid-column-gap: 0;
+  }
+
+  .animalPreview-inner-info-category {
+    border-bottom: 1px solid var(--primary-grey-light);
+    padding: 7px 0;
+  }
+
+  .animalPreview-inner-info-category:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .animalPreview-inner {
+    padding: 0 24px 0 24px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .animalPreview-inner {
+    padding: 0 24px 0 24px;
+  }
+
+  .animalPreview-inner-top-gallery {
+    position: block;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .animalPreview-inner-top-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .animalPreview-inner .titleHeader-title span {
+    font-size: 24px !important;
+  }
+
+  .animalPreview-inner .titleHeader-description {
+    width: 75%;
+  }
+
+  .animalPreview-inner-info {
+    grid-template-columns: auto;
+    grid-row-gap: 0;
+    grid-column-gap: 0;
+  }
+
+  .animalPreview-inner-info-category {
+    border-bottom: 1px solid var(--primary-grey-light);
+    padding: 7px 0;
+  }
+
+  .animalPreview-inner-info-category:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .animalPreview-inner {
+    padding: 0 24px 0 24px;
+  }
+
+  .animalPreview-inner-top-gallery {
+    position: block;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .animalPreview-inner-top-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .animalPreview-inner .titleHeader-title span {
+    font-size: 24px !important;
+  }
+
+  .animalPreview-inner .titleHeader-description {
+    width: 75%;
+  }
+
+  .animalPreview-inner-info {
+    grid-template-columns: auto;
+    grid-row-gap: 0;
+    grid-column-gap: 0;
+  }
+
+  .animalPreview-inner-info-category {
+    border-bottom: 1px solid var(--primary-grey-light);
+    padding: 7px 0;
+  }
+
+  .animalPreview-inner-info-category:last-child {
+    border-bottom: none;
+  }
+}

@@ -69,33 +69,9 @@ class AnimalMedicalInformation extends React.Component {
     return (
       <div className="animalMedicalInformation" >
         <div className="animalMedicalInformation-category">
-          <CategoryTitle title="Medical information" />
+          <CategoryTitle title="Historia leczenia" />
         </div>
         <div className="animalMedicalInformation-inputs">
-          {/*<TextInput
-            label="Grafting date:"
-            name="animalGraftingDate"
-            value={this.props.graftingDate}
-            onChange={this.props.handleInputChange}
-            width="100%"
-            type="date"
-          />
-          <TextInput
-            label="Deworming date:"
-            name="animalDewormingDate"
-            value={this.props.dewormingDate}
-            onChange={this.props.handleInputChange}
-            width="100%"
-            type="date"
-          />
-          <TextInput
-            label="Sterilization date:"
-            name="animalSterilizationDate"
-            value={this.props.sterilizationDate}
-            onChange={this.props.handleInputChange}
-            width="100%"
-            type="date"
-          />*/}
           <table style={{ width: "100%", textAlign: "left", fontFamily: "var(--primary-font)", fontSize: "15px" }}>
             {historyList.map((history, i) => (
               <tr>
@@ -104,16 +80,16 @@ class AnimalMedicalInformation extends React.Component {
                 <td>{history.type}</td>
                 <td>{history.medicine}</td>
                 <td>{history.vet}</td>
-                <td><button width="100%" onClick={() => this.deleteMedicalHistoryItem(history.id)}>Delete</button></td>
+                <td><button width="100%" onClick={() => this.deleteMedicalHistoryItem(history.id)}>Usuń</button></td>
               </tr>
             ))}
             <tr>
               <td><input type="checkbox" name="inputIsCompleted" checked={this.state.inputIsCompleted} onChange={this.handleInputChange} ></input></td>
               <td><input style={{ width: "100%" }} type="date" name="inputDate" value={this.state.inputDate} onChange={this.handleInputChange}></input></td>
-              <td><input style={{ width: "100%" }} placeholder="type" name="inputType" value={this.state.inputType} onChange={this.handleInputChange}></input></td>
-              <td><input style={{ width: "100%" }} placeholder="medicine" name="inputMedicine" value={this.state.inputMedicine} onChange={this.handleInputChange}></input></td>
-              <td><input style={{ width: "100%" }} placeholder="vet" name="inputVet" value={this.state.inputVet} onChange={this.handleInputChange}></input></td>
-              <td><button width="100%" onClick={() => this.saveMedicalHistoryItem()}>Save</button></td>
+              <td><input style={{ width: "100%" }} placeholder="Typ leczenia" name="inputType" value={this.state.inputType} onChange={this.handleInputChange}></input></td>
+              <td><input style={{ width: "100%" }} placeholder="Lekarstwo" name="inputMedicine" value={this.state.inputMedicine} onChange={this.handleInputChange}></input></td>
+              <td><input style={{ width: "100%" }} placeholder="Weterynarz" name="inputVet" value={this.state.inputVet} onChange={this.handleInputChange}></input></td>
+              <td><button width="100%" onClick={() => this.saveMedicalHistoryItem()}>Dodaj</button></td>
             </tr>
           </table>
         </div>
