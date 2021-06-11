@@ -7,7 +7,7 @@
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
     "@tinymce/tinymce-react": "^3.9.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react": "^17.0.1",
     "react-contextmenu": "^2.14.0",
     "react-dom": "^17.0.1",
