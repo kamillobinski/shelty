@@ -21,12 +21,12 @@ public class SpeciesController {
     @GetMapping("/all")
     public List<Species> listAllSpecies() { return speciesService.getAllOptions(); }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public void addSpecies(@RequestParam String speciesName) {
        speciesService.addSpecies(speciesName);
     }
 
-    @GetMapping("/{id}/delete")
+    @DeleteMapping("/{id}/delete")
     public void deleteSpecies(@PathVariable String id) {
         speciesService.deleteSpecies(id);
     }

@@ -15,12 +15,12 @@ public class PostCategoryController {
     @Autowired
     private PostCategoryService postCategoryService;
 
-    @RequestMapping(value="/add/{category}", method = RequestMethod.POST)
+    @PostMapping(value="/add/{category}")
     public void addPostCategory(@PathVariable String category) { postCategoryService.addCategory(category); }
 
-    @RequestMapping(value="/get/all", method = RequestMethod.GET)
+    @GetMapping(value="/get/all")
     public List<PostCategory> getAllPostCategories() { return postCategoryService.getAllCategories(); }
 
-    @RequestMapping(value="/delete/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value="/delete/{id}")
     public void deletePostCategory(@PathVariable String id) { postCategoryService.deleteCategory(id); }
 }

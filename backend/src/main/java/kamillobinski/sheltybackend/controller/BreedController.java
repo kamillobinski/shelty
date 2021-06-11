@@ -27,12 +27,12 @@ public class BreedController {
         }
     }
 
-    @GetMapping("/add")
+    @PutMapping("/add")
     public void addBreed(@RequestParam String breedName, @RequestParam String speciesId) {
         breedService.addBreed(breedName, speciesId);
     }
 
-    @GetMapping("/{breedId}/delete")
+    @DeleteMapping("/{breedId}/delete")
     public void deleteBreed(@PathVariable String breedId) {
         breedService.deleteBreed(breedId);
     }

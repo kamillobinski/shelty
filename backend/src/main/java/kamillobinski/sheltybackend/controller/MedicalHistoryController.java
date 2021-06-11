@@ -15,19 +15,19 @@ public class MedicalHistoryController {
     @Autowired
     private MedicalHistoryService medicalHistoryService;
 
-    @RequestMapping(value="/get/{animalId}", method = RequestMethod.GET)
+    @GetMapping(value="/get/{animalId}")
     public List<MedicalHistory> getMedicalData(@PathVariable String animalId) { return medicalHistoryService.getData(animalId); }
 
-    @RequestMapping(value="/save/{animalId}", method = RequestMethod.GET)
+    @PostMapping(value="/save/{animalId}")
     public void saveMedialData(@PathVariable String animalId, @RequestParam String type, @RequestParam String medicine,
                                @RequestParam String vet, @RequestParam String date, @RequestParam String isCompleted) {
         medicalHistoryService.saveData(animalId, type, medicine, vet, date, isCompleted);
     }
 
-    @RequestMapping(value="/delete/{medicalHistoryId}", method = RequestMethod.GET)
+    @DeleteMapping(value="/delete/{medicalHistoryId}")
     public void deleteMedicalData(@PathVariable String medicalHistoryId) { medicalHistoryService.deleteData(medicalHistoryId); }
 
-    @RequestMapping(value="/update/{medicalHistoryId}", method = RequestMethod.GET)
+    @PutMapping(value="/update/{medicalHistoryId}")
     public void updateMedicalDataStatus(@PathVariable String medicalHistoryId, @RequestParam String status) { medicalHistoryService.updateDataStatus(medicalHistoryId, status); }
 
 }

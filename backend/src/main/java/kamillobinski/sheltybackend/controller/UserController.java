@@ -34,12 +34,7 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/add")
-    public void createUser(@RequestParam String username, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String password) {
-        userService.addUser(username, firstName, lastName, email, password);
-    }
-
-    @GetMapping("/{id}/update")
+    @PutMapping("/{id}/update")
     public void updateUser(@PathVariable String id, @RequestParam String username, @RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName, @RequestParam String email, @RequestParam String password) {
         userService.updateUser(id, username, firstName, lastName, email, password);
     }
@@ -49,16 +44,18 @@ public class UserController {
         return userService.getUserAvatar(id);
     }
 
-    @GetMapping("/{id}/update-password")
-    public Boolean updateUserPassword(@PathVariable String id, @RequestParam String oldPassword, @RequestParam String newPassword) { System.out.println(oldPassword + " " + newPassword);return userService.updatePassword(id, oldPassword, newPassword); }
+    @PutMapping("/{id}/update-password")
+    public Boolean updateUserPassword(@PathVariable String id, @RequestParam String oldPassword, @RequestParam String newPassword) {
+        return userService.updatePassword(id, oldPassword, newPassword);
+    }
 
-    @RequestMapping(value="/{id}/update-avatar" , headers = "content-type=multipart/*", method = RequestMethod.POST)
+    @PutMapping(value="/{id}/update-avatar" , headers = "content-type=multipart/*")
     public void updateAnimalAvatar(@PathVariable String id, @RequestParam(value = "image") MultipartFile image ) {
         userService.updateUserAvatar(id, image);
     }
 
-    @GetMapping("/{id}/delete")
-    public void deleteAnimal(@PathVariable String id) {
+    @DeleteMapping("/{id}/delete")
+    public void deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
     }
 }

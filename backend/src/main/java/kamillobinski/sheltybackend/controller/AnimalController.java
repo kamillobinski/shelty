@@ -29,7 +29,7 @@ public class AnimalController {
     @GetMapping("/{id}/update-name/{name}")
     public void updateAnimalName(@PathVariable String id, @PathVariable String name) { animalService.updateAnimalName(id, name); }
 
-    @GetMapping("/{id}/update")
+    @PutMapping("/{id}/update")
     public void updateAnimal(@PathVariable String id, @RequestParam String name, @RequestParam String dateOfBirth, @RequestParam String age,
                              @RequestParam String size, @RequestParam String breed, @RequestParam String gender, @RequestParam String color,
                              @RequestParam String dateArrivedInShelter, @RequestParam String dateAdopted, @RequestParam String identichip,

@@ -122,7 +122,7 @@ export function updateUserAvatar(id, formData) {
   validateTokenBeforeAxios();
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.post("/api/user/" + id + "/update-avatar", formData, {
+  return axios.put("/api/user/" + id + "/update-avatar", formData, {
     headers: { "content-type": "multipart/form-data" },
   });
 }
@@ -131,7 +131,7 @@ export function updateUser(id, username, firstName, lastName, email, password) {
   validateTokenBeforeAxios();
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("/api/user/" + id + "/update", {
+  return axios.put("/api/user/" + id + "/update", null, {
     params: {
       username,
       firstName,
@@ -146,14 +146,14 @@ export function deleteUser(id) {
   validateTokenBeforeAxios();
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("/api/user/" + id + "/delete");
+  return axios.delete("/api/user/" + id + "/delete");
 }
 
 export function updatePassword(id, oldPassword, newPassword) {
   validateTokenBeforeAxios();
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("/api/user/" + id + "/update-password", {
+  return axios.put("/api/user/" + id + "/update-password", null, {
     params: {
       oldPassword,
       newPassword,

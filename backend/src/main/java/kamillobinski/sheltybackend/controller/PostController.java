@@ -22,23 +22,23 @@ public class PostController {
     @GetMapping("/get/all")
     public List<Post> getPosts() { return postService.getAll(); }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public Integer addPost(@RequestParam String title, @RequestParam String text, @RequestParam String authorId, @RequestParam String date) { return postService.add(title, text, date, authorId); }
 
-    @GetMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public void updatePost(@PathVariable String id, @RequestParam String title, @RequestParam String text, @RequestParam String categoryId) { postService.update(id, title, text, categoryId); }
 
-    @RequestMapping(value="/{id}/add/thumbnail" , headers = "content-type=multipart/*", method = RequestMethod.POST)
+    @PostMapping(value="/{id}/add/thumbnail" , headers = "content-type=multipart/*")
     public String addPostThumbnail(@PathVariable String id, @RequestParam(value = "image") MultipartFile image ) {
         return postService.addThumbnail(id, image);
     }
 
-    @RequestMapping(value="/{id}/delete/thumbnail", method = RequestMethod.DELETE)
+    @DeleteMapping(value="/{id}/delete/thumbnail")
     public void deletePostThumbnail(@PathVariable String id) {
         postService.deleteThumbnail(id);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deletePost(@PathVariable String id) { postService.delete(id); }
 
 }

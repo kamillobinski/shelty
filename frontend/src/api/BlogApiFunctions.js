@@ -14,7 +14,7 @@ export function getPosts() {
 export function updatePost(id, title, text, categoryId) {
     axios.defaults.baseURL = BASE_URL;
     axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-    return axios.get("/api/post/update/" + id, {
+    return axios.put("/api/post/update/" + id, null, {
         params: {
             title,
             text,
@@ -26,13 +26,13 @@ export function updatePost(id, title, text, categoryId) {
 export function deletePost(id) {
     axios.defaults.baseURL = BASE_URL;
     axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-    return axios.get("/api/post/delete/" + id);
+    return axios.delete("/api/post/delete/" + id);
 }
 
 export function addPost(title, text, date, authorId) {
     axios.defaults.baseURL = BASE_URL;
     axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-    return axios.get("/api/post/add/", {
+    return axios.post("/api/post/add/", null, {
         params: {
             title,
             text,

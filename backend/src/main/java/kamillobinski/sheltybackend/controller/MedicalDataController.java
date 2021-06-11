@@ -17,16 +17,16 @@ public class MedicalDataController {
         this.medicalDataService = medicalDataService;
     }
 
-    @RequestMapping(value="/save/{animalId}", method = RequestMethod.GET)
+    @PutMapping(value="/save/{animalId}")
     public void saveMedicalData(@PathVariable String animalId, @RequestParam String graftingDate, @RequestParam String dewormingDate,
                                 @RequestParam String sterilizationDate, @RequestParam String description) throws ParseException {
         medicalDataService.saveData(animalId, graftingDate, dewormingDate, sterilizationDate, description);
     }
 
-    @RequestMapping(value="/get/{animalId}", method = RequestMethod.GET)
+    @GetMapping(value="/get/{animalId}")
     public MedicalData getMedicalData(@PathVariable String animalId) { return medicalDataService.getData(animalId); }
 
-    @RequestMapping(value = "/delete/{animalId}", method = RequestMethod.GET)
+    @DeleteMapping(value = "/delete/{animalId}")
     public void deleteMedicalData(@PathVariable String animalId) {
         medicalDataService.deleteData(animalId);
     }
