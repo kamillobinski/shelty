@@ -26,9 +26,6 @@ public class AnimalController {
     @GetMapping("/get/id/{name}")
     public int getAnimalId(@PathVariable String name) { return animalService.getAnimalId(name); }
 
-    @GetMapping("/{id}/update-name/{name}")
-    public void updateAnimalName(@PathVariable String id, @PathVariable String name) { animalService.updateAnimalName(id, name); }
-
     @PutMapping("/{id}/update")
     public void updateAnimal(@PathVariable String id, @RequestParam String name, @RequestParam String dateOfBirth, @RequestParam String age,
                              @RequestParam String size, @RequestParam String breed, @RequestParam String gender, @RequestParam String color,
@@ -37,12 +34,12 @@ public class AnimalController {
         animalService.updateAnimal(id, name, dateOfBirth, age, size, breed, gender, color, coatLength, dateArrivedInShelter, dateAdopted, identichip, houseTrained, isReady, comments);
     }
 
-    @RequestMapping(value="/{id}/update-avatar" , headers = "content-type=multipart/*", method = RequestMethod.POST)
+    @PutMapping(value="/{id}/update-avatar" , headers = "content-type=multipart/*")
     public void updateAnimalAvatar(@PathVariable String id, @RequestParam(value = "image") MultipartFile image ) {
         animalService.updateAnimalAvatar(id, image);
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public void addAnimal(@RequestParam String name, @RequestParam String dateOfBirth, @RequestParam String age, @RequestParam String size,
                           @RequestParam String breed, @RequestParam String gender, @RequestParam String color,
                           @RequestParam String dateArrivedInShelter, @RequestParam String dateAdopted, @RequestParam String identichip,
@@ -50,7 +47,7 @@ public class AnimalController {
         animalService.addAnimal(name, dateOfBirth, age, size, breed, gender, color, coatLength, dateArrivedInShelter, dateAdopted, identichip, houseTrained, comments, isReady);
     }
 
-    @GetMapping("/{id}/delete")
+    @DeleteMapping("/{id}/delete")
     public void deleteAnimal(@PathVariable String id) {
         animalService.deleteAnimal(id);
     }

@@ -135,7 +135,7 @@ export function updateAnimal(
 export function deleteAnimal(id) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("/api/animal/" + id + "/delete");
+  return axios.delete("/api/animal/" + id + "/delete");
 }
 
 export function deleteGalleryImages(id) {
@@ -147,7 +147,7 @@ export function deleteGalleryImages(id) {
 export function updateAnimalAvatar(id, formData) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.post("/api/animal/" + id + "/update-avatar", formData, {
+  return axios.put("/api/animal/" + id + "/update-avatar", formData, {
     headers: { "content-type": "multipart/form-data" },
   });
 }
@@ -190,7 +190,7 @@ export function addNewAnimal(
 ) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("/api/animal/add", {
+  return axios.post("/api/animal/add", null, {
     params: {
       name,
       dateOfBirth,
