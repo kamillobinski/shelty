@@ -19,5 +19,5 @@ public class CoatLengthController {
     private CoatLengthService coatLengthService;
 
     @GetMapping("/all")
-    public List<CoatLength> listAllCoatLengths() { return coatLengthService.getAllCoatLengths(); }
+    public List<CoatLength> getCoatLengths() { return coatLengthService.getAllCoatLengths(); }
 }

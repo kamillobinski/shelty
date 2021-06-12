@@ -19,6 +19,6 @@ public class GenderController {
     private GenderService genderService;
 
     @GetMapping("/all")
-    public List<Gender> listAllGenders() { return  genderService.getAllGenders(); }
+    public List<Gender> getGenders() { return  genderService.getAllGenders(); }
 
 }

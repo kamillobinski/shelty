@@ -19,6 +19,6 @@ public class HouseTrainedController {
     private HouseTrainedService houseTrainedService;
 
     @GetMapping("/all")
-    public List<HouseTrained> listAllHouseTrainedOptions() { return houseTrainedService.getAllOptions(); }
+    public List<HouseTrained> getHouseTrained() { return houseTrainedService.getAllOptions(); }
 
 }

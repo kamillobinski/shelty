@@ -15,8 +15,13 @@ public class BreedController {
     @Autowired
     private BreedService breedService;
 
+    @PostMapping("/create")
+    public void addBreed(@RequestParam String breedName, @RequestParam String speciesId) {
+        breedService.addBreed(breedName, speciesId);
+    }
+
     @GetMapping("/all")
-    public List<Breed> listAllBreeds(@RequestParam boolean sorted) {
+    public List<Breed> getBreeds(@RequestParam boolean sorted) {
         // Depending on the received parameter, the returned breed list
         // will be in the same order as in the database(sorted == false) or
         // sorted alphabetically based on the name of the breed(sorted == true).
@@ -25,11 +30,6 @@ public class BreedController {
         } else {
             return breedService.getAllBreeds();
         }
-    }
-
-    @PutMapping("/add")
-    public void addBreed(@RequestParam String breedName, @RequestParam String speciesId) {
-        breedService.addBreed(breedName, speciesId);
     }
 
     @DeleteMapping("/{breedId}/delete")

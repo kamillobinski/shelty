@@ -1,8 +1,8 @@
 package kamillobinski.sheltybackend.controller;
 
-import kamillobinski.sheltybackend.entity.HouseTrained;
 import kamillobinski.sheltybackend.entity.Species;
 import kamillobinski.sheltybackend.service.SpeciesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,19 +12,16 @@ import java.util.List;
 @RequestMapping("/api/species")
 public class SpeciesController {
 
-    private final SpeciesService speciesService;
+    @Autowired
+    private SpeciesService speciesService;
 
-    public SpeciesController(SpeciesService speciesService) {
-        this.speciesService = speciesService;
+    @PostMapping("/create")
+    public void createSpecies(@RequestParam String speciesName) {
+        speciesService.addSpecies(speciesName);
     }
 
     @GetMapping("/all")
-    public List<Species> listAllSpecies() { return speciesService.getAllOptions(); }
-
-    @PostMapping("/add")
-    public void addSpecies(@RequestParam String speciesName) {
-       speciesService.addSpecies(speciesName);
-    }
+    public List<Species> getSpecies() { return speciesService.getAllOptions(); }
 
     @DeleteMapping("/{id}/delete")
     public void deleteSpecies(@PathVariable String id) {

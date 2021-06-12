@@ -18,19 +18,19 @@ public class ImagesController {
     @Autowired
     private ImagesService imagesService;
 
-    @PostMapping(value="/save/{animalId}", headers = "content-type=multipart/*")
+    @PostMapping(value="/{animalId}/save", headers = "content-type=multipart/*")
     public void saveImage(@PathVariable String animalId, @RequestParam(value = "image") MultipartFile image) { imagesService.saveImage(animalId, image); }
+
+    @PutMapping(value="/{animalId}/{imageId}/set/avatar")
+    public void setImageAsAvatar(@PathVariable String animalId, @PathVariable String imageId) throws IOException { imagesService.setAvatarFromImage(imageId, animalId); }
 
     @GetMapping(value="/fetch/all/{animalId}")
     public List<Images> getAllImagesForOneAnimal(@PathVariable String animalId) { return imagesService.getImages(animalId); }
 
-    @DeleteMapping(value="/delete/{imageId}")
+    @DeleteMapping(value="/{imageId}/delete")
     public void deleteImage(@PathVariable String imageId) throws IOException { imagesService.deleteImage(imageId); }
 
-    @DeleteMapping(value="/delete/all/{animalId}")
+    @DeleteMapping(value="/{animalId}/delete/all")
     public void deleteImages(@PathVariable String animalId) { imagesService.deleteImages(animalId); }
-
-    @PutMapping(value="/set/avatar/{imageId}/{animalId}")
-    public void setAvatarFromImage(@PathVariable String imageId, @PathVariable String animalId) throws IOException { imagesService.setAvatarFromImage(imageId, animalId); }
 
 }

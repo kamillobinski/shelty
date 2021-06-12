@@ -17,14 +17,27 @@ public class AnimalController {
     @Autowired
     private AnimalService animalService;
 
-    @GetMapping("/all")
-    public List<Animal> listAllAnimals() { return animalService.getAllAnimals(); }
+    @PostMapping("/create")
+    public void createAnimal(@RequestParam String name, @RequestParam String dateOfBirth, @RequestParam String age, @RequestParam String size,
+                             @RequestParam String breed, @RequestParam String gender, @RequestParam String color,
+                             @RequestParam String dateArrivedInShelter, @RequestParam String dateAdopted, @RequestParam String identichip,
+                             @RequestParam String houseTrained, @RequestParam String comments, @RequestParam String coatLength, @RequestParam Boolean isReady) throws ParseException {
+        animalService.addAnimal(name, dateOfBirth, age, size, breed, gender, color, coatLength, dateArrivedInShelter, dateAdopted, identichip, houseTrained, comments, isReady);
+    }
 
     @GetMapping("/{id}")
-    public Animal listAnimal(@PathVariable String id) { return animalService.getAnimal(id); }
+    public Animal getAnimal(@PathVariable String id) { return animalService.getAnimal(id); }
 
-    @GetMapping("/get/id/{name}")
+    @GetMapping("/{name}/id")
     public int getAnimalId(@PathVariable String name) { return animalService.getAnimalId(name); }
+
+    @GetMapping("/{id}/avatar")
+    public String getAnimalAvatar(@PathVariable String id) {
+        return animalService.getAnimalAvatar(id);
+    }
+
+    @GetMapping("/all")
+    public List<Animal> getAnimals() { return animalService.getAllAnimals(); }
 
     @PutMapping("/{id}/update")
     public void updateAnimal(@PathVariable String id, @RequestParam String name, @RequestParam String dateOfBirth, @RequestParam String age,
@@ -39,22 +52,9 @@ public class AnimalController {
         animalService.updateAnimalAvatar(id, image);
     }
 
-    @PostMapping("/add")
-    public void addAnimal(@RequestParam String name, @RequestParam String dateOfBirth, @RequestParam String age, @RequestParam String size,
-                          @RequestParam String breed, @RequestParam String gender, @RequestParam String color,
-                          @RequestParam String dateArrivedInShelter, @RequestParam String dateAdopted, @RequestParam String identichip,
-                          @RequestParam String houseTrained, @RequestParam String comments, @RequestParam String coatLength, @RequestParam Boolean isReady) throws ParseException {
-        animalService.addAnimal(name, dateOfBirth, age, size, breed, gender, color, coatLength, dateArrivedInShelter, dateAdopted, identichip, houseTrained, comments, isReady);
-    }
-
     @DeleteMapping("/{id}/delete")
     public void deleteAnimal(@PathVariable String id) {
         animalService.deleteAnimal(id);
-    }
-
-    @GetMapping("/{id}/avatar")
-    public String listAnimalAvatar(@PathVariable String id) {
-        return animalService.getAnimalAvatar(id);
     }
 
 }

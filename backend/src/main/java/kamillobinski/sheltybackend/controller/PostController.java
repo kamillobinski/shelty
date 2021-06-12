@@ -16,20 +16,23 @@ public class PostController {
     @Autowired
     public PostService postService;
 
-    @GetMapping("/get/{id}")
-    public Post getPost(@PathVariable String id) { return postService.get(id); }
+    @PostMapping("/create")
+    public Integer createPost(@RequestParam String title, @RequestParam String text, @RequestParam String authorId, @RequestParam String date) { return postService.add(title, text, date, authorId); }
 
-    @GetMapping("/get/all")
-    public List<Post> getPosts() { return postService.getAll(); }
-
-    @PostMapping("/add")
-    public Integer addPost(@RequestParam String title, @RequestParam String text, @RequestParam String authorId, @RequestParam String date) { return postService.add(title, text, date, authorId); }
-
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}/update")
     public void updatePost(@PathVariable String id, @RequestParam String title, @RequestParam String text, @RequestParam String categoryId) { postService.update(id, title, text, categoryId); }
 
-    @PostMapping(value="/{id}/add/thumbnail" , headers = "content-type=multipart/*")
-    public String addPostThumbnail(@PathVariable String id, @RequestParam(value = "image") MultipartFile image ) {
+    @GetMapping("/{id}")
+    public Post getPost(@PathVariable String id) { return postService.get(id); }
+
+    @GetMapping("/all")
+    public List<Post> getPosts() { return postService.getAll(); }
+
+    @DeleteMapping("/{id}/delete")
+    public void deletePost(@PathVariable String id) { postService.delete(id); }
+
+    @PostMapping(value="/{id}/create/thumbnail" , headers = "content-type=multipart/*")
+    public String createPostThumbnail(@PathVariable String id, @RequestParam(value = "image") MultipartFile image ) {
         return postService.addThumbnail(id, image);
     }
 
@@ -37,8 +40,5 @@ public class PostController {
     public void deletePostThumbnail(@PathVariable String id) {
         postService.deleteThumbnail(id);
     }
-
-    @DeleteMapping("/delete/{id}")
-    public void deletePost(@PathVariable String id) { postService.delete(id); }
 
 }

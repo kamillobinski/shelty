@@ -14,8 +14,10 @@ public class PublicController {
 
     @Autowired
     private AnimalService animalService;
+
     @Autowired
     private BreedService breedService;
+
     @Autowired
     private SpeciesService speciesService;
 
@@ -25,32 +27,31 @@ public class PublicController {
     @Autowired
     private ImagesService imagesService;
 
-    @GetMapping("/animals/latest")
-    public List<Animal> listAllAnimals() { return animalService.getAllReadyForAdoptionAnimals(); }
-
-    // TODO: send only valuable info
     @GetMapping("/animal/{id}/details")
-    public Animal listAnimalDetails(@PathVariable String id) { return animalService.getAnimal(id); }
+    public Animal getAnimalDetails(@PathVariable String id) { return animalService.getAnimal(id); }
 
-    @GetMapping("/get/specific/breeds")
-    public List<Breed> listAllBreedsForSpecificSpecies(@RequestParam String id) {
+    @GetMapping("/animal/{id}/images")
+    public List<Images> getAnimalImages(@PathVariable String id) { return imagesService.getImages(id); }
+
+    @GetMapping("/animals/ready")
+    public List<Animal> getReadyAnimals() { return animalService.getAllReadyForAdoptionAnimals(); }
+
+    @GetMapping("/breeds/by/species")
+    public List<Breed> getBreedsBySpecies(@RequestParam String id) {
         return breedService.getAllBreedsForSpecificSpecies(id);
     }
 
-    @GetMapping("/get/breeds")
-    public List<Breed> listAllBreeds() {
+    @GetMapping("/breeds")
+    public List<Breed> getBreeds() {
         return breedService.getAllBreeds();
     }
 
-    @GetMapping("/get/species")
-    public List<Species> listAllSpecies() {
+    @GetMapping("/species")
+    public List<Species> getSpecies() {
         return speciesService.getAllOptions();
     }
 
-    @GetMapping("/get/blog/posts")
-    public List<Post> listAllPosts() { return postService.getAll(); }
-
-    @GetMapping("/get/animal/{id}/gallery")
-    public List<Images> listAllGalleryImages(@PathVariable String id) { return imagesService.getImages(id); }
+    @GetMapping("/blog/posts")
+    public List<Post> getPosts() { return postService.getAll(); }
 
 }
