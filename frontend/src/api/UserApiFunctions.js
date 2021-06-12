@@ -89,7 +89,7 @@ export function getUserId(username) {
   validateTokenBeforeAxios();
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("/api/user/get/id/" + username);
+  return axios.get("/api/user/" + username + "/id");
 }
 
 export function getUserIdFromCookie() {
@@ -122,7 +122,7 @@ export function updateUserAvatar(id, formData) {
   validateTokenBeforeAxios();
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.put("/api/user/" + id + "/update-avatar", formData, {
+  return axios.put("/api/user/" + id + "/update/avatar", formData, {
     headers: { "content-type": "multipart/form-data" },
   });
 }
@@ -153,7 +153,7 @@ export function updatePassword(id, oldPassword, newPassword) {
   validateTokenBeforeAxios();
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.put("/api/user/" + id + "/update-password", null, {
+  return axios.put("/api/user/" + id + "/update/password", null, {
     params: {
       oldPassword,
       newPassword,

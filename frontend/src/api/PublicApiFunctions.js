@@ -3,7 +3,7 @@ import { BASE_URL } from './Api';
 
 export function getLatestAnimals() {
   axios.defaults.baseURL = BASE_URL;
-  return axios.get("/api/public/animals/latest");
+  return axios.get("/api/public/animals/ready");
 }
 
 export function getAnimalDetails(id) {
@@ -13,19 +13,19 @@ export function getAnimalDetails(id) {
 
 export function getBreedOptionsForSpecificSpecies(id) {
   axios.defaults.baseURL = BASE_URL;
-  return axios.get("/api/public/get/specific/breeds", {
+  return axios.get("/api/public/breeds/by/species", {
     params: { id },
   });
 }
 
 export function getBreedOptions() {
   axios.defaults.baseURL = BASE_URL;
-  return axios.get("/api/public/get/breeds");
+  return axios.get("/api/public/breeds");
 }
 
 export function getSpeciesOptions() {
   axios.defaults.baseURL = BASE_URL;
-  return axios.get("/api/public/get/species");
+  return axios.get("/api/public/species");
 }
 
 export function getMatchingAnimals(age, color, breed, gender, size) {
@@ -43,10 +43,10 @@ export function getMatchingAnimals(age, color, breed, gender, size) {
 
 export function getBlogPosts() {
   axios.defaults.baseURL = BASE_URL;
-  return axios.get("/api/public/get/blog/posts");
+  return axios.get("/api/public/blog/posts");
 }
 
 export function getGalleryImages(id) {
   axios.defaults.baseURL = BASE_URL;
-  return axios.get("/api/public/get/animal/" + id + "/gallery");
+  return axios.get("/api/public/animal/" + id + "/images");
 }

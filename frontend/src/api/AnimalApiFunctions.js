@@ -14,7 +14,7 @@ export function getAnimal(id) {
 export function getAnimalId(name) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("/api/animal/get/id/" + name);
+  return axios.get("/api/animal/" + name + "/id");
 }
 
 export function getAnimals() {
@@ -64,7 +64,7 @@ export function getSpeciesOptions() {
 export function addSpeciesOption(name) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.post("/api/species/add", null, {
+  return axios.post("/api/species/create", null, {
     params: { speciesName: name },
   });
 }
@@ -78,7 +78,7 @@ export function deleteSpeciesOption(id) {
 export function addBreedOption(breedName, speciesId) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.put("/api/breed/add", null, {
+  return axios.post("/api/breed/create", null, {
     params: {
       breedName,
       speciesId,
@@ -141,7 +141,7 @@ export function deleteAnimal(id) {
 export function deleteGalleryImages(id) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.delete("/api/images/delete/all/" + id);
+  return axios.delete("/api/images/" + id + "/delete/all");
 }
 
 export function updateAnimalAvatar(id, formData) {
@@ -155,7 +155,7 @@ export function updateAnimalAvatar(id, formData) {
 export function addAnimalGalleryImage(animalId, image) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.post("/api/images/save/" + animalId, image, {
+  return axios.post("/api/images/" + animalId + "/save", image, {
     headers: { "content-type": "multipart/form-data" },
   });
 }
@@ -163,7 +163,7 @@ export function addAnimalGalleryImage(animalId, image) {
 export function deleteGalleryImage(imageId) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.delete("/api/images/delete/" + imageId);
+  return axios.delete("/api/images/" + imageId + "/delete");
 }
 
 export function getAnimalGalleryImages(animalId) {
@@ -190,7 +190,7 @@ export function addNewAnimal(
 ) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.post("/api/animal/add", null, {
+  return axios.post("/api/animal/create", null, {
     params: {
       name,
       dateOfBirth,
@@ -213,7 +213,7 @@ export function addNewAnimal(
 export function setAnimalAvatarFromGalleryImage(imageId, animalId) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.put("/api/images/set/avatar/" + imageId + "/" + animalId);
+  return axios.put("/api/images/" + animalId + "/" + imageId + "/set/avatar");
 }
 
 /*
@@ -230,7 +230,7 @@ export function saveMedicalData(
 ) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.put("/api/medical/data/save/" + animalId, null, {
+  return axios.put("/api/medical-data/" + animalId + "/update", null, {
     params: {
       graftingDate,
       dewormingDate,
@@ -244,14 +244,14 @@ export function saveMedicalData(
 export function getMedicalData(animalId) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("api/medical/data/get/" + animalId);
+  return axios.get("api/medical-data/" + animalId);
 }
 
 // delete
 export function deleteMedicalData(animalId) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.delete("api/medical/data/delete/" + animalId);
+  return axios.delete("api/medical-data/" + animalId + "/delete");
 }
 
 /* 
@@ -262,13 +262,13 @@ export function deleteMedicalData(animalId) {
 export function getMedicalHistory(animalId) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.get("api/medical/history/get/" + animalId);
+  return axios.get("api/medical-history/" + animalId);
 }
 
 export function addMedicalHistoryItem(animalId, type, medicine, vet, date, isCompleted) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.post("api/medical/history/save/" + animalId, null, {
+  return axios.post("api/medical-history/" + animalId + "/create", null, {
     params: {
       type,
       medicine,
@@ -282,13 +282,13 @@ export function addMedicalHistoryItem(animalId, type, medicine, vet, date, isCom
 export function deleteMedicalHistoryItem(medicalHistoryId) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.delete("api/medical/history/delete/" + medicalHistoryId);
+  return axios.delete("api/medical-history/" + medicalHistoryId + "/delete");
 }
 
 export function updateMedicalHistoryItemStatus(medicalHistoryId, status) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers = { Authorization: TOKEN_TYPE + authToken };
-  return axios.put("api/medical/history/update/" + medicalHistoryId, null, {
+  return axios.put("api/medical-history/" + medicalHistoryId + "/update/status", null, {
     params: {
       status
     }
