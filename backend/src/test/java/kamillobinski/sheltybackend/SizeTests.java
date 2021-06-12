@@ -20,7 +20,6 @@ class SizeTests {
 	private SizeRepository sizeRepository;
 
 	@Test
-	@Rollback(false)
 	public void Should_Create_Size () {
 		Size size = new Size();
 		size.setType("test");
