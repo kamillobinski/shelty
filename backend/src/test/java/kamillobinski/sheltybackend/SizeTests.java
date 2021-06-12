@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ class SizeTests {
 	private SizeRepository sizeRepository;
 
 	@Test
+	@Rollback(false)
 	public void Should_Create_Size () {
 		Size size = new Size();
 		size.setType("test");
