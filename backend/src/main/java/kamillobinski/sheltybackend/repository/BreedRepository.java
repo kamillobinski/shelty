@@ -15,5 +15,6 @@ public interface BreedRepository extends JpaRepository<Breed, Integer> {
 
     Breed findById(int id);
     Breed findByBreedName(String type);
+    boolean existsByBreedName(String breedName);
 
 }
