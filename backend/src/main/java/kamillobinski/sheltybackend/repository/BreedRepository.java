@@ -14,5 +14,6 @@ public interface BreedRepository extends JpaRepository<Breed, Integer> {
     List<Breed> findAllBySpeciesId(int id);
 
     Breed findById(int id);
+    Breed findByBreedName(String type);
 
 }

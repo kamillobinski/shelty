@@ -11,5 +11,7 @@ public interface MedicalHistoryRepository extends JpaRepository<MedicalHistory, 
     List<MedicalHistory> findAllByAnimal(Animal animal);
     MedicalHistory findById(int id);
     MedicalHistory deleteById(int id);
+    MedicalHistory findByAnimalName(String name);
+    boolean existsByAnimalName(String name);
 
 }

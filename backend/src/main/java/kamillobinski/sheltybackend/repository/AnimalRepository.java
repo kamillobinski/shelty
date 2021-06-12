@@ -16,5 +16,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
     String getAnimalAvatar(int id);
     List<Animal> findAllByIsReady(boolean isReady);
     List<Animal> findByAgeBetween(int ageStart, int ageEnd);
+    Animal findAnimalByName(String name);
 
 }

@@ -9,5 +9,6 @@ public interface CoatLengthRepository extends JpaRepository<CoatLength, Integer>
 
     List<CoatLength> findAll();
     CoatLength findById(int id);
+    CoatLength findByType(String type);
 
 }

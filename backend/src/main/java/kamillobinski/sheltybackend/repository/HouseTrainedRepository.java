@@ -9,5 +9,6 @@ public interface HouseTrainedRepository extends JpaRepository<HouseTrained, Inte
 
     List<HouseTrained> findAll();
     HouseTrained findById(int id);
+    HouseTrained findByType(String type);
 
 }
