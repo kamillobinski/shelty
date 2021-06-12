@@ -9,4 +9,8 @@ public interface SizeRepository extends JpaRepository<Size, Integer> {
 
     List<Size> findAll();
     Size findById(int id);
+    Size findByType(String type);
+    void deleteByType(String type);
+    boolean existsByType(String type);
+
 }
