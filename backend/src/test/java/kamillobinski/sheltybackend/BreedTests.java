@@ -27,6 +27,8 @@ public class BreedTests {
         Species species = new Species();
         species.setSpeciesName("testSpecies");
         speciesRepository.save(species);
+
+        Assertions.assertNotNull(speciesRepository.findBySpeciesName("testSpecies"));
     }
 
     @Test

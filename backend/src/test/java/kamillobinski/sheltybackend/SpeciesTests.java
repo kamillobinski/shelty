@@ -2,6 +2,7 @@ package kamillobinski.sheltybackend;
 
 import kamillobinski.sheltybackend.entity.Species;
 import kamillobinski.sheltybackend.repository.SpeciesRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,12 +22,16 @@ public class SpeciesTests {
         Species species = new Species();
         species.setSpeciesName("testSpecies");
         speciesRepository.save(species);
+
+        Assertions.assertNotNull(speciesRepository.findBySpeciesName("testSpecies"));
     }
 
     @Test
     public void Should_Delete_Species() {
         Species species = speciesRepository.findBySpeciesName("testSpecies");
         speciesRepository.delete(species);
+
+        Assertions.assertFalse(speciesRepository.existsBySpeciesName("testSpecies"));
     }
 
 }
