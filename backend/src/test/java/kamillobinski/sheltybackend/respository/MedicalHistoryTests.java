@@ -1,4 +1,4 @@
-package kamillobinski.sheltybackend;
+package kamillobinski.sheltybackend.respository;
 
 import kamillobinski.sheltybackend.entity.Animal;
 import kamillobinski.sheltybackend.entity.MedicalHistory;

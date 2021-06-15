@@ -1,4 +1,4 @@
-package kamillobinski.sheltybackend;
+package kamillobinski.sheltybackend.respository;
 
 import kamillobinski.sheltybackend.entity.HouseTrained;
 import kamillobinski.sheltybackend.repository.HouseTrainedRepository;

@@ -1,4 +1,4 @@
-package kamillobinski.sheltybackend;
+package kamillobinski.sheltybackend.respository;
 
 import kamillobinski.sheltybackend.entity.CoatLength;
 import kamillobinski.sheltybackend.repository.CoatLengthRepository;

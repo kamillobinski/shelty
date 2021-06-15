@@ -1,8 +1,6 @@
-package kamillobinski.sheltybackend;
+package kamillobinski.sheltybackend.respository;
 
-import kamillobinski.sheltybackend.entity.Breed;
 import kamillobinski.sheltybackend.entity.Species;
-import kamillobinski.sheltybackend.repository.BreedRepository;
 import kamillobinski.sheltybackend.repository.SpeciesRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,10 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @SpringBootTest
 @Rollback(false)
-public class BreedTests {
-
-    @Autowired
-    private BreedRepository breedRepository;
+public class SpeciesTests {
 
     @Autowired
     private SpeciesRepository speciesRepository;
@@ -32,24 +27,11 @@ public class BreedTests {
     }
 
     @Test
-    public void Should_Create_Breed() {
-        Breed breed = new Breed();
-        breed.setBreedName("testBreed");
-        breed.setSpecies(speciesRepository.findBySpeciesName("testSpecies"));
-        breedRepository.save(breed);
-
-        Assertions.assertNotNull(breedRepository.findByBreedName("testBreed"));
-    }
-
-    @Test
-    public void Should_Delete_Breed() {
+    public void Should_Delete_Species() {
         Species species = speciesRepository.findBySpeciesName("testSpecies");
         speciesRepository.delete(species);
 
-        Breed breed = breedRepository.findByBreedName("testBreed");
-        breedRepository.delete(breed);
-
-        Assertions.assertFalse(breedRepository.existsByBreedName("testBreed"));
+        Assertions.assertFalse(speciesRepository.existsBySpeciesName("testSpecies"));
     }
 
 }
