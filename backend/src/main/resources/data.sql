@@ -1,6 +1,6 @@
 -- Create animal options
 INSERT INTO SPECIES (species_name) VALUES ('dog'), ('cat')
-    INSERT INTO BREED (breed_name, species_id) VALUES ('Shih Tzu', 1), ('PitBull Terrier', 1)
+INSERT INTO BREED (breed_name, species_id) VALUES ('Shih Tzu', 1), ('PitBull Terrier', 1)
 INSERT INTO GENDER (type) VALUES ('male'), ('female'), ('unknown')
 INSERT INTO COAT_LENGTH (type) VALUES ('short'), ('long')
 INSERT INTO HOUSE_TRAINED (type) VALUES ('yes'), ('no'), ('unknown')
