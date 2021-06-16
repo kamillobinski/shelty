@@ -23,6 +23,8 @@ public class SpeciesTests {
     @Autowired
     private MockMvc mockMvc;
 
+    private final String SPECIES_NAME = "testSpecies";
+
     @Test
     public void Should_Throw_Unauthorized_Error() throws Exception {
         mockMvc.perform(get("/api/species"))
@@ -32,14 +34,14 @@ public class SpeciesTests {
     @Test
     @WithMockUser(username = "admin", roles = {"ADMIN"})
     public void Should_Create_Species() throws Exception {
-        mockMvc.perform(post("/api/species/create").param("speciesName", "testSpecies"))
+        mockMvc.perform(post("/api/species/create").param("speciesName", SPECIES_NAME))
                 .andExpect(status().isOk());
     }
 
     @Test
     @WithMockUser(username = "admin", roles = {"ADMIN"})
     public void Should_Delete_Species() throws Exception {
-        int id = speciesRepository.findBySpeciesName("testSpecies").getId();
+        int id = speciesRepository.findBySpeciesName(SPECIES_NAME).getId();
         mockMvc.perform(delete("/api/species/{id}/delete", id))
                 .andExpect(status().isOk());
     }
