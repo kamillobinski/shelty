@@ -47,7 +47,8 @@ public class AuthTests {
     private final String SIGN_UP_SUCCESS_MESSAGE = "User registered successfully!";
 
     private String signInResult = "";
-    private final boolean TOKEN_VERIFICATION_RESULT = true;
+
+    private final String TEST_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
     @Test
     public MvcResult Should_Sign_In() throws Exception {
@@ -88,7 +89,7 @@ public class AuthTests {
     }
 
     @Test
-    public void Should_Validate_Token() throws Exception {
+    public void Should_Return_Token_Is_Valid() throws Exception {
         MvcResult signInResult = Should_Sign_In();
         String response = signInResult.getResponse().getContentAsString();
         String accessToken = JsonPath.parse(response).read("$.accessToken");
@@ -96,7 +97,15 @@ public class AuthTests {
         mockMvc.perform(post("/api/auth/validate/token")
                 .param("token", accessToken))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(TOKEN_VERIFICATION_RESULT));
+                .andExpect(jsonPath("$").value(true));
+    }
+
+    @Test
+    public void Should_Return_Token_Is_Invalid() throws Exception {
+        mockMvc.perform(post("/api/auth/validate/token")
+                .param("token", TEST_TOKEN))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(false));
     }
 
 }
