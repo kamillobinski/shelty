@@ -1,22 +1,16 @@
 package kamillobinski.sheltybackend.controller;
 
-import kamillobinski.sheltybackend.entity.Post;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.apache.commons.io.FilenameUtils;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.nio.channels.FileChannel;
-import java.util.Objects;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -28,8 +22,6 @@ public class PostTests {
 
     @Autowired
     private MockMvc mockMvc;
-
-    private Post post;
 
     private final int DEFAULT_POST_ID = 1;
     private final String DEFAULT_POST_TITLE = "defaultTitle";
